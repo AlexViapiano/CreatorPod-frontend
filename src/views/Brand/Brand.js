@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Grid } from '@material-ui/core'
 import { Section, SectionAlternate } from 'components/organisms'
-import { Content, Hero, SidebarInfo, SidebarNewsletter, BrandProducts } from './components'
+import { Content, Hero, SidebarInfo, BrandProducts } from './components'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import { useTranslation } from 'next-i18next'
 import * as pixels from '../../utils/pixels'
@@ -19,12 +19,6 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
   },
 
-  sidebarNewsletter: {
-    marginTop: theme.spacing(4),
-    [theme.breakpoints.down('sm')]: {
-      marginTop: theme.spacing(2),
-    },
-  },
   footerNewsletterSection: {
     background: theme.palette.primary.main,
   },
