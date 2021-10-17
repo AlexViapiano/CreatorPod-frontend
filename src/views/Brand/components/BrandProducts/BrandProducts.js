@@ -6,7 +6,6 @@ import { SectionHeader } from 'components/molecules'
 import { connect } from 'react-redux'
 import ProductCard from '../../../../common/ProductCard'
 import { useTranslation } from 'next-i18next'
-import SwiperProducts from 'components/molecules/SwiperProducts/SwiperProducts'
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -29,13 +28,6 @@ const BrandProducts = props => {
         subtitleVariant="body1"
         data-aos="fade-up"
       />
-      <Grid container justify="center" alignItems="center" spacing={isSm ? 4 : 2}>
-        {brandProducts.map((item, index) => (
-          <Grid item xs={6} sm={4} key={index} align="center" data-aos="fade-up">
-            <ProductCard item={item} />
-          </Grid>
-        ))}
-      </Grid>
     </div>
   )
 }
