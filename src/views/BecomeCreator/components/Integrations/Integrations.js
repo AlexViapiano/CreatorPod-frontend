@@ -2,308 +2,116 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
-import { useMediaQuery, Grid, Button, Typography, Divider } from '@material-ui/core'
+import { useMediaQuery } from '@material-ui/core'
+import { Grid, Button, Avatar } from '@material-ui/core'
+import { Image } from 'components/atoms'
 import { SectionHeader } from 'components/molecules'
-import { CardBase, CardPricingStandard } from 'components/organisms'
-import Image from 'next/image'
-import { useTranslation } from 'next-i18next'
-import { Section } from 'components/organisms'
+import { DescriptionListIcon } from 'components/organisms'
 
 const useStyles = makeStyles(theme => ({
   root: {},
-  center: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  imageContainer: {
-    position: 'relative',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    minHeight: 300,
-    [theme.breakpoints.down('sm')]: {
-      minHeight: 200,
-    },
+  avatar: {
+    width: 70,
+    height: 70,
+    borderRadius: 0,
+    background: 'transparent',
   },
 }))
 
 const Integrations = props => {
-  const { setFocusForm, className, ...rest } = props
+  const { className, ...rest } = props
   const classes = useStyles()
-  const { t } = useTranslation('becomeSupplier')
 
   const theme = useTheme()
   const isMd = useMediaQuery(theme.breakpoints.up('md'), {
     defaultMatches: true,
   })
 
-  const pricings = [
+  const data = [
     {
-      title: t('basic'),
-      price: '10% ' + t('fee'),
-      features: [
-        t('control-over-brand'),
-        t('have-products-featured'),
-        t('interact-with-customer'),
-        t('assist-in-managing'),
-        t('shipped-from-supplier'),
-      ],
-      isHighlighted: false,
+      logo: '/images/logos/instagram.svg',
+      name: 'Instagram',
+      title:
+        "Sync your team's work and activity to share automatically in a channel with a simple plugin.",
     },
     {
-      title: t('Convenience'),
-      price: '30% ' + t('fee'),
-      features: [
-        t('control-over-brand'),
-        t('have-products-featured'),
-        t('interact-with-customer'),
-        t('fulfilled-by-waytoogood'),
-        t('inventory-management'),
-        t('waytoogood-processes'),
-        t('participate-in-pomotional'),
-      ],
-      isHighlighted: true,
+      logo: '/images/logos/facebook.svg',
+      name: 'Facebook',
+      title:
+        'Communicate important messages to your users through TheFront using Mailchimp as the delivery service.',
+    },
+    {
+      logo: '/images/logos/tik-tok.png',
+      name: 'Tik Tok',
+      title:
+        'Sync any file store to Dropbox for automated sharing with people outside the company.',
+    },
+    {
+      logo: '/images/logos/twitter.svg',
+      name: 'Twitter',
+      title:
+        'Sync any file store to Google Drive for automated sharing with people outside the company.',
+    },
+    {
+      logo: '/images/logos/youtube.svg',
+      name: 'Youtube',
+      title:
+        'Easily manage and edit any Adwords campaign inline to improve ROI with constant review.',
+    },
+    {
+      logo: '/images/logos/snapchat.svg',
+      name: 'Snap Chat',
+      title:
+        'Keep your entire team in sync with development and easily manage tasks, goals, and deadlines.',
     },
   ]
 
   return (
-    <div className={clsx(classes.root, className)} {...rest}>
-      <Grid container spacing={isMd ? 4 : 2}>
-        <Grid item xs={12}>
-          <Grid container spacing={isMd ? 4 : 2}>
-            <Grid item xs={12} md={6} className={classes.center}>
-              <SectionHeader
-                title={t('control-over-your-brand')}
-                subtitle={t('control-over-your-brand-subtext')}
-                align="left"
-                label="CONTROL"
-                ctaGroup={[
-                  <Button
-                    variant="contained"
-                    size="large"
-                    color="primary"
-                    onClick={() => setFocusForm(true)}
-                  >
-                    {t('get-started')}
-                  </Button>,
-                ]}
-                disableGutter
-                data-aos="fade-up"
-              />
-            </Grid>
-            <Grid item xs={12} md={6} data-aos="fade-up">
-              <div className={classes.imageContainer}>
-                <Image
-                  src="/images/illustrations/undraw_Personal_settings.svg"
-                  alt="Control"
-                  loading="lazy"
-                  layout="fill"
-                  objectFit="contain"
-                />
-              </div>
-            </Grid>
+    <div className={clsx(classes.root, className)} data-aos="fade-up" {...rest}>
+      <SectionHeader
+        title="Get Higher Conversions with Our Videos"
+        subtitle="Fine tuned for your favorite social media platforms"
+        fadeUp
+      />
+      <Grid container spacing={4}>
+        {data.map((item, index) => (
+          <Grid
+            key={index}
+            item
+            container
+            alignItems="center"
+            direction="column"
+            xs={4}
+            sm={2}
+            md={2}
+            data-aos={'fade-up'}
+          >
+            <DescriptionListIcon
+              icon={
+                <Avatar className={classes.avatar}>
+                  <Image src={item.logo} alt={item.name} />
+                </Avatar>
+              }
+              title={item.name}
+              // subtitle={item.title}
+              align="center"
+            />
           </Grid>
-        </Grid>
-        <Section>
-          <Divider />
-        </Section>
-        <Grid item xs={12}>
-          <Grid container spacing={isMd ? 4 : 2} direction={isMd ? 'row' : 'column-reverse'}>
-            <Grid item xs={12} md={6} data-aos="fade-up">
-              <div className={classes.imageContainer}>
-                <Image
-                  src="/images/illustrations/undraw_Gift_box.svg"
-                  alt="Subscription Box"
-                  loading="lazy"
-                  layout="fill"
-                  objectFit="contain"
-                />
-              </div>
-            </Grid>
-            <Grid item xs={12} md={6} data-aos="fade-up" className={classes.center}>
-              <SectionHeader
-                title={t('participate')}
-                subtitle={t('participate-subtext')}
-                align="left"
-                label="PARTICIPATE"
-                ctaGroup={[
-                  <Button
-                    variant="contained"
-                    size="large"
-                    color="primary"
-                    onClick={() => setFocusForm(true)}
-                  >
-                    {t('get-started')}
-                  </Button>,
-                ]}
-                disableGutter
-              />
-            </Grid>
-          </Grid>
-        </Grid>
-        <Section>
-          <Divider />
-        </Section>
-        <Grid item xs={12}>
-          <Grid container spacing={isMd ? 4 : 2}>
-            <Grid item xs={12} md={6} className={classes.center}>
-              <SectionHeader
-                title={t('direct-to-consumer')}
-                subtitle={t('direct-to-consumer-subtext')}
-                align="left"
-                label="SKIP THE MIDDLEMAN"
-                ctaGroup={[
-                  <Button
-                    variant="contained"
-                    size="large"
-                    color="primary"
-                    onClick={() => setFocusForm(true)}
-                  >
-                    {t('get-started')}
-                  </Button>,
-                ]}
-                disableGutter
-                data-aos="fade-up"
-              />
-            </Grid>
-            <Grid item xs={12} md={6} data-aos="fade-up">
-              <div className={classes.imageContainer}>
-                <Image
-                  src="/images/illustrations/undraw_online_transactions.svg"
-                  alt="Direct To Consumer"
-                  loading="lazy"
-                  layout="fill"
-                  objectFit="contain"
-                />
-              </div>
-            </Grid>
-          </Grid>
-        </Grid>
-        <Section>
-          <Divider />
-        </Section>
-        <Grid item xs={12}>
-          <Grid container spacing={isMd ? 4 : 2} direction={isMd ? 'row' : 'column-reverse'}>
-            <Grid item xs={12} md={6} data-aos="fade-up">
-              <div className={classes.imageContainer}>
-                <Image
-                  src="/images/illustrations/undraw_review.svg"
-                  alt="Reviews"
-                  loading="lazy"
-                  layout="fill"
-                  objectFit="contain"
-                />
-              </div>
-            </Grid>
-            <Grid item xs={12} md={6} data-aos="fade-up" className={classes.center}>
-              <SectionHeader
-                title={t('engaging-review')}
-                subtitle={t('engaging-review-subtext')}
-                align="left"
-                label="REVIEWS"
-                ctaGroup={[
-                  <Button
-                    variant="contained"
-                    size="large"
-                    color="primary"
-                    onClick={() => setFocusForm(true)}
-                  >
-                    {t('get-started')}
-                  </Button>,
-                ]}
-                disableGutter
-              />
-            </Grid>
-          </Grid>
-        </Grid>
-        <Section>
-          <Divider />
-        </Section>
-        <Grid item xs={12}>
-          <Grid container spacing={isMd ? 4 : 2} direction={isMd ? 'row' : 'column-reverse'}>
-            <Grid item xs={12} md={6} data-aos="fade-up" className={classes.center}>
-              <SectionHeader
-                title={t('new-marketplace')}
-                subtitle={t('new-marketplace-subtext')}
-                align="left"
-                label="BE PART OF THE MOVEMENT"
-                ctaGroup={[
-                  <Button
-                    variant="contained"
-                    size="large"
-                    color="primary"
-                    onClick={() => setFocusForm(true)}
-                  >
-                    {t('get-started')}
-                  </Button>,
-                ]}
-                disableGutter
-              />
-            </Grid>
-            <Grid item xs={12} md={6} data-aos="fade-up">
-              <div className={classes.imageContainer}>
-                <Image
-                  src="/images/illustrations/businesswomen.svg"
-                  alt="Business Women"
-                  loading="lazy"
-                  layout="fill"
-                  objectFit="contain"
-                />
-              </div>
-            </Grid>
-          </Grid>
-        </Grid>
-        {/* <Grid item xs={12}>
-          <SectionHeader title="Choose your plan" label="Pricing" data-aos="fade-up" />
-          <Grid container spacing={isMd ? 0 : 2}>
-            {pricings.map((item, index) => (
-              <Grid
-                item
-                container
-                alignItems="center"
-                xs={12}
-                md={6}
-                data-aos="fade-up"
-                key={index}
-              >
-                <CardPricingStandard
-                  variant="outlined"
-                  withShadow={item.isHighlighted ? true : false}
-                  title={item.title}
-                  liftUp
-                  priceComponent={
-                    <div className={classes.textCenter}>
-                      <Typography
-                        variant="h3"
-                        component="span"
-                        className={classes.fontWeight900}
-                        color="primary"
-                      >
-                        {item.price}
-                      </Typography>
-                    </div>
-                  }
-                  features={item.features}
-                  cta={
-                    <Button
-                      color="primary"
-                      variant="contained"
-                      size="large"
-                      onClick={() => setFocusForm(true)}
-                    >
-                      {t('get-started')}
-                    </Button>
-                  }
-                  disclaimer={item.disclaimer}
-                  className={clsx(item.isHighlighted ? classes.cardHighlighted : classes.cardSmall)}
-                />
-              </Grid>
-            ))}
-          </Grid>
-        </Grid> */}
+        ))}
       </Grid>
     </div>
   )
+}
+
+Integrations.propTypes = {
+  /**
+   * External classes
+   */
+  className: PropTypes.string,
+  /**
+   * data to be rendered
+   */
+  data: PropTypes.array.isRequired,
 }
 
 export default Integrations

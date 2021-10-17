@@ -94,7 +94,13 @@ const HeroShaped = props => {
           {leftSide}
         </Section>
         <div className={clsx('hero-shaped__right-side', classes.heroRightSide)}>
-          <div className={clsx('hero-shaped__shape', classes.shapeContainer)}></div>
+          <div className={clsx('hero-shaped__shape', classes.shapeContainer)}>
+            <img
+              src="/images/photos/shape-fluid.svg"
+              className={clsx('hero-shaped__shape-image', classes.shape)}
+              alt=""
+            />
+          </div>
           <div className={clsx('hero-shaped__cover', classes.heroCover)}>
             <div className={clsx('hero-shaped__image-container', classes.heroImageContainer)}>
               <div className={clsx('hero-shaped__image', classes.heroImage)}>{rightSide}</div>

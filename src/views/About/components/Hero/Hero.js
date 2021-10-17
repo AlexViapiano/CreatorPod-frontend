@@ -53,7 +53,7 @@ const Hero = props => {
         layout="fill"
         objectFit="cover"
       />
-      <Section className={classes.section}>
+      {/* <Section className={classes.section}>
         <SectionHeader
           title={t('about-us')}
           // subtitle="We are founded by a leading academic and researcher in the field of Industrial Systems Engineering."
@@ -65,7 +65,7 @@ const Hero = props => {
             variant: 'h3',
           }}
         />
-      </Section>
+      </Section> */}
     </div>
   )
 }

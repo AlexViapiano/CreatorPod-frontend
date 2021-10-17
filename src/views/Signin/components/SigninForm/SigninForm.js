@@ -124,7 +124,7 @@ const SigninForm = ({ login }) => {
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <TextField
-              placeholder={t('e-mail')}
+              placeholder={'Email'}
               label="E-mail *"
               variant="outlined"
               size="medium"
@@ -139,7 +139,7 @@ const SigninForm = ({ login }) => {
           </Grid>
           <Grid item xs={12}>
             <TextField
-              placeholder={t('password')}
+              placeholder={'Password'}
               label="Password *"
               variant="outlined"
               size="medium"
@@ -154,17 +154,17 @@ const SigninForm = ({ login }) => {
           </Grid>
           <Grid item xs={12}>
             <i>
-              <Typography variant="subtitle2">{t('required-fields')}</Typography>
+              <Typography variant="subtitle2">Required Fields</Typography>
             </i>
           </Grid>
           <Grid item xs={12}>
             <Button size="large" variant="contained" type="submit" color="primary" fullWidth>
-              {t('sign-in')}
+              Login
             </Button>
           </Grid>
           <Grid item xs={12}>
             <Typography variant="subtitle1" color="textSecondary" align="center">
-              {t('or')}
+              or
             </Typography>
           </Grid>
           <Grid item xs={12}>
@@ -177,15 +177,15 @@ const SigninForm = ({ login }) => {
                 className={classes.btnGoogle}
               >
                 <i aria-hidden className={clsx('fa fa-google', classes.googleIcon)} />
-                {t('google-sign-in')}
+                Google Login
               </Button>
             </a>
           </Grid>
           <Grid item xs={12}>
             <Typography variant="subtitle1" color="textSecondary" align="center">
-              {t('forgot-password')}{' '}
+              Forgot Password?{' '}
               <Link href="/forgot-password">
-                <a className={classes.a}>{t('reset-password')}</a>
+                <a className={classes.a}>Reset Password</a>
               </Link>
             </Typography>
           </Grid>

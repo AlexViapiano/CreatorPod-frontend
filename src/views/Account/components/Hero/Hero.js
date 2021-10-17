@@ -29,8 +29,8 @@ const Hero = props => {
     <div className={clsx(classes.root, className)} {...rest}>
       <Section className={classes.section}>
         <SectionHeader
-          title={t('account-settings')}
-          subtitle={t('change-account-settings')}
+          title={'Account Settings'}
+          subtitle={''}
           align="left"
           disableGutter
           titleProps={{

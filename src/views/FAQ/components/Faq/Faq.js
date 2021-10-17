@@ -14,6 +14,7 @@ import { DescriptionListIcon, CardJobMinimal } from 'components/organisms'
 import { useTranslation } from 'next-i18next'
 import CloseIcon from '@material-ui/icons/Close'
 import Image from 'next/image'
+import { SectionHeader } from 'components/molecules'
 import Link from 'next/link'
 
 const useStyles = makeStyles(theme => ({
@@ -97,24 +98,36 @@ const Faq = props => {
       icon: 'fas fa-user',
       items: [
         {
-          title: t('general-question-1'),
+          title: 'How does it work?',
           answer: t('general-answer-1'),
           screenshot: '/images/faq/home-office.jpg',
         },
         {
-          title: t('general-question-2'),
+          title: 'How long does it take to get a video?',
           answer: t('general-answer-2'),
           screenshot: '/images/faq/forgot-password.jpg',
           cta: '/forgot-password',
         },
         {
-          title: t('general-question-3'),
+          title: 'Can I choose/see who is going to review my products?',
           answer: t('general-answer-3'),
           screenshot: '/images/faq/order-tracking.jpg',
           cta: '/account/orders',
         },
         {
-          title: t('general-question-4'),
+          title: 'Do you have creators 30+ years old?',
+          answer: t('general-answer-4'),
+          screenshot: '/images/faq/review.jpg',
+          cta: '/account/reviews',
+        },
+        {
+          title: 'How much does it cost?',
+          answer: t('general-answer-3'),
+          screenshot: '/images/faq/order-tracking.jpg',
+          cta: '/account/orders',
+        },
+        {
+          title: 'Do creators post videos on their social media?',
           answer: t('general-answer-4'),
           screenshot: '/images/faq/review.jpg',
           cta: '/account/reviews',
@@ -127,88 +140,46 @@ const Faq = props => {
       icon: 'fas fa-dollar-sign',
       items: [
         {
-          title: t('subscribe-question-1'),
+          title: 'Do creators post videos on their social media?',
           answer: t('subscribe-answer-1'),
           screenshot: '/images/faq/subscribe-shipments.jpg',
           // cta: '/account/reviews',
         },
         {
-          title: t('subscribe-question-2'),
+          title: `I've never done UGC content professionally before, is this a problem?`,
           answer: t('subscribe-answer-2'),
           screenshot: '/images/faq/subscribe-address.jpg',
           cta: '/account/subscriptions',
         },
         {
-          title: t('subscribe-question-3'),
+          title: `What is the process of joining as a creator? Is there any interview process?`,
           answer: t('subscribe-answer-3'),
           screenshot: '/images/faq/contact-us.jpg',
           cta: '/contact',
         },
         {
-          title: t('subscribe-question-4'),
+          title: `How much money could I make?`,
           answer: t('subscribe-answer-4'),
           screenshot: '/images/faq/subscribe-cancel.jpg',
           cta: '/account/subscriptions',
         },
-      ],
-    },
-    product: {
-      title: t('product-questions'),
-      subtitle: t('product-questions-subtext'),
-      icon: 'fas fa-users',
-      items: [
         {
-          title: t('product-question-1'),
-          answer: t('product-answer-1'),
-          screenshot: '/images/faq/order-return.jpg',
-          cta: '/account/orders',
+          title: 'Why should I choose your platform over another?',
+          answer: t('subscribe-answer-1'),
+          screenshot: '/images/faq/subscribe-shipments.jpg',
+          // cta: '/account/reviews',
         },
         {
-          title: t('product-question-2'),
-          answer: t('product-answer-2'),
-          screenshot: '/images/faq/order-return.jpg',
-          cta: '/account/orders',
+          title: `How do I accept payment?`,
+          answer: t('subscribe-answer-2'),
+          screenshot: '/images/faq/subscribe-address.jpg',
+          cta: '/account/subscriptions',
         },
         {
-          title: t('product-question-3'),
-          answer: t('product-answer-3'),
-          screenshot: '/images/faq/review.jpg',
-          cta: '/account/reviews',
-        },
-        {
-          title: t('product-question-4'),
-          answer: t('product-answer-4'),
-          screenshot: '/images/faq/order-return.jpg',
-          cta: '/account/orders',
-        },
-      ],
-    },
-    shipping: {
-      title: t('shipping-questions'),
-      subtitle: t('shipping-questions-subtext'),
-      icon: 'fas fa-puzzle-piece',
-      items: [
-        {
-          title: t('shipping-question-1'),
-          answer: t('shipping-answer-1'),
-          screenshot: '/images/faq/order-tracking.jpg',
-          cta: '/account/orders',
-        },
-        {
-          title: t('shipping-question-2'),
-          answer: t('shipping-answer-2'),
-          screenshot: '/images/faq/logistics.jpg',
-        },
-        {
-          title: t('shipping-question-3'),
-          answer: t('shipping-answer-3'),
-          screenshot: '/images/faq/logistics.jpg',
-        },
-        {
-          title: t('shipping-question-4'),
-          answer: t('shipping-answer-4'),
-          screenshot: '/images/faq/order-tracking.jpg',
-          cta: '/contact',
+          title: `Do you have rules around working with other companies?`,
+          answer: t('subscribe-answer-4'),
+          screenshot: '/images/faq/subscribe-cancel.jpg',
+          cta: '/account/subscriptions',
         },
       ],
     },
@@ -267,31 +238,20 @@ const Faq = props => {
           </div>
         </DialogContent>
       </Dialog>
+      <SectionHeader
+        title={'FAQ'}
+        align="left"
+        data-aos="fade-up"
+        titleProps={{
+          className: clsx(classes.title),
+          variant: 'h3',
+        }}
+      />
       <Grid container spacing={4}>
         <Grid item xs={12} md={6}>
           <DescriptionListIcon
-            title={data.checkout.title}
-            subtitle={data.checkout.subtitle}
-            align="center"
-            className={classes.descriptionListIcon}
-            data-aos="fade-up"
-          />
-          <Grid container spacing={2}>
-            {data.checkout.items.map((item, index) => (
-              <Grid item xs={12} key={index} data-aos="fade-up">
-                <CardJobMinimal
-                  onClick={() => setQuestion(item)}
-                  title={item.title}
-                  subtitle={''}
-                />
-              </Grid>
-            ))}
-          </Grid>
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <DescriptionListIcon
-            title={data.general.title}
-            subtitle={data.general.subtitle}
+            title={'Business Owners'}
+            subtitle={'Subtitle'}
             align="center"
             className={classes.descriptionListIcon}
             data-aos="fade-up"
@@ -308,37 +268,16 @@ const Faq = props => {
             ))}
           </Grid>
         </Grid>
-
-        <Grid item xs={12} md={6} className={classes.marginTop}>
+        <Grid item xs={12} md={6}>
           <DescriptionListIcon
-            title={data.product.title}
-            subtitle={data.product.subtitle}
+            title={'Content Creators'}
+            subtitle={'Subtitle'}
             align="center"
             className={classes.descriptionListIcon}
             data-aos="fade-up"
           />
           <Grid container spacing={2}>
-            {data.product.items.map((item, index) => (
-              <Grid item xs={12} key={index} data-aos="fade-up">
-                <CardJobMinimal
-                  onClick={() => setQuestion(item)}
-                  title={item.title}
-                  subtitle={''}
-                />
-              </Grid>
-            ))}
-          </Grid>
-        </Grid>
-        <Grid item xs={12} md={6} className={classes.marginTop}>
-          <DescriptionListIcon
-            title={data.shipping.title}
-            subtitle={data.shipping.subtitle}
-            align="center"
-            className={classes.descriptionListIcon}
-            data-aos="fade-up"
-          />
-          <Grid container spacing={2}>
-            {data.shipping.items.map((item, index) => (
+            {data.checkout.items.map((item, index) => (
               <Grid item xs={12} key={index} data-aos="fade-up">
                 <CardJobMinimal
                   onClick={() => setQuestion(item)}
@@ -351,11 +290,11 @@ const Faq = props => {
         </Grid>
       </Grid>
       <div className={classes.contactContainer}>
-        <Typography variant="h5">{t('contact1')}</Typography>
+        <Typography variant="h5">Still have questions?</Typography>
         <Link href={'/contact'}>
           <a>
             <Button className={classes.input} size="large" variant="contained" color="primary">
-              {t('contact2')}
+              Contact Us
             </Button>
           </a>
         </Link>

@@ -13,25 +13,12 @@ import {
   ListItemText,
 } from '@material-ui/core'
 import { logout } from '../../../../../../../redux/session/action'
-import {
-  setDiet,
-  setCategory,
-  setSale,
-  refreshProducts,
-} from '../../../../../../../redux/products/action'
 import { useRouter } from 'next/router'
 import { connect } from 'react-redux'
 import Link from 'next/link'
 import { store } from 'react-notifications-component'
 import Image from 'next/image'
 import {
-  Storefront,
-  LocalMall,
-  LocalDining,
-  LocalPizza,
-  ShoppingCartTwoTone,
-  Fastfood,
-  LocalOffer,
   Person,
   PersonOutline,
   PersonAdd,
@@ -43,7 +30,6 @@ import {
   RateReview,
 } from '@material-ui/icons'
 import { useTranslation } from 'next-i18next'
-import { diets, categories } from '../../../../../../common/data'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -152,9 +138,6 @@ const SidebarNav = props => {
   const classes = useStyles()
   const router = useRouter()
   const { t } = useTranslation('common')
-  const [shopOpen, setShopOpen] = useState(false)
-  const [dietOpen, setDietOpen] = useState(false)
-  const [categoryOpen, setCategoryOpen] = useState(false)
   const [accountOpen, setAccountOpen] = useState(false)
 
   const navigate = view => {
@@ -165,35 +148,6 @@ const SidebarNav = props => {
   const onClickLogout = () => {
     logout()
     onClose()
-  }
-
-  const onClickCart = () => {
-    if (cart.length == 0) {
-      store.addNotification({
-        title: 'Cart Empty!',
-        message: 'Add a product before entering checkout.',
-        type: 'warning',
-        insert: 'top',
-        container: 'bottom-right',
-        animationIn: ['animate__animated', 'animate__fadeIn'],
-        animationOut: ['animate__animated', 'animate__fadeOut'],
-        dismiss: {
-          duration: 4000,
-          onScreen: true,
-        },
-      })
-    } else router.push('/cart', undefined, { shallow: true })
-  }
-
-  const onClickFilter = (filterType, name) => {
-    if (filterType == 'sale') setSale(true)
-    if (filterType == 'varietyPacks') setVarietyPacks(true)
-    if (filterType == 'diet') setDiet(name, true)
-    if (filterType == 'category') setCategory(name, true)
-    if (filterType == 'brand') setBrand(name)
-    refreshProducts()
-    onClose()
-    router.push('/products', undefined, { shallow: true })
   }
 
   return (
@@ -344,24 +298,11 @@ const SidebarNav = props => {
 
 const mapStateToProps = state => ({
   user: state.session?.user,
-  cart: state.orders?.cart,
 })
 
 const mapDispatchToProps = dispatch => ({
   logout: () => {
     return dispatch(logout())
-  },
-  setDiet: (diet, reset) => {
-    return dispatch(setDiet(diet, reset))
-  },
-  setCategory: (category, reset) => {
-    return dispatch(setCategory(category, reset))
-  },
-  setSale: sale => {
-    return dispatch(setSale(sale))
-  },
-  refreshProducts: () => {
-    return dispatch(refreshProducts())
   },
 })
 

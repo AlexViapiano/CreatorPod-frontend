@@ -2,18 +2,8 @@ import React, { useEffect, useState } from 'react'
 import clsx from 'clsx'
 import { useTheme } from '@material-ui/core/styles'
 import { useMediaQuery } from '@material-ui/core'
-import {
-  Navbar,
-  TopbarPromotion,
-  Footer,
-  Sidebar,
-  CountryModal,
-  Notifications,
-  CookiesConsent,
-} from './components'
+import { Navbar, Footer, Sidebar, CountryModal, Notifications, CookiesConsent } from './components'
 import { connect } from 'react-redux'
-import { getCart } from '../../../redux/orders/action'
-// import { getDiets } from '../../../redux/products/action'
 import { getUser, getGoogleUser, changeCountry } from '../../../redux/session/action'
 import { useRouter } from 'next/router'
 import ReactNotification from 'react-notifications-component'
@@ -71,17 +61,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Main = props => {
-  const {
-    user,
-    cart,
-    diets,
-    getUser,
-    getGoogleUser,
-    getCart,
-    changeCountry,
-    children,
-    ...rest
-  } = props
+  const { user, cart, diets, getUser, getGoogleUser, changeCountry, children, ...rest } = props
   const router = useRouter()
   const classes = useStyles()
   const [openSidebar, setOpenSidebar] = useState(false)
@@ -98,7 +78,6 @@ const Main = props => {
     }
 
     if (!cartFetched) {
-      getCart()
       setCartFetched(true)
     }
     if (
@@ -130,7 +109,6 @@ const Main = props => {
   return (
     <div>
       <ReactNotification />
-      {/* {router.route != '/' ? null : <TopbarPromotion />} */}
       <Navbar onSidebarOpen={handleSidebarOpen} />
       <Sidebar onClose={handleSidebarClose} open={openSidebar} variant="temporary" />
       <main>
@@ -146,13 +124,10 @@ const Main = props => {
 
 const mapStateToProps = state => ({
   user: state.session?.user,
-  cart: state.orders?.cart,
-  diets: state.products?.diets,
 })
 
 const mapDispatchToProps = dispatch => {
   return {
-    getCart: () => dispatch(getCart()),
     getUser: () => dispatch(getUser()),
     getGoogleUser: access_token => dispatch(getGoogleUser(access_token)),
     // getDiets: () => {

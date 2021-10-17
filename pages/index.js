@@ -20,34 +20,16 @@ const HomePage = props => {
         ></meta>
       </Head>
       <Main>
-        <Home products={props.products} />
+        <Home />
       </Main>
       <FacebookMessenger />
     </div>
   )
 }
 
-export async function getStaticProps({ locale }) {
-  try {
-    const resSponsoredProducts = await fetch(`${API_URL}/sponsored-products?_locale=` + locale, {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-    })
-    const sponsoredProducts = await resSponsoredProducts.json()
-
-    return {
-      props: {
-        products: sponsoredProducts,
-      },
-      revalidate: 60,
-    }
-  } catch (err) {
-    return {
-      props: {
-        products: [],
-      },
-      revalidate: 60,
-    }
+export async function getStaticProps() {
+  return {
+    props: {},
   }
 }
 

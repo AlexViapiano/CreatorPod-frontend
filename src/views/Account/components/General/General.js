@@ -23,7 +23,6 @@ import {
 } from '../../../../../redux/session/action'
 import { useTranslation } from 'next-i18next'
 import usePlacesAutocomplete, { getDetails } from 'use-places-autocomplete'
-import { verifyAddress } from '../../../../utils/verifyAddress'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -194,127 +193,6 @@ const General = props => {
       })
     }
   }
-
-  const handleSubmitAddress = async event => {
-    setLoading(true)
-
-    const verified = await verifyAddress(
-      shipping_address_line1,
-      shipping_address_line2,
-      shipping_city,
-      shipping_country,
-      shipping_state,
-      shipping_zip
-    )
-
-    if (verified.error) {
-      setError(verified.error)
-      setLoading(false)
-      return
-    }
-    if (verified.confirm) {
-      setError(null)
-      setConfirm(verified.confirm)
-      setLoading(false)
-      return
-    }
-
-    const data = {
-      shipping: {
-        address: {
-          city: shipping_city,
-          country: shipping_country,
-          line1: shipping_address_line1,
-          line2: shipping_address_line2,
-          postal_code: shipping_zip,
-          state: shipping_state,
-        },
-        name: '',
-        phone: '',
-      },
-    }
-
-    if (user?.id) {
-      updateStripeCustomer(user.id, data).then(res => {
-        setLoading(false)
-      })
-    }
-  }
-
-  const handleConfirm = async () => {
-    const {
-      verified_shipping_address_line1,
-      verified_shipping_city,
-      verified_shipping_country,
-      verified_shipping_state,
-      verified_shipping_zip,
-    } = confirm
-    setLoading(true)
-
-    if (verified_shipping_country != 'CA') {
-      setError(`We currently only ship to Canada`)
-      setConfirm(null)
-      return
-    }
-
-    const data = {
-      shipping: {
-        address: {
-          city: verified_shipping_city,
-          country: verified_shipping_country,
-          line1: verified_shipping_address_line1,
-          line2: shipping_address_line2,
-          postal_code: verified_shipping_zip,
-          state: verified_shipping_state,
-        },
-        name: '',
-        phone: '',
-      },
-    }
-
-    if (user?.id) {
-      updateStripeCustomer(user.id, data).then(res => {
-        setLoading(false)
-      })
-    }
-
-    setShipping_address_line1(verified_shipping_address_line1)
-    setShipping_address_line2(shipping_address_line2)
-    setShipping_city(verified_shipping_city)
-    setShipping_country(verified_shipping_country)
-    setShipping_state(verified_shipping_state)
-    setShipping_zip(verified_shipping_zip)
-    setConfirm(null)
-  }
-
-  const handleSkip = async () => {
-    setConfirm(null)
-    setLoading(true)
-
-    const data = {
-      shipping: {
-        address: {
-          city: shipping_city,
-          country: shipping_country,
-          line1: shipping_address_line1,
-          line2: shipping_address_line2,
-          postal_code: shipping_zip,
-          state: shipping_state,
-        },
-        name: '',
-        phone: '',
-      },
-    }
-
-    if (user?.id) {
-      updateStripeCustomer(user.id, data).then(res => {
-        setLoading(false)
-      })
-    }
-
-    setConfirm(null)
-  }
-
   if (confirm)
     return (
       <div>
@@ -399,38 +277,27 @@ const General = props => {
         </Grid>
         <Grid item xs={12}>
           <Typography variant="h6" color="textPrimary">
-            {t('basic-info')}
+            Basic Info
           </Typography>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        {/* <Grid item xs={12} sm={6}>
           <TextField
             disabled
             value={user?.username ? user.username : ''}
-            label={t('username')}
+            label={'Username'}
             variant="outlined"
             size="medium"
             name="username"
             fullWidth
             type="text"
           />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            disabled
-            value={user?.email ? user.email : ''}
-            label={t('e-mail')}
-            variant="outlined"
-            size="medium"
-            name="email"
-            fullWidth
-            type="email"
-          />
-        </Grid>
+        </Grid> */}
+
         <Grid item xs={12} sm={6}>
           <TextField
             value={firstName}
             onChange={() => setFirstName(event.target.value)}
-            label={t('first-name')}
+            label={'First Name'}
             variant="outlined"
             size="medium"
             name="first_name"
@@ -442,7 +309,7 @@ const General = props => {
           <TextField
             value={lastName}
             onChange={() => setLastName(event.target.value)}
-            label={t('last-name')}
+            label={'Last Name'}
             variant="outlined"
             size="medium"
             name="last_name"
@@ -452,48 +319,27 @@ const General = props => {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
+            disabled
+            value={user?.email ? user.email : ''}
+            label={'Email'}
+            variant="outlined"
+            size="medium"
+            name="email"
+            fullWidth
+            type="email"
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
             value={phoneNumber}
             onChange={() => setPhoneNumber(event.target.value)}
-            label={t('phone-number')}
+            label={'Phone Number'}
             variant="outlined"
             size="medium"
             name="phone_number"
             fullWidth
             type="phone_number"
           />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            label="Diets"
-            variant="outlined"
-            size="medium"
-            name="diets"
-            fullWidth
-            type="text"
-            select
-            SelectProps={{
-              multiple: true,
-              value: formState.diets,
-              onChange: handleFieldChange,
-            }}
-          >
-            <MenuItem value="1">Dairy Free</MenuItem>
-            <MenuItem value="2">Fair Trade</MenuItem>
-            <MenuItem value="3">Gluten Free</MenuItem>
-            <MenuItem value="4">High Fiber</MenuItem>
-            <MenuItem value="5">High Protein</MenuItem>
-            <MenuItem value="6">Keto</MenuItem>
-            <MenuItem value="7">Kosher</MenuItem>
-            <MenuItem value="8">Low Fat</MenuItem>
-            <MenuItem value="9">No Sugar Added</MenuItem>
-            <MenuItem value="10">Non GMO</MenuItem>
-            <MenuItem value="11">Nut Free</MenuItem>
-            <MenuItem value="12">Organic</MenuItem>
-            <MenuItem value="13">Paleo</MenuItem>
-            <MenuItem value="14">Plant-Based</MenuItem>
-            <MenuItem value="15">Soy Free</MenuItem>
-            <MenuItem value="16">Vegan</MenuItem>
-          </TextField>
         </Grid>
 
         <Grid item container justify="flex-start" xs={12}>
@@ -508,212 +354,6 @@ const General = props => {
               type="submit"
               color="primary"
               size="large"
-            >
-              {t('save')}
-            </Button>
-          )}
-        </Grid>
-
-        <Grid item xs={12}>
-          <Divider className={classes.divider} />
-        </Grid>
-
-        <Grid item xs={12}>
-          <Typography variant="h6" color="textPrimary">
-            {t('default-shipping-address')}
-          </Typography>
-        </Grid>
-        <Grid item xs={12} sm={9}>
-          <TextField
-            required
-            value={shipping_address_line1 ? shipping_address_line1 : ''}
-            onChange={event => setShipping_address_line1(event.target.value)}
-            variant="outlined"
-            size="medium"
-            name="address_line1"
-            label={t('shipping-address-1')}
-            fullWidth
-            type="text"
-          />
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          <TextField
-            value={shipping_address_line2 ? shipping_address_line2 : ''}
-            onChange={event => setShipping_address_line2(event.target.value)}
-            variant="outlined"
-            size="medium"
-            name="address_line2"
-            label={t('shipping-address-2')}
-            fullWidth
-            type="text"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            value={shipping_city ? shipping_city : ''}
-            onChange={event => setShipping_city(event.target.value)}
-            variant="outlined"
-            size="medium"
-            name="country"
-            fullWidth
-            type="text"
-            label={t('city')}
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          {country == 'CA' ? (
-            <FormControl fullWidth variant="outlined">
-              <InputLabel>{t('province')}</InputLabel>
-              <Select
-                required
-                size="medium"
-                variant="outlined"
-                required
-                fullWidth
-                value={shipping_state ? shipping_state : ''}
-                onChange={event => setShipping_state(event.target.value)}
-                label="Province*"
-                className={classes.select}
-              >
-                <MenuItem value={'AB'}>AB - Alberta</MenuItem>
-                <MenuItem value={'BC'}>BC - British Columbia</MenuItem>
-                <MenuItem value={'QC'}>QC - Quebec</MenuItem>
-                <MenuItem value={'ON'}>ON - Ontario</MenuItem>
-                <MenuItem value={'MB'}>MB- Manitoba</MenuItem>
-                <MenuItem value={'NL'}>NL - Newfoundland</MenuItem>
-                <MenuItem value={'NS'}>NS - Nova Scotia</MenuItem>
-                <MenuItem value={'NT'}>NT - Northwest Territories</MenuItem>
-                <MenuItem value={'NU'}>NU - Nunavut</MenuItem>
-                <MenuItem value={'NB'}>NB - New Brunswick</MenuItem>
-                <MenuItem value={'PE'}>PE - Prince Edward Island</MenuItem>
-                <MenuItem value={'SK'}>SK - Saskatchewan</MenuItem>
-                <MenuItem value={'YT'}>YT - Yukon</MenuItem>
-              </Select>
-            </FormControl>
-          ) : country == 'US' ? (
-            <FormControl fullWidth variant="outlined">
-              <InputLabel>{t('state')}</InputLabel>
-              <Select
-                required
-                size="medium"
-                variant="outlined"
-                required
-                fullWidth
-                value={shipping_state ? shipping_state : ''}
-                onChange={event => setShipping_state(event.target.value)}
-                label="State*"
-              >
-                <MenuItem value={'AL'}>ALABAMA - AL</MenuItem>
-                <MenuItem value={'AK'}>ALASKA - AK</MenuItem>
-                <MenuItem value={'AS'}>AMERICAN SAMOA - AS</MenuItem>
-                <MenuItem value={'AZ'}>ARIZONA - AZ</MenuItem>
-                <MenuItem value={'AR'}>ARKANSAS - AR</MenuItem>
-                <MenuItem value={'CA'}>CALIFORNIA - CA</MenuItem>
-                <MenuItem value={'CO'}>COLORADO - CO</MenuItem>
-                <MenuItem value={'CT'}>CONNECTICUT - CT</MenuItem>
-                <MenuItem value={'DE'}>DELAWARE - DE</MenuItem>
-                <MenuItem value={'DC'}>DISTRICT OF COLUMBIA - DC</MenuItem>
-                <MenuItem value={'FL'}>FLORIDA - FL</MenuItem>
-                <MenuItem value={'GA'}>GEORGIA - GA</MenuItem>
-                <MenuItem value={'GU'}>GUAM - GU</MenuItem>
-                <MenuItem value={'HI'}>HAWAII - HI</MenuItem>
-                <MenuItem value={'ID'}>IDAHO - ID</MenuItem>
-                <MenuItem value={'IL'}>ILLINOIS - IL</MenuItem>
-                <MenuItem value={'IN'}>INDIANA - IN</MenuItem>
-                <MenuItem value={'IA'}>IOWA - IA</MenuItem>
-                <MenuItem value={'KS'}>KANSAS - KS</MenuItem>
-                <MenuItem value={'KY'}>KENTUCKY - KY</MenuItem>
-                <MenuItem value={'LA'}>LOUISIANA - LA</MenuItem>
-                <MenuItem value={'ME'}>MAINE - ME</MenuItem>
-                <MenuItem value={'MD'}>MARYLAND - MD</MenuItem>
-                <MenuItem value={'MA'}>MASSACHUSETTS - MA</MenuItem>
-                <MenuItem value={'MI'}>MICHIGAN - MI</MenuItem>
-                <MenuItem value={'MN'}>MINNESOTA - MN</MenuItem>
-                <MenuItem value={'MS'}>MISSISSIPPI - MS</MenuItem>
-                <MenuItem value={'MO'}>MISSOURI - MO</MenuItem>
-                <MenuItem value={'MT'}>MONTANA - MT</MenuItem>
-                <MenuItem value={'NE'}>NEBRASKA - NE</MenuItem>
-                <MenuItem value={'NV'}>NEVADA - NV</MenuItem>
-                <MenuItem value={'NH'}>NEW HAMPSHIRE - NH</MenuItem>
-                <MenuItem value={'NJ'}>NEW JERSEY - NJ</MenuItem>
-                <MenuItem value={'NM'}>NEW MEXICO - NM</MenuItem>
-                <MenuItem value={'NY'}>NEW YORK - NY</MenuItem>
-                <MenuItem value={'NC'}>NORTH CAROLINA - NC</MenuItem>
-                <MenuItem value={'ND'}>NORTH DAKOTA - ND</MenuItem>
-                <MenuItem value={'MP'}>NORTHERN MARIANA IS - MP</MenuItem>
-                <MenuItem value={'OH'}>OHIO - OH</MenuItem>
-                <MenuItem value={'OK'}>OKLAHOMA - OK</MenuItem>
-                <MenuItem value={'OR'}>OREGON - OR</MenuItem>
-                <MenuItem value={'PA'}>PENNSYLVANIA - PA</MenuItem>
-                <MenuItem value={'PR'}>PUERTO RICO - PR</MenuItem>
-                <MenuItem value={'RI'}>RHODE ISLAND - RI</MenuItem>
-                <MenuItem value={'SC'}>SOUTH CAROLINA - SC</MenuItem>
-                <MenuItem value={'SD'}>SOUTH DAKOTA - SD</MenuItem>
-                <MenuItem value={'TN'}>TENNESSEE - TN</MenuItem>
-                <MenuItem value={'TX'}>TEXAS - TX</MenuItem>
-                <MenuItem value={'UT'}>UTAH - UT</MenuItem>
-                <MenuItem value={'VT'}>VERMONT - VT</MenuItem>
-                <MenuItem value={'VA'}>VIRGINIA - VA</MenuItem>
-                <MenuItem value={'VI'}>VIRGIN ISLANDS - VI</MenuItem>
-                <MenuItem value={'WA'}>WASHINGTON - WA</MenuItem>
-                <MenuItem value={'WV'}>WEST VIRGINIA - WV</MenuItem>
-                <MenuItem value={'WI'}>WISCONSIN - WI</MenuItem>
-                <MenuItem value={'WY'}>WYOMING - WY</MenuItem>
-              </Select>
-            </FormControl>
-          ) : null}
-        </Grid>
-        <Grid item xs={6} sm={6}>
-          <TextField
-            required
-            value={shipping_country ? shipping_country : ''}
-            disabled
-            variant="outlined"
-            size="medium"
-            name="country"
-            fullWidth
-            type="text"
-            label={t('country')}
-          />
-        </Grid>
-        <Grid item xs={6} sm={6}>
-          <TextField
-            required
-            value={shipping_zip ? shipping_zip : ''}
-            onChange={event => setShipping_zip(event.target.value)}
-            variant="outlined"
-            size="medium"
-            name="zip"
-            label={country == 'CA' ? 'Postal code' : 'Zip'}
-            fullWidth
-            type="text"
-          />
-        </Grid>
-
-        {error != null && typeof error == 'string' && (
-          <div className={classes.errorContainer}>{error}</div>
-        )}
-
-        <Grid item container justify="flex-start" xs={12}>
-          {loading ? (
-            <center>
-              <CircularProgress />
-            </center>
-          ) : (
-            <Button
-              onClick={() => handleSubmitAddress()}
-              variant="contained"
-              type="submit"
-              color="primary"
-              size="large"
-              disabled={
-                !shipping_address_line1 ||
-                !shipping_city ||
-                !shipping_country ||
-                !shipping_state ||
-                !shipping_zip
-              }
             >
               {t('save')}
             </Button>

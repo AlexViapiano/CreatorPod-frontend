@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
 import { Box, List, ListItem, Grid, Typography, Button, CircularProgress } from '@material-ui/core'
 import { SectionAlternate, CardBase } from 'components/organisms'
-import { Hero, General, Orders, UserSubscriptions, ProductReviews, Favorites } from './components'
+import { Hero, General } from './components'
 import { connect } from 'react-redux'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -69,23 +69,11 @@ const useStyles = makeStyles(theme => ({
 const subPages = [
   {
     id: 'general',
-    title: 'general',
+    title: 'General',
   },
   {
-    id: 'orders',
-    title: 'orders',
-  },
-  {
-    id: 'subscriptions',
-    title: 'subscriptions',
-  },
-  {
-    id: 'productReviews',
-    title: 'reviews',
-  },
-  {
-    id: 'favorites',
-    title: 'favorites',
+    id: 'jobs',
+    title: 'Jobs',
   },
 ]
 
@@ -151,7 +139,7 @@ const Account = props => {
                       color="textSecondary"
                       className="menu__item"
                     >
-                      {t(item.title)}
+                      {item.title}
                     </Typography>
                   </ListItem>
                 ))}
@@ -182,7 +170,7 @@ const Account = props => {
                 <TabPanel value={selectedView} index={'general'}>
                   <General />
                 </TabPanel>
-                <TabPanel value={selectedView} index={'orders'}>
+                {/* <TabPanel value={selectedView} index={'orders'}>
                   <Orders />
                 </TabPanel>
                 <TabPanel value={selectedView} index={'subscriptions'}>
@@ -193,7 +181,7 @@ const Account = props => {
                 </TabPanel>
                 <TabPanel value={selectedView} index={'favorites'}>
                   <Favorites />
-                </TabPanel>
+                </TabPanel> */}
               </CardBase>
             )}
           </Grid>

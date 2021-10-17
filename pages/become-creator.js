@@ -2,11 +2,11 @@ import BecomeCreator from 'views/BecomeCreator'
 import Main from 'layouts/Main'
 import Head from 'next/head'
 
-const BecomeSupplierPage = () => {
+const BecomeCreatorPage = () => {
   return (
     <div className="container">
       <Head>
-        <title>Become A Supplier</title>
+        <title>Become A Creator</title>
         <meta
           name="keywords"
           content="Way Too Good, way too good, waytoogood, health food, vegan, gluten free, keto, organic"
@@ -30,4 +30,4 @@ export async function getStaticProps({ locale }) {
   }
 }
 
-export default BecomeSupplierPage
+export default BecomeCreatorPage

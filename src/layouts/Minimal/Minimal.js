@@ -3,7 +3,6 @@ import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
 import { Topbar } from './components'
 import { connect } from 'react-redux'
-import { getCart } from '../../../redux/orders/action'
 import { getUser, changeCountry } from '../../../redux/session/action'
 import ReactNotification from 'react-notifications-component'
 
@@ -21,7 +20,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Minimal = props => {
-  const { user, cart, getUser, getCart, children, className, ...rest } = props
+  const { user, cart, getUser, children, className, ...rest } = props
   const classes = useStyles()
   const [cartFetched, setCartFetched] = useState(false)
   const [userFetched, setUserFetched] = useState(false)
@@ -29,7 +28,6 @@ const Minimal = props => {
 
   useEffect(() => {
     if (!cartFetched) {
-      getCart()
       setCartFetched(true)
     }
     if (
@@ -63,7 +61,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    getCart: () => dispatch(getCart()),
     getUser: () => dispatch(getUser()),
     country: country => {
       return dispatch(changeCountry(country))

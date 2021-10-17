@@ -60,12 +60,12 @@ const Signin = props => {
         leftSide={
           <div className={classes.formContainer}>
             <SectionHeader
-              title={t('sign-in')}
+              title={'Log In'}
               subtitle={
                 <span>
-                  {t('no-account')}{' '}
+                  No account yet?{' '}
                   <Link href="/signup">
-                    <a className={classes.a}>{t('sign-up')}</a>
+                    <a className={classes.a}>Sign up</a>
                   </Link>
                 </span>
               }

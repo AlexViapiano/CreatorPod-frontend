@@ -1,1 +1,1 @@
-export { default } from './BecomeSupplier';
+export { default } from './Service';

@@ -37,12 +37,12 @@ const schema = {
       maximum: 300,
     },
   },
-  // username: {
-  //   presence: { allowEmpty: false, message: 'is required' },
-  //   length: {
-  //     maximum: 120,
-  //   },
-  // },
+  username: {
+    presence: { allowEmpty: false, message: 'is required' },
+    length: {
+      maximum: 120,
+    },
+  },
   first_name: {
     presence: { allowEmpty: false, message: 'is required' },
     length: {
@@ -144,8 +144,8 @@ const SignupForm = ({ signup, user, setView }) => {
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
             <TextField
-              placeholder={t('first-name')}
-              label={t('first-name-1')}
+              placeholder={'First name'}
+              label={'First name'}
               variant="outlined"
               size="medium"
               name="first_name"
@@ -159,8 +159,8 @@ const SignupForm = ({ signup, user, setView }) => {
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
-              placeholder={t('last-name')}
-              label={t('last-name-1')}
+              placeholder={'Last Name'}
+              label={'Last Name'}
               variant="outlined"
               size="medium"
               name="last_name"
@@ -172,10 +172,10 @@ const SignupForm = ({ signup, user, setView }) => {
               value={formState.values.last_name || ''}
             />
           </Grid>
-          {/* <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={6}>
             <TextField
-              placeholder={t('username')}
-              label={t('username-1')}
+              placeholder={'Company'}
+              label={'Company'}
               variant="outlined"
               size="medium"
               name="username"
@@ -186,11 +186,11 @@ const SignupForm = ({ signup, user, setView }) => {
               type="username"
               value={formState.values.username || ''}
             />
-          </Grid> */}
-          <Grid item xs={12}>
+          </Grid>
+          <Grid item xs={12} sm={6}>
             <TextField
-              placeholder={t('phone-number')}
-              label={t('phone-number-1')}
+              placeholder={'Phone #'}
+              label={'Phone #'}
               variant="outlined"
               size="medium"
               name="phone_number"
@@ -204,8 +204,8 @@ const SignupForm = ({ signup, user, setView }) => {
           </Grid>
           <Grid item xs={12}>
             <TextField
-              placeholder={t('e-mail')}
-              label={t('e-mail-1')}
+              placeholder={'E-mail'}
+              label={'E-mail'}
               variant="outlined"
               size="medium"
               name="email"
@@ -219,8 +219,8 @@ const SignupForm = ({ signup, user, setView }) => {
           </Grid>
           <Grid item xs={12}>
             <TextField
-              placeholder={t('password')}
-              label={t('password-1')}
+              placeholder={'Password'}
+              label={'Password'}
               variant="outlined"
               size="medium"
               name="password"
@@ -234,7 +234,7 @@ const SignupForm = ({ signup, user, setView }) => {
           </Grid>
           <Grid item xs={12}>
             <i>
-              <Typography variant="subtitle2">{t('required-fields')}</Typography>
+              <Typography variant="subtitle2">Required fields</Typography>
             </i>
           </Grid>
 
@@ -251,21 +251,21 @@ const SignupForm = ({ signup, user, setView }) => {
               <Typography variant="subtitle2" className={classes.error}>
                 {error?.message[0]?.messages[0].message
                   ? error?.message[0]?.messages[0].message
-                  : t('error')}
+                  : 'An error occured'}
               </Typography>
             </Grid>
           )}
 
           <Grid item xs={12}>
             <Button size="large" variant="contained" type="submit" color="primary" fullWidth>
-              {t('sign-up')}
+              Sign Up
             </Button>
           </Grid>
           <Grid item xs={12}>
             <Typography variant="subtitle1" color="textSecondary" align="center">
-              {t('already-account')}{' '}
+              Already have an account?
               <Link href="/signin">
-                <a className={classes.a}>{t('sign-in')}</a>
+                <a className={classes.a}>Sign In</a>
               </Link>
             </Typography>
           </Grid>

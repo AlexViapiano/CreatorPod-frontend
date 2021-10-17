@@ -9,20 +9,10 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCartTwoTone'
 import MenuIcon from '@material-ui/icons/Menu'
 import Image from 'next/image'
-import { diets, categories } from '../../../../common/data'
 import { store } from 'react-notifications-component'
-import SearchBar from './SearchBar'
 import CardGiftcardIcon from '@material-ui/icons/CardGiftcard'
 import LocalOfferIcon from '@material-ui/icons/LocalOffer'
 import { useTranslation } from 'next-i18next'
-import {
-  getProducts,
-  setDiet,
-  setCategory,
-  setVarietyPacks,
-  setSale,
-  refreshProducts,
-} from '../../../../../redux/products/action'
 import { API_URL } from '../../../../../redux/api'
 import { createBillingPortalSession, logout } from '../../../../../redux/session/action'
 import {
@@ -351,22 +341,12 @@ const useStyles = makeStyles(theme => ({
 const Navbar = props => {
   const {
     user,
-    cart,
     className,
     onSidebarOpen,
     logout,
-    getProducts,
-    sort,
-    sortDirection,
-    view,
-    setDiet,
-    setCategory,
-    setSale,
-    setVarietyPacks,
     stripeCustomer,
     subscriptions,
     createBillingPortalSession,
-    refreshProducts,
     ...rest
   } = props
   const classes = useStyles()
@@ -374,23 +354,9 @@ const Navbar = props => {
   const { t } = useTranslation('common')
   const [anchorEl, setAnchorEl] = useState(null)
   const [openedPopoverId, setOpenedPopoverId] = useState(null)
-  const [categoriesSection, setCategoriesSection] = useState([[], [], []])
 
   const theme = useTheme()
   const isMd = useMediaQuery(theme.breakpoints.up('md'), { defaultMatches: true })
-
-  useEffect(() => {
-    let chunkCount = 1
-    let chunks = []
-    var categoriesClone = [...categories]
-    while (categoriesClone.length) {
-      let chunkSize = Math.ceil(categoriesClone.length / chunkCount--)
-      let chunk = categoriesClone.slice(0, chunkSize)
-      chunks.push(chunk)
-      categoriesClone = categoriesClone.slice(chunkSize)
-    }
-    setCategoriesSection(chunks)
-  }, [categories])
 
   const handleClick = (event, popoverId) => {
     setAnchorEl(event.target)
@@ -409,45 +375,6 @@ const Navbar = props => {
         if (!res.error) router.push(url)
       })
     } else router.push('/account/' + view)
-  }
-
-  const calculateCartCount = () => {
-    var count = 0
-    if (cart) {
-      cart.forEach(product => {
-        if (product.quantity) count = count + product.quantity
-        else count = count + 1
-      })
-    }
-    return count
-  }
-
-  const onClickFilter = (filterType, name) => {
-    if (filterType == 'sale') setSale(true)
-    if (filterType == 'varietyPacks') setVarietyPacks(true)
-    if (filterType == 'diet') setDiet(name, true)
-    if (filterType == 'category') setCategory(name, true)
-    refreshProducts()
-    handleClose()
-    router.push('/products', undefined, { shallow: true })
-  }
-
-  const onClickCart = () => {
-    if (cart.length == 0) {
-      store.addNotification({
-        title: 'Cart Empty!',
-        message: 'Add a product before entering checkout.',
-        type: 'warning',
-        insert: 'top',
-        container: 'bottom-right',
-        animationIn: ['animate__animated', 'animate__fadeIn'],
-        animationOut: ['animate__animated', 'animate__fadeOut'],
-        dismiss: {
-          duration: 4000,
-          onScreen: true,
-        },
-      })
-    } else router.push('/cart', undefined, { shallow: true })
   }
 
   const popoverAccount = () => {
@@ -485,55 +412,7 @@ const Navbar = props => {
                     color="textSecondary"
                     onClick={handleClose}
                   >
-                    {t('general')}
-                  </Typography>
-                </a>
-              </ListItem>
-              <ListItem disableGutters className={classes.menuGroupItem}>
-                <a onClick={() => onClickAccount('orders')}>
-                  <Typography
-                    variant="body1"
-                    className={classes.submenuItem}
-                    color="textSecondary"
-                    onClick={handleClose}
-                  >
-                    {t('orders')}
-                  </Typography>
-                </a>
-              </ListItem>
-              <ListItem disableGutters className={classes.menuGroupItem}>
-                <a onClick={() => onClickAccount('subscriptions')}>
-                  <Typography
-                    variant="body1"
-                    className={classes.submenuItem}
-                    color="textSecondary"
-                    onClick={handleClose}
-                  >
-                    {t('subscriptions')}
-                  </Typography>
-                </a>
-              </ListItem>
-              <ListItem disableGutters className={classes.menuGroupItem}>
-                <a onClick={() => onClickAccount('productReviews')}>
-                  <Typography
-                    variant="body1"
-                    className={classes.submenuItem}
-                    color="textSecondary"
-                    onClick={handleClose}
-                  >
-                    {t('reviews')}
-                  </Typography>
-                </a>
-              </ListItem>
-              <ListItem disableGutters className={classes.menuGroupItem}>
-                <a onClick={() => onClickAccount('favorites')}>
-                  <Typography
-                    variant="body1"
-                    className={classes.submenuItem}
-                    color="textSecondary"
-                    onClick={handleClose}
-                  >
-                    {t('favorites')}
+                    Settings
                   </Typography>
                 </a>
               </ListItem>
@@ -544,105 +423,8 @@ const Navbar = props => {
                   color="textSecondary"
                   onClick={handleClose}
                 >
-                  {t('logout')}
+                  Logout
                 </Typography>
-              </ListItem>
-            </List>
-          </div>
-        </div>
-      </Popover>
-    )
-  }
-
-  const popoverDiet = () => {
-    return (
-      <Popover
-        elevation={1}
-        id={'diet'}
-        open={openedPopoverId === 'diet'}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'center',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'center',
-        }}
-        classes={{ paper: classes.popover }}
-      >
-        <List disablePadding className={classes.menuGroupDiets}>
-          {diets.length > 0 &&
-            diets.map(diet => {
-              if (diet.navbar) {
-                return (
-                  <ListItem key={diet.id} disableGutters className={classes.menuGroupItemDiets}>
-                    <a onClick={() => onClickFilter('diet', diet.id)}>
-                      <Image
-                        className={classes.logoImage}
-                        src={diet.src}
-                        alt={diet.name}
-                        width={100}
-                        height={100}
-                        priority={true}
-                      />
-                    </a>
-                  </ListItem>
-                )
-              }
-            })}
-        </List>
-      </Popover>
-    )
-  }
-
-  const popoverCategory = () => {
-    return (
-      <Popover
-        elevation={1}
-        id={'category'}
-        open={openedPopoverId === 'category'}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'center',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'center',
-        }}
-        classes={{ paper: classes.popover }}
-      >
-        <div className={classes.menu}>
-          <div className={classes.menuItem}>
-            <Typography variant="body1" color="primary" className={classes.submenuHeader}>
-              {t('categories')}
-            </Typography>
-            <List disablePadding>
-              {categoriesSection[0].length > 0 &&
-                categoriesSection[0].map(category => {
-                  return (
-                    <ListItem key={category.name} disableGutters className={classes.menuGroupItem}>
-                      <a onClick={() => onClickFilter('category', category.name)}>
-                        <Typography
-                          variant="body1"
-                          color="textSecondary"
-                          className={classes.submenuItem}
-                        >
-                          {t(category.name)}
-                        </Typography>
-                      </a>
-                    </ListItem>
-                  )
-                })}
-              <ListItem disableGutters className={classes.menuGroupItem}>
-                <a onClick={() => onClickFilter('varietyPacks', '')}>
-                  <Typography variant="body1" color="textSecondary" className={classes.submenuItem}>
-                    {t('variety-packs')} <CardGiftcardIcon />
-                  </Typography>
-                </a>
               </ListItem>
             </List>
           </div>
@@ -669,9 +451,6 @@ const Navbar = props => {
                   />
                 </a>
               </Link>
-              {API_URL == 'https://stg-api.waytoogood.com' && (
-                <div className={classes.stgStamp}>STG</div>
-              )}
             </div>
 
             <List className={classes.iconsContainer}>
@@ -721,8 +500,6 @@ const Navbar = props => {
         </Toolbar>
 
         {popoverAccount()}
-        {popoverDiet()}
-        {popoverCategory()}
       </AppBar>
     )
   return (
@@ -756,33 +533,11 @@ const mapStateToProps = state => ({
   user: state.session?.user,
   stripeCustomer: state.session.stripeCustomer,
   subscriptions: state.session.subscriptions,
-  cart: state.orders?.cart,
-  sort: state.products.sort,
-  sortDirection: state.products.sortDirection,
-  view: state.products.view,
 })
 
 const mapDispatchToProps = dispatch => ({
   logout: () => {
     return dispatch(logout())
-  },
-  setDiet: (diet, reset) => {
-    return dispatch(setDiet(diet, reset))
-  },
-  setCategory: (category, reset) => {
-    return dispatch(setCategory(category, reset))
-  },
-  setSale: sale => {
-    return dispatch(setSale(sale))
-  },
-  setVarietyPacks: varietyPacks => {
-    return dispatch(setVarietyPacks(varietyPacks))
-  },
-  refreshProducts: () => {
-    return dispatch(refreshProducts())
-  },
-  getProducts: searchText => {
-    return dispatch(getProducts(searchText))
   },
   createBillingPortalSession: userId => {
     return dispatch(createBillingPortalSession(userId))

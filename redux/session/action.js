@@ -1,6 +1,4 @@
 import { API_URL, APP_URL } from '../api'
-import { clearCart } from '../orders/action'
-import { refreshProducts, getProducts } from '../products/action'
 import axios from 'axios'
 
 export const actionTypes = {
@@ -60,12 +58,10 @@ export const changeCountry = (newCountry, updateCart) => async (dispatch, getSta
   const { country } = session
   if (country != newCountry) {
     localStorage.setItem('country', newCountry)
-    if (updateCart) dispatch(clearCart())
     dispatch({
       type: actionTypes.CHANGE_DELIVERY_COUNTRY,
       payload: { country: newCountry },
     })
-    dispatch(refreshProducts())
   } else return
 }
 

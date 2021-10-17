@@ -54,10 +54,9 @@ const Hero = props => {
         layout="fill"
         objectFit="cover"
       />
-      <Section className={classes.section}>
+      {/* <Section className={classes.section}>
         <SectionHeader
           title={t('faq')}
-          // subtitle="What do you need?"
           align="left"
           data-aos="fade-up"
           titleProps={{
@@ -65,7 +64,7 @@ const Hero = props => {
             variant: 'h3',
           }}
         />
-      </Section>
+      </Section> */}
     </div>
   )
 }
