@@ -129,7 +129,7 @@ const ForgotPasswordForm = ({ onClose, forgotPassword, user, setView }) => {
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
-                placeholder={t('e-mail')}
+                placeholder={'E-mail'}
                 label="E-mail *"
                 variant="outlined"
                 size="medium"
@@ -156,9 +156,9 @@ const ForgotPasswordForm = ({ onClose, forgotPassword, user, setView }) => {
             </Grid>
             <Grid item xs={12}>
               <Typography variant="subtitle1" color="textSecondary" align="center">
-                {t('remember-password')}{' '}
+                Remember your password?{' '}
                 <Link href="/signin">
-                  <a className={classes.a}>{t('sign-in')}</a>
+                  <a className={classes.a}>Login</a>
                 </Link>
               </Typography>
             </Grid>

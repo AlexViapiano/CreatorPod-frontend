@@ -25,20 +25,12 @@ const BrandPage = props => {
   )
 }
 
-export async function getStaticPaths({ locales }) {
-  const res_en = await fetch(`${API_URL}/brands?_locale=en`)
+export async function getStaticPaths() {
+  const res_en = await fetch(`${API_URL}/brands`)
   const brands_en = await res_en.json()
-  const paths_en = brands_en.map(brand => ({
-    params: { id: brand.id.toString(), locale: 'en' },
+  const paths = brands_en.map(brand => ({
+    params: { id: brand.id.toString() },
   }))
-
-  const res_fr = await fetch(`${API_URL}/brands?_locale=fr`)
-  const brands_fr = await res_fr.json()
-  const paths_fr = brands_fr.map(brand => ({
-    params: { id: brand.id.toString(), locale: 'fr' },
-  }))
-
-  const paths = paths_en.concat(paths_fr)
 
   return { paths, fallback: true }
 }

@@ -53,8 +53,8 @@ const ForgotPassword = props => {
         leftSide={
           <div className={classes.formContainer}>
             <SectionHeader
-              title={t('title')}
-              subtitle={t('title-subtext')}
+              title={'Forgot Password?'}
+              subtitle={'Enter your email to receive a reset password link!'}
               titleProps={{
                 variant: 'h3',
               }}

@@ -5,7 +5,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import { Typography, Grid } from '@material-ui/core'
 import PublicIcon from '@material-ui/icons/Public'
 import EmailIcon from '@material-ui/icons/Email'
-import { getProducts, setDiet } from '../../../../../redux/products/action'
 import FacebookIcon from '@material-ui/icons/Facebook'
 import TwitterIcon from '@material-ui/icons/Twitter'
 import InstagramIcon from '@material-ui/icons/Instagram'
@@ -114,17 +113,11 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const SidebarInfo = props => {
-  const { brand, product, setDiet, className, ...rest } = props
+  const { brand, className, ...rest } = props
   const classes = useStyles()
   const router = useRouter()
   const { t } = useTranslation('brand')
   const pageUrl = APP_URL + router.asPath
-
-  const onClickDiet = diet => {
-    setDiet(diet.id, true)
-    getProducts()
-    router.push('/products', undefined, { shallow: true })
-  }
 
   return (
     <div className={classes.root}>
@@ -265,13 +258,6 @@ const SidebarInfo = props => {
 const mapStateToProps = state => ({})
 
 const mapDispatchToProps = dispatch => {
-  return {
-    setDiet: diet => {
-      return dispatch(setDiet(diet))
-    },
-    getProducts: searchText => {
-      return dispatch(getProducts(searchText))
-    },
-  }
+  return {}
 }
 export default connect(mapStateToProps, mapDispatchToProps)(SidebarInfo)

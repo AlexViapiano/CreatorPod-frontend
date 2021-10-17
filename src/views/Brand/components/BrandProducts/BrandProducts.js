@@ -4,7 +4,6 @@ import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { Grid, useMediaQuery } from '@material-ui/core'
 import { SectionHeader } from 'components/molecules'
 import { connect } from 'react-redux'
-import ProductCard from '../../../../common/ProductCard'
 import { useTranslation } from 'next-i18next'
 
 const useStyles = makeStyles(theme => ({

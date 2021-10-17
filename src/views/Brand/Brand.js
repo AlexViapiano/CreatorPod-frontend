@@ -59,14 +59,14 @@ const Brand = props => {
       </div>
     )
 
-  useEffect(() => {
-    document.title = brand?.name
-    pixels.viewContent({
-      content_id: brand?.id,
-      content_name: brand?.name,
-      content_type: 'product_category',
-    })
-  })
+  // useEffect(() => {
+  //   document.title = brand?.name
+  //   pixels.viewContent({
+  //     content_id: brand?.id,
+  //     content_name: brand?.name,
+  //     content_type: 'product_category',
+  //   })
+  // })
 
   return (
     <div className={classes.root}>
@@ -82,7 +82,6 @@ const Brand = props => {
           </Grid>
           <Grid item xs={12} md={4}>
             <SidebarInfo brand={brand} />
-            {/* <SidebarNewsletter className={classes.sidebarNewsletter} /> */}
           </Grid>
         </Grid>
         <Section>

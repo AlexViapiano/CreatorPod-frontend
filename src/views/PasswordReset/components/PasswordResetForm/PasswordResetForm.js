@@ -92,7 +92,7 @@ const PasswordResetForm = ({ resetPassword, user, setView }) => {
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
-                placeholder={t('new-password')}
+                placeholder={'New Password*'}
                 label="New Password *"
                 variant="outlined"
                 size="medium"
@@ -100,11 +100,11 @@ const PasswordResetForm = ({ resetPassword, user, setView }) => {
                 fullWidth
                 helperText={
                   !atleastOneLetter
-                    ? t('req-1')
+                    ? 'Password must have atleast 1 letter'
                     : !atleastOneNumb
-                    ? t('req-2')
+                    ? 'Password must have atleast 1 number'
                     : !sixCharsMin
-                    ? t('req-3')
+                    ? 'Password must be atleast 6 characters'
                     : null
                 }
                 error={error}
@@ -115,7 +115,7 @@ const PasswordResetForm = ({ resetPassword, user, setView }) => {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                placeholder={t('confirm-password')}
+                placeholder={'Confirm Password'}
                 label="Confirm Password *"
                 variant="outlined"
                 size="medium"
@@ -123,7 +123,7 @@ const PasswordResetForm = ({ resetPassword, user, setView }) => {
                 fullWidth
                 helperText={
                   atleastOneLetter && atleastOneNumb && sixCharsMin && !passwordEqualsConfirm
-                    ? t('req-4')
+                    ? 'Your password and confirmation password do not match.'
                     : null
                 }
                 error={error}

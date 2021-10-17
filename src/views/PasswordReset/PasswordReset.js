@@ -54,8 +54,8 @@ const PasswordReset = props => {
         leftSide={
           <div className={classes.formContainer}>
             <SectionHeader
-              title={t('password-reset')}
-              subtitle={t('select-password')}
+              title={'Password Reset'}
+              subtitle={'Select a new pasword!'}
               titleProps={{
                 variant: 'h3',
               }}
