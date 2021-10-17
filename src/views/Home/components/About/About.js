@@ -35,23 +35,26 @@ const About = props => {
               <SectionHeader
                 title={
                   <Typography color="textPrimary" variant="h2" align="center">
-                    Sell More with Custom Made Videos{' '}
+                    Sell More with Custom Made <br />
                     <TypedText
                       component="span"
                       variant="h2"
                       color="secondary"
                       className={classes.typed}
                       typedProps={{
-                        strings: ['Atlassian', 'Google', 'Slack', 'Mailchimp', 'Dropbox'],
+                        strings: [
+                          'Video Ads',
+                          'Social Media Posts',
+                          'Influencers Posts',
+                          'A new face to your company',
+                        ],
                         typeSpeed: 50,
                         loop: true,
                       }}
                     />
                   </Typography>
                 }
-                subtitle="Thousands of Creators are ready to provide
-                fresh videos to build social proof
-                and skyrocket your sales."
+                subtitle="Looking for UGC videos or picture to use as Ads or Post? Look no further! Our network of creators are ready to create custom content for your company!"
                 ctaGroup={[
                   <Button variant="contained" color="primary" size={isMd ? 'large' : 'medium'}>
                     Get Started
