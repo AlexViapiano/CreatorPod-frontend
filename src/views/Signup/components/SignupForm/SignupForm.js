@@ -187,7 +187,7 @@ const SignupForm = ({ signup, user, setView }) => {
               value={formState.values.username || ''}
             />
           </Grid> */}
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12}>
             <TextField
               placeholder={t('phone-number')}
               label={t('phone-number-1')}

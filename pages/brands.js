@@ -2,7 +2,6 @@ import React from 'react'
 import Brands from 'views/Brands'
 import Main from 'layouts/Main'
 import { API_URL } from '../redux/api'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Head from 'next/head'
 
 const BrandsPage = props => {
@@ -36,7 +35,6 @@ export async function getStaticProps({ locale }) {
     const response = await res.json()
     return {
       props: {
-        ...(await serverSideTranslations(locale, ['common', 'brands'])),
         brands: response,
       },
       revalidate: 60,
@@ -44,7 +42,6 @@ export async function getStaticProps({ locale }) {
   } catch (err) {
     return {
       props: {
-        ...(await serverSideTranslations(locale, ['common', 'brands'])),
         brands: [],
       },
       revalidate: 60,

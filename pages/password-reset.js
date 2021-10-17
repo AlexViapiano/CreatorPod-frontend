@@ -1,7 +1,6 @@
 import React from 'react'
 import PasswordReset from 'views/PasswordReset'
 import Minimal from 'layouts/Minimal'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 const PasswordResetPage = props => {
   return (
@@ -15,9 +14,7 @@ const PasswordResetPage = props => {
 
 export async function getStaticProps({ locale }) {
   return {
-    props: {
-      ...(await serverSideTranslations(locale, ['common', 'passwordReset'])),
-    },
+    props: {},
   }
 }
 

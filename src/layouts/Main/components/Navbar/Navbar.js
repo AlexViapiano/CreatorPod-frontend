@@ -729,10 +729,6 @@ const Navbar = props => {
     <AppBar {...rest} position="relative" className={clsx(classes.root, className)}>
       <Toolbar disableGutters className={classes.toolbarMobile}>
         <div className={classes.mobileContainer}>
-          <IconButton onClick={onSidebarOpen}>
-            <MenuIcon />
-          </IconButton>
-
           <div className={classes.mobileLogoContainer}>
             <Link href={'/'}>
               <a>
@@ -746,22 +742,11 @@ const Navbar = props => {
                 />
               </a>
             </Link>
-            {API_URL == 'https://stg-api.waytoogood.com' && (
-              <div className={classes.stgStamp}>STG</div>
-            )}
           </div>
-
-          <IconButton onClick={() => onClickCart()}>
-            <Badge badgeContent={calculateCartCount()} color="primary" className={classes.badge}>
-              <ShoppingCartIcon />
-            </Badge>
-          </IconButton>
         </div>
-      </Toolbar>
-      <Toolbar disableGutters className={classes.toolbarMobileSearch}>
-        <div className={classes.searchInputContainer}>
-          <SearchBar />
-        </div>
+        <IconButton onClick={onSidebarOpen}>
+          <MenuIcon />
+        </IconButton>
       </Toolbar>
     </AppBar>
   )

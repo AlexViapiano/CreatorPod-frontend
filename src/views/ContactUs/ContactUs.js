@@ -23,9 +23,9 @@ const ContactUs = () => {
       <SectionAlternate>
         <ContactUsForm />
       </SectionAlternate>
-      <SectionAlternate>
+      {/* <SectionAlternate>
         <Newsletter />
-      </SectionAlternate>
+      </SectionAlternate> */}
     </div>
   )
 }

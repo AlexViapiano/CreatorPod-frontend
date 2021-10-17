@@ -105,7 +105,7 @@ const ContactUsForm = props => {
   return (
     <div className={clsx(classes.root, className)} {...rest}>
       <SectionHeader
-        title={t('contact-question')}
+        title={'Fill out the form below for any concerns or questions you have!'}
         subtitle=""
         subtitleProps={{
           variant: 'body1',
@@ -118,10 +118,10 @@ const ContactUsForm = props => {
         <Grid container spacing={isMd ? 4 : 2}>
           <Grid item xs={12} data-aos="fade-up">
             <Typography variant="subtitle1" color="textPrimary" className={classes.inputTitle}>
-              {t('full-name')}
+              Full Name
             </Typography>
             <TextField
-              placeholder={t('full-name-placeholder')}
+              placeholder={'Full Name'}
               onChange={event => setName(event.target.value)}
               value={name}
               variant="outlined"
@@ -134,10 +134,10 @@ const ContactUsForm = props => {
           </Grid>
           <Grid item xs={12} data-aos="fade-up">
             <Typography variant="subtitle1" color="textPrimary" className={classes.inputTitle}>
-              {t('e-mail')}
+              E-mail
             </Typography>
             <TextField
-              placeholder={t('e-mail-placeholder')}
+              placeholder={'E-mail'}
               onChange={event => setEmail(event.target.value)}
               value={email}
               variant="outlined"
@@ -150,10 +150,10 @@ const ContactUsForm = props => {
           </Grid>
           <Grid item xs={12} data-aos="fade-up">
             <Typography variant="subtitle1" color="textPrimary" className={classes.inputTitle}>
-              {t('message')}
+              Message
             </Typography>
             <TextField
-              placeholder={t('message-placeholder')}
+              placeholder={'Message'}
               onChange={event => setMessage(event.target.value)}
               value={message}
               variant="outlined"
@@ -165,7 +165,7 @@ const ContactUsForm = props => {
             />
           </Grid>
           <Grid item container justify="center" xs={12}>
-            {warning && <p className={classes.message}>{t('error-form')}</p>}
+            {warning && <p className={classes.message}>Please fill out all inputs</p>}
             {loading ? (
               <center>
                 <CircularProgress />
@@ -173,13 +173,11 @@ const ContactUsForm = props => {
             ) : sent ? (
               <>
                 <p className={classes.message}>
-                  {t('confirm-message')}
-                  <br></br>
-                  {t('confirm-message-2')}
+                  Message sent! One of our customer service reps will reach out!
                 </p>
               </>
             ) : error ? (
-              <p className={classes.message}>{t('error-mail')}</p>
+              <p className={classes.message}>An error occured</p>
             ) : (
               <Button
                 onClick={() => handleSubmit()}
@@ -189,14 +187,14 @@ const ContactUsForm = props => {
                 type="submit"
                 size="large"
               >
-                {t('send')}
+                Send
               </Button>
             )}
           </Grid>
         </Grid>
       </div>
       <div className={classes.contactContainer}>
-        <Typography variant="h5">{t('faq1')}</Typography>
+        <Typography variant="h5">If you still have questions, please consult out FAQ</Typography>
         <Button
           className={classes.input}
           onClick={event => (window.location.href = '/faq')}
@@ -204,7 +202,7 @@ const ContactUsForm = props => {
           variant="contained"
           color="primary"
         >
-          {t('faq2')}
+          FAQ
         </Button>
       </div>
     </div>

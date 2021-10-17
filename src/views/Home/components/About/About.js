@@ -47,7 +47,7 @@ const About = props => {
                           'Video Ads',
                           'Social Media Posts',
                           'Influencers Posts',
-                          'A new face of your company',
+                          'A new company face',
                         ],
                         typeSpeed: 50,
                         loop: true,
@@ -68,7 +68,7 @@ const About = props => {
                     </Button>
                   </Link>,
                 ]}
-                align={isMd ? 'left' : 'center'}
+                align={'center'}
                 disableGutter
               />
             </Grid>

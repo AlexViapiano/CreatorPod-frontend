@@ -1,6 +1,5 @@
 import Products from 'views/Products'
 import Main from 'layouts/Main'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Head from 'next/head'
 import { FacebookMessenger } from '../src/common/FacebookMessenger'
 
@@ -29,9 +28,7 @@ const products = () => {
 
 export async function getStaticProps({ locale }) {
   return {
-    props: {
-      ...(await serverSideTranslations(locale, ['common', 'products'])),
-    },
+    props: {},
   }
 }
 

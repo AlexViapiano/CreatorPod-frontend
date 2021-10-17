@@ -3,7 +3,6 @@ import Home from 'views/Home'
 import Main from 'layouts/Main'
 import { API_URL } from '../redux/api'
 import Head from 'next/head'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { FacebookMessenger } from '../src/common/FacebookMessenger'
 
 const HomePage = props => {
@@ -38,7 +37,6 @@ export async function getStaticProps({ locale }) {
 
     return {
       props: {
-        ...(await serverSideTranslations(locale, ['common', 'home'])),
         products: sponsoredProducts,
       },
       revalidate: 60,
@@ -46,7 +44,6 @@ export async function getStaticProps({ locale }) {
   } catch (err) {
     return {
       props: {
-        ...(await serverSideTranslations(locale, ['common', 'home'])),
         products: [],
       },
       revalidate: 60,

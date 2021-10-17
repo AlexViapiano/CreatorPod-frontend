@@ -1,6 +1,5 @@
 import FAQ from 'views/FAQ'
 import Main from 'layouts/Main'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Head from 'next/head'
 
 const faqPage = () => {
@@ -23,9 +22,7 @@ const faqPage = () => {
 
 export async function getStaticProps({ locale }) {
   return {
-    props: {
-      ...(await serverSideTranslations(locale, ['common', 'faq'])),
-    },
+    props: {},
   }
 }
 

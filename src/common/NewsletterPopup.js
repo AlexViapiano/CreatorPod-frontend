@@ -40,7 +40,6 @@ const useStyles = makeStyles(theme => ({
       height: 550,
       overflow: 'hidden',
       padding: 0,
-      backgroundImage: 'url(/images/photos/popup-background.png)',
       [theme.breakpoints.down('xs')]: {
         width: '100%',
         overflow: 'hidden',

@@ -85,7 +85,7 @@ const Service = () => {
           <About data={partners} />
         </Section>
       </div>
-      <Section className={classes.pagePaddingTop}>
+      <Section>
         <Integrations />
         <Section>
           <Divider />
@@ -100,16 +100,6 @@ const Service = () => {
         </Section>
         <VideoSection />
       </Section>
-      <AppBar position="fixed" className={classes.appBarBottom}>
-        <Toolbar disableGutters className={classes.toolbarBottom}>
-          <IconButton className={classes.chatIconButton} onClick={handleBottombarOpen}>
-            <ForumIcon className={classes.forumIcon} />
-          </IconButton>
-          <Drawer anchor="bottom" open={openBottombar} onClose={handleBottombarClose}>
-            <div className={classes.contactForm}></div>
-          </Drawer>
-        </Toolbar>
-      </AppBar>
     </div>
   )
 }

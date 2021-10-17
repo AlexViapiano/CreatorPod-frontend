@@ -1,7 +1,6 @@
 import Product from 'views/Product'
 import Main from 'layouts/Main'
 import { API_URL } from '../../../redux/api'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Head from 'next/head'
 
 const ProductPage = props => {
@@ -72,7 +71,6 @@ export async function getStaticProps(ctx) {
 
     return {
       props: {
-        ...(await serverSideTranslations(ctx.locale, ['common', 'product'])),
         product: product,
       },
       revalidate: 60,
@@ -80,7 +78,6 @@ export async function getStaticProps(ctx) {
   } catch (err) {
     return {
       props: {
-        ...(await serverSideTranslations(ctx.locale, ['common', 'product'])),
         product: null,
       },
       revalidate: 60,

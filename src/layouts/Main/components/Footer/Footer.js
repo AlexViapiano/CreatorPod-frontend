@@ -184,54 +184,29 @@ const Footer = props => {
       title: 'Landings',
       id: 'landing-pages',
       children: {
-        services: {
-          groupTitle: 'pages',
-          pages: [
-            {
-              title: 'marketplace',
-              href: '/products',
-            },
-            {
-              title: 'subscribe',
-              href: '/subscribe',
-            },
-            {
-              title: 'brands',
-              href: '/brands',
-            },
-          ],
-        },
         web: {
-          groupTitle: 'info',
+          groupTitle: 'Info',
           pages: [
             {
-              title: 'contact-us',
+              title: 'Contact Us',
               href: '/contact',
             },
             {
-              title: 'faq',
+              title: 'FAQ',
               href: '/faq',
-            },
-            {
-              title: 'shipping-and-returns',
-              href: '/shipping-and-returns',
             },
           ],
         },
-        supplier: {
-          groupTitle: 'suppliers',
+        creator: {
+          groupTitle: 'Pages',
           pages: [
             {
-              title: 'about-us',
+              title: 'About Us',
               href: '/about',
             },
             {
-              title: 'become-a-supplier',
-              href: '/become-supplier',
-            },
-            {
-              title: 'portal',
-              href: API_URL + '/admin',
+              title: 'Become a Creator',
+              href: '/become-creator',
             },
           ],
         },
@@ -249,7 +224,7 @@ const Footer = props => {
       <List disablePadding className={classes.menuItem}>
         <ListItem disableGutters className={classes.menuGroupItem}>
           <Typography variant="body2" className={classes.menuGroupTitle}>
-            {t(item.groupTitle)}
+            {item.groupTitle}
           </Typography>
         </ListItem>
         {item.pages.map((page, i) => (
@@ -257,7 +232,7 @@ const Footer = props => {
             <Link href={page.title == 'WTG Admin' ? API_URL + '/admin' : page.href}>
               <a>
                 <Typography variant="body2" className={clsx(classes.navLink, 'submenu-item')}>
-                  {t(page.title)}
+                  {page.title}
                 </Typography>
               </a>
             </Link>
@@ -268,14 +243,11 @@ const Footer = props => {
   }
 
   const LandingPages = () => {
-    const { services, web, supplier } = landings.children
+    const { web, creator } = landings.children
     return (
       <div className={classes.menu}>
         <div>
-          <MenuGroup item={services} />
-        </div>
-        <div>
-          <MenuGroup item={supplier} />
+          <MenuGroup item={creator} />
         </div>
         <div>
           <MenuGroup item={web} />
@@ -346,14 +318,14 @@ const Footer = props => {
                   <PinterestIcon className={classes.icon} />
                 </IconButton>
               </a> */}
-              <a
+              {/* <a
                 href="https://www.linkedin.com/company/way-too-good-inc/"
                 className={classes.socialIcon}
                 target="_blank"
                 rel="noopener"
               >
                 <LinkedInIcon className={classes.icon} />
-              </a>
+              </a> */}
             </ListItem>
           </List>
 
@@ -363,19 +335,19 @@ const Footer = props => {
 
           <Grid item xs={12} align="center">
             <div className={classes.legalContainer}>
-              <div>{t('all-rights-reserved')}</div>
+              <div>All rights reserved</div>
               <div>
                 <Link href={'/privacy-policy'}>
-                  <a>{t('privacy-policy')}</a>
+                  <a>Privacy Policy</a>
                 </Link>
 
                 <Link href={'/terms-and-conditions'}>
-                  <a>{t('terms-and-conditions')}</a>
+                  <a>Terms and Conditions</a>
                 </Link>
               </div>
             </div>
           </Grid>
-          <Grid container align="center" justify="center">
+          {/* <Grid container align="center" justify="center">
             <FormControl size="small" variant="outlined" className={classes.formControl}>
               <InputLabel>{t('language')}</InputLabel>
               <Select
@@ -387,7 +359,7 @@ const Footer = props => {
                 <MenuItem value={'fr'}>{t('french')}</MenuItem>
               </Select>
             </FormControl>
-          </Grid>
+          </Grid> */}
         </Grid>
       </div>
     </div>

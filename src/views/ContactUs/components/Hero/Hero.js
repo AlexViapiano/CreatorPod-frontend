@@ -54,17 +54,6 @@ const Hero = props => {
         layout="fill"
         objectFit="cover"
       />
-      <Section className={classes.section}>
-        <SectionHeader
-          title={t('contact')}
-          align="left"
-          data-aos="fade-up"
-          titleProps={{
-            className: clsx(classes.title),
-            variant: 'h3',
-          }}
-        />
-      </Section>
     </div>
   )
 }

@@ -2,7 +2,6 @@ import { useRouter } from 'next/router'
 import Account from 'views/Account'
 import Main from 'layouts/Main'
 import { API_URL } from '../../../redux/api'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 const AccountPage = props => {
   const router = useRouter()
@@ -28,9 +27,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ locale }) {
   return {
-    props: {
-      ...(await serverSideTranslations(locale, ['common', 'account'])),
-    },
+    props: {},
   }
 }
 

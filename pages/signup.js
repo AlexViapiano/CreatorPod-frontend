@@ -1,7 +1,6 @@
 import React from 'react'
 import Signup from 'views/Signup'
 import Minimal from 'layouts/Minimal'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 const SignupPage = props => {
   return (
@@ -15,9 +14,7 @@ const SignupPage = props => {
 
 export async function getStaticProps({ locale }) {
   return {
-    props: {
-      ...(await serverSideTranslations(locale, ['common', 'signUp'])),
-    },
+    props: {},
   }
 }
 

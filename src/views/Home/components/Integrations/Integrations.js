@@ -70,7 +70,7 @@ const Integrations = props => {
     <div className={clsx(classes.root, className)} data-aos="fade-up" {...rest}>
       <SectionHeader
         title="Get Higher Conversions with Our Videos"
-        subtitle="Get Higher Conversions with Our Videos"
+        subtitle="Fine tuned for your favorite social media platforms"
         fadeUp
       />
       <Grid container spacing={4}>
@@ -81,9 +81,9 @@ const Integrations = props => {
             container
             alignItems="center"
             direction="column"
-            xs={12}
-            sm={6}
-            md={4}
+            xs={4}
+            sm={2}
+            md={2}
             data-aos={'fade-up'}
           >
             <DescriptionListIcon
@@ -93,7 +93,7 @@ const Integrations = props => {
                 </Avatar>
               }
               title={item.name}
-              subtitle={item.title}
+              // subtitle={item.title}
               align="center"
             />
           </Grid>
