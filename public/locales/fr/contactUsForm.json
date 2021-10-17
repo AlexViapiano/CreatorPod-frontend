@@ -1,0 +1,17 @@
+{
+    "contact":"Contactez-nous",
+    "contact-question":"Vous ne trouvez pas la réponse dont vous avez besoin?",
+    "full-name":"Nom et Prénom",
+    "full-name-placeholder":"Nom et Prénom",
+    "e-mail":"Adresse Courriel",
+    "e-mail-placeholder":"Adresse Courriel",
+    "message":"Message",
+    "message-placeholder":"Votre question sur nos services",
+    "error-form":"Veuillez remplir tous les champs avant de soumettre.",
+    "confirm-message":"Un courriel a été envoyé à nos représentants.",
+    "confirm-message-2":"Nous vous contacterons bientôt!",
+    "error-mail":"Une erreur s'est produite avec notre service de messagerie ... veuillez envoyer ces détails manuellement.",
+    "send":"Envoyer",
+    "faq1":"Votre question a peut-être déjà reçu une réponse",
+    "faq2":"Consultez notre FAQ ici"
+}

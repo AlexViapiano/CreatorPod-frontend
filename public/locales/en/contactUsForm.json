@@ -1,0 +1,17 @@
+{
+  "contact": "Contact Us",
+  "contact-question": "If you have any questions, please leave us a message below or reach out to us by email at support@waytoogood.com and we'll get back to you as soon as we can!",
+  "full-name": "Full name",
+  "full-name-placeholder": "Your name",
+  "e-mail": "E-mail",
+  "e-mail-placeholder": "Your email address",
+  "message": "Message",
+  "message-placeholder": "Your question or comments",
+  "error-form": "Please fill out all the fields before submiting.",
+  "confirm-message": "An email have been sent to our reps.",
+  "confirm-message-2": "We will contact you shortly!",
+  "error-mail": "An error occured with our mailing service... please email these details manually.",
+  "send": "Send",
+  "faq1": "Your question might have already been answered",
+  "faq2": "Check out our FAQ here"
+}
