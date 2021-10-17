@@ -19,7 +19,6 @@ const useStyles = makeStyles(theme => ({
   root: {
     height: '100%',
     width: '100%',
-    backgroundImage: `linear-gradient(117deg, rgb(255 231 253) 0%, rgb(223 233 255) 35%, rgb(243 255 245) 60%, rgb(252 255 225) 100%)`,
   },
   pagePaddingTop: {
     paddingTop: theme.spacing(3),
@@ -61,6 +60,9 @@ const useStyles = makeStyles(theme => ({
     maxWidth: 800,
     margin: '0 auto',
   },
+  background: {
+    backgroundImage: `linear-gradient(117deg, rgb(255 231 253) 0%, rgb(223 233 255) 35%, rgb(243 255 245) 60%, rgb(252 255 225) 100%)`,
+  },
 }))
 
 const Service = () => {
@@ -78,16 +80,13 @@ const Service = () => {
 
   return (
     <div className={classes.root}>
+      <div className={classes.background}>
+        <Section>
+          <About data={partners} />
+        </Section>
+      </div>
       <Section className={classes.pagePaddingTop}>
-        <About data={partners} />
-        <Section>
-          <Divider />
-        </Section>
-        <Advantages data={advantages} />
-        <Section>
-          <Divider />
-        </Section>
-        <Integrations data={integrations} />
+        <Integrations />
         <Section>
           <Divider />
         </Section>
@@ -95,6 +94,11 @@ const Service = () => {
         <Section>
           <Divider />
         </Section>
+        <Advantages data={advantages} />
+        <Section>
+          <Divider />
+        </Section>
+        <VideoSection />
       </Section>
       <AppBar position="fixed" className={classes.appBarBottom}>
         <Toolbar disableGutters className={classes.toolbarBottom}>

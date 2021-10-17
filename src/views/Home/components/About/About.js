@@ -6,6 +6,7 @@ import { useMediaQuery } from '@material-ui/core'
 import { Grid, Typography, Button } from '@material-ui/core'
 import { Image } from 'components/atoms'
 import { SectionHeader, TypedText } from 'components/molecules'
+import Link from 'next/link'
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -35,7 +36,7 @@ const About = props => {
               <SectionHeader
                 title={
                   <Typography color="textPrimary" variant="h2" align="center">
-                    Sell More with Custom Made <br />
+                    Sell More with <br />
                     <TypedText
                       component="span"
                       variant="h2"
@@ -46,7 +47,7 @@ const About = props => {
                           'Video Ads',
                           'Social Media Posts',
                           'Influencers Posts',
-                          'A new face to your company',
+                          'A new face of your company',
                         ],
                         typeSpeed: 50,
                         loop: true,
@@ -56,12 +57,16 @@ const About = props => {
                 }
                 subtitle="Looking for UGC videos or picture to use as Ads or Post? Look no further! Our network of creators are ready to create custom content for your company!"
                 ctaGroup={[
-                  <Button variant="contained" color="primary" size={isMd ? 'large' : 'medium'}>
-                    Get Started
-                  </Button>,
-                  <Button variant="outlined" color="primary" size={isMd ? 'large' : 'medium'}>
-                    Become a creator
-                  </Button>,
+                  <Link href="/signup">
+                    <Button variant="contained" color="primary" size={isMd ? 'large' : 'medium'}>
+                      Get Started
+                    </Button>
+                  </Link>,
+                  <Link href="/for-creators">
+                    <Button variant="outlined" color="primary" size={isMd ? 'large' : 'medium'}>
+                      Become a creator
+                    </Button>
+                  </Link>,
                 ]}
                 align={isMd ? 'left' : 'center'}
                 disableGutter

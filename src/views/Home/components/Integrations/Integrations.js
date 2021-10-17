@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { useMediaQuery } from '@material-ui/core';
-import { Grid, Button, Avatar } from '@material-ui/core';
-import { Image } from 'components/atoms';
-import { SectionHeader } from 'components/molecules';
-import { DescriptionListIcon } from 'components/organisms';
+import React from 'react'
+import PropTypes from 'prop-types'
+import clsx from 'clsx'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
+import { useMediaQuery } from '@material-ui/core'
+import { Grid, Button, Avatar } from '@material-ui/core'
+import { Image } from 'components/atoms'
+import { SectionHeader } from 'components/molecules'
+import { DescriptionListIcon } from 'components/organisms'
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -16,31 +16,61 @@ const useStyles = makeStyles(theme => ({
     borderRadius: 0,
     background: 'transparent',
   },
-}));
+}))
 
 const Integrations = props => {
-  const { data, className, ...rest } = props;
-  const classes = useStyles();
+  const { className, ...rest } = props
+  const classes = useStyles()
 
-  const theme = useTheme();
+  const theme = useTheme()
   const isMd = useMediaQuery(theme.breakpoints.up('md'), {
     defaultMatches: true,
-  });
+  })
+
+  const data = [
+    {
+      logo: '/images/logos/instagram.svg',
+      name: 'Instagram',
+      title:
+        "Sync your team's work and activity to share automatically in a channel with a simple plugin.",
+    },
+    {
+      logo: '/images/logos/facebook.svg',
+      name: 'Facebook',
+      title:
+        'Communicate important messages to your users through TheFront using Mailchimp as the delivery service.',
+    },
+    {
+      logo: '/images/logos/tik-tok.png',
+      name: 'Tik Tok',
+      title:
+        'Sync any file store to Dropbox for automated sharing with people outside the company.',
+    },
+    {
+      logo: '/images/logos/twitter.svg',
+      name: 'Twitter',
+      title:
+        'Sync any file store to Google Drive for automated sharing with people outside the company.',
+    },
+    {
+      logo: '/images/logos/youtube.svg',
+      name: 'Youtube',
+      title:
+        'Easily manage and edit any Adwords campaign inline to improve ROI with constant review.',
+    },
+    {
+      logo: '/images/logos/snapchat.svg',
+      name: 'Snap Chat',
+      title:
+        'Keep your entire team in sync with development and easily manage tasks, goals, and deadlines.',
+    },
+  ]
 
   return (
     <div className={clsx(classes.root, className)} data-aos="fade-up" {...rest}>
       <SectionHeader
-        title="Integrations"
-        subtitle="TheFront integrates with all the tools you love and use, to allow you to work smarter and faster."
-        ctaGroup={[
-          <Button
-            variant="outlined"
-            size={isMd ? 'large' : 'medium'}
-            color="primary"
-          >
-            See all integrations
-          </Button>,
-        ]}
+        title="Get Higher Conversions with Our Videos"
+        subtitle="Get Higher Conversions with Our Videos"
         fadeUp
       />
       <Grid container spacing={4}>
@@ -70,8 +100,8 @@ const Integrations = props => {
         ))}
       </Grid>
     </div>
-  );
-};
+  )
+}
 
 Integrations.propTypes = {
   /**
@@ -82,6 +112,6 @@ Integrations.propTypes = {
    * data to be rendered
    */
   data: PropTypes.array.isRequired,
-};
+}
 
-export default Integrations;
+export default Integrations

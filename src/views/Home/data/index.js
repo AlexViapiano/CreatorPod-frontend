@@ -23,7 +23,7 @@ export const partners = [
     name: 'Pinterest',
     logo: '/images/logos/pinterest.svg',
   },
-];
+]
 
 export const advantages = [
   {
@@ -50,7 +50,7 @@ export const advantages = [
       'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     icon: 'fas fa-cog',
   },
-];
+]
 
 export const reviews = [
   {
@@ -83,46 +83,7 @@ export const reviews = [
     feedback:
       'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
   },
-];
-
-export const integrations = [
-  {
-    logo: '/images/logos/slack.svg',
-    name: 'Slack',
-    title:
-      "Sync your team's work and activity to share automatically in a channel with a simple plugin.",
-  },
-  {
-    logo: '/images/logos/mailchimp.svg',
-    name: 'Mailchimp',
-    title:
-      'Communicate important messages to your users through TheFront using Mailchimp as the delivery service.',
-  },
-  {
-    logo: '/images/logos/dropbox.svg',
-    name: 'Dropbox',
-    title:
-      'Sync any file store to Dropbox for automated sharing with people outside the company.',
-  },
-  {
-    logo: '/images/logos/google-drive.svg',
-    name: 'Google Drive',
-    title:
-      'Sync any file store to Google Drive for automated sharing with people outside the company.',
-  },
-  {
-    logo: '/images/logos/google-ad-manager.svg',
-    name: 'Google Ad Manager',
-    title:
-      'Easily manage and edit any Adwords campaign inline to improve ROI with constant review.',
-  },
-  {
-    logo: '/images/logos/atlassian.svg',
-    name: 'Atlassian',
-    title:
-      'Keep your entire team in sync with development and easily manage tasks, goals, and deadlines.',
-  },
-];
+]
 
 export const customizations = [
   {
@@ -149,7 +110,7 @@ export const customizations = [
       'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     icon: 'fas fa-plus',
   },
-];
+]
 
 export const team = [
   {
@@ -176,4 +137,4 @@ export const team = [
     },
     authorName: 'Valeria Kogan',
   },
-];
+]
