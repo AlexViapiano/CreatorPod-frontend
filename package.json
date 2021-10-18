@@ -43,7 +43,6 @@
     "marked": "^2.0.1",
     "moment": "^2.29.1",
     "next": "^10.0.5",
-    "next-i18next": "^8.2.0",
     "next-images": "^1.4.1",
     "next-redux-wrapper": "^6.0.2",
     "nextjs-breadcrumbs": "^0.9.9",

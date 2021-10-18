@@ -4,8 +4,6 @@ const SentryWebpackPlugin = require('@sentry/webpack-plugin')
 const withImages = require('next-images')
 module.exports = withImages()
 
-const { i18n } = require('./next-i18next.config')
-
 const {
   PHASE_DEVELOPMENT_SERVER,
   PHASE_PRODUCTION_SERVER,
@@ -54,11 +52,6 @@ module.exports = phase => {
 
   return {
     env,
-    i18n: {
-      locales: ['en', 'fr'],
-      defaultLocale: 'en',
-      localeDetection: false,
-    },
     images: {
       domains: ['s3.ca-central-1.amazonaws.com'],
     },

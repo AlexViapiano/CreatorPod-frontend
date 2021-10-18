@@ -14,7 +14,6 @@ import { hotjar } from 'react-hotjar'
 //import * as Sentry from '@sentry/node'
 const marked = require('marked')
 import { wrapper } from '../redux/store'
-import { appWithTranslation } from 'next-i18next'
 import { changeLocale } from '../redux/session/action'
 
 function MyApp({ Component, pageProps, locale, changeLocale }) {
@@ -104,6 +103,4 @@ const mapDispatchToProps = dispatch => ({
   },
 })
 
-export default wrapper.withRedux(
-  appWithTranslation(connect(mapStateToProps, mapDispatchToProps)(MyApp))
-)
+export default wrapper.withRedux(connect(mapStateToProps, mapDispatchToProps)(MyApp))
