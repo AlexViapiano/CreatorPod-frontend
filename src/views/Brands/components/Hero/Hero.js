@@ -6,7 +6,6 @@ import SearchIcon from '@material-ui/icons/Search'
 import Image from 'next/image'
 import { SectionHeader } from 'components/molecules'
 import { Section } from 'components/organisms'
-import { useTranslation } from 'next-i18next'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -78,7 +77,6 @@ const useStyles = makeStyles(theme => ({
 const Hero = props => {
   const { className, searchText, setSearchText, ...rest } = props
   const classes = useStyles()
-  const { t } = useTranslation('brands')
 
   return (
     <div className={clsx(classes.root, className)} {...rest}>
@@ -92,7 +90,7 @@ const Hero = props => {
       />
       <Section className={classes.section}>
         <SectionHeader
-          title={t('brands')}
+          title={'Brands'}
           // subtitle="What brands are you looking for?"
           align="left"
           data-aos="fade-up"
@@ -116,7 +114,7 @@ const Hero = props => {
                   <SearchIcon />
                 </InputAdornment>
               }
-              placeholder={t('brands-placeholder')}
+              placeholder={'Brands Placeholder'}
             />
           </FormControl>
           {/* <Button color="primary" variant="contained" size="large" className={classes.searchButton}>

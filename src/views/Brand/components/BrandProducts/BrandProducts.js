@@ -4,7 +4,6 @@ import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { Grid, useMediaQuery } from '@material-ui/core'
 import { SectionHeader } from 'components/molecules'
 import { connect } from 'react-redux'
-import { useTranslation } from 'next-i18next'
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -15,7 +14,6 @@ const BrandProducts = props => {
   const classes = useStyles()
   const theme = useTheme()
   const isSm = useMediaQuery(theme.breakpoints.up('sm'), { defaultMatches: true })
-  const { t } = useTranslation('brand')
 
   return (
     <div className={clsx(classes.root, className)}>

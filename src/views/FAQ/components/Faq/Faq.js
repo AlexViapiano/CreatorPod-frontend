@@ -11,7 +11,6 @@ import {
   Button,
 } from '@material-ui/core'
 import { DescriptionListIcon, CardJobMinimal } from 'components/organisms'
-import { useTranslation } from 'next-i18next'
 import CloseIcon from '@material-ui/icons/Close'
 import Image from 'next/image'
 import { SectionHeader } from 'components/molecules'
@@ -89,97 +88,96 @@ const Faq = props => {
   const { products, className, ...rest } = props
   const classes = useStyles()
   const [question, setQuestion] = useState(false)
-  const { t } = useTranslation('faq')
 
   const data = {
     general: {
-      title: t('general-questions'),
-      subtitle: t('general-questions-subtext'),
+      title: '',
+      subtitle: '',
       icon: 'fas fa-user',
       items: [
         {
           title: 'How does it work?',
-          answer: t('general-answer-1'),
-          screenshot: '/images/faq/home-office.jpg',
+          answer: '',
+          screenshot: '',
         },
         {
           title: 'How long does it take to get a video?',
-          answer: t('general-answer-2'),
-          screenshot: '/images/faq/forgot-password.jpg',
-          cta: '/forgot-password',
+          answer: '',
+          screenshot: '',
+          cta: '',
         },
         {
           title: 'Can I choose/see who is going to review my products?',
-          answer: t('general-answer-3'),
-          screenshot: '/images/faq/order-tracking.jpg',
-          cta: '/account/orders',
+          answer: '',
+          screenshot: '',
+          cta: '',
         },
         {
           title: 'Do you have creators 30+ years old?',
-          answer: t('general-answer-4'),
-          screenshot: '/images/faq/review.jpg',
-          cta: '/account/reviews',
+          answer: '',
+          screenshot: '',
+          cta: '',
         },
         {
           title: 'How much does it cost?',
-          answer: t('general-answer-3'),
-          screenshot: '/images/faq/order-tracking.jpg',
-          cta: '/account/orders',
+          answer: '',
+          screenshot: '',
+          cta: '',
         },
         {
           title: 'Do creators post videos on their social media?',
-          answer: t('general-answer-4'),
-          screenshot: '/images/faq/review.jpg',
-          cta: '/account/reviews',
+          answer: '',
+          screenshot: '',
+          cta: '',
         },
       ],
     },
     checkout: {
-      title: t('subscribe-issues'),
-      subtitle: t('subscribe-issues-subtext'),
+      title: '',
+      subtitle: '',
       icon: 'fas fa-dollar-sign',
       items: [
         {
           title: 'Do creators post videos on their social media?',
-          answer: t('subscribe-answer-1'),
-          screenshot: '/images/faq/subscribe-shipments.jpg',
-          // cta: '/account/reviews',
+          answer: '',
+          screenshot: '',
+          cta: '',
         },
         {
           title: `I've never done UGC content professionally before, is this a problem?`,
-          answer: t('subscribe-answer-2'),
-          screenshot: '/images/faq/subscribe-address.jpg',
-          cta: '/account/subscriptions',
+          answer: '',
+          screenshot: '',
+          cta: '',
         },
         {
           title: `What is the process of joining as a creator? Is there any interview process?`,
-          answer: t('subscribe-answer-3'),
-          screenshot: '/images/faq/contact-us.jpg',
-          cta: '/contact',
+          answer: '',
+          screenshot: '',
+          cta: '',
         },
         {
           title: `How much money could I make?`,
-          answer: t('subscribe-answer-4'),
-          screenshot: '/images/faq/subscribe-cancel.jpg',
-          cta: '/account/subscriptions',
+          answer: '',
+          screenshot: '',
+          cta: '',
         },
         {
           title: 'Why should I choose your platform over another?',
-          answer: t('subscribe-answer-1'),
-          screenshot: '/images/faq/subscribe-shipments.jpg',
-          // cta: '/account/reviews',
+          answer: '',
+          screenshot: '',
+          cta: '',
         },
         {
           title: `How do I accept payment?`,
-          answer: t('subscribe-answer-2'),
-          screenshot: '/images/faq/subscribe-address.jpg',
-          cta: '/account/subscriptions',
+          answer: '',
+          screenshot: '',
+          cta: '',
         },
         {
           title: `Do you have rules around working with other companies?`,
-          answer: t('subscribe-answer-4'),
-          screenshot: '/images/faq/subscribe-cancel.jpg',
-          cta: '/account/subscriptions',
+          answer: '',
+          screenshot: '',
+          cta: '',
         },
       ],
     },
@@ -217,7 +215,7 @@ const Faq = props => {
               <Link href={question?.cta}>
                 <a>
                   <Button size="large" variant="contained" color="primary">
-                    {t('go')}
+                    Go
                   </Button>
                 </a>
               </Link>

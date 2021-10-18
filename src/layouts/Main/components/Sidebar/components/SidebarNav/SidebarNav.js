@@ -29,7 +29,6 @@ import {
   ShoppingBasket,
   RateReview,
 } from '@material-ui/icons'
-import { useTranslation } from 'next-i18next'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -137,7 +136,6 @@ const SidebarNav = props => {
   } = props
   const classes = useStyles()
   const router = useRouter()
-  const { t } = useTranslation('common')
   const [accountOpen, setAccountOpen] = useState(false)
 
   const navigate = view => {
@@ -198,7 +196,7 @@ const SidebarNav = props => {
                   <ListItemIcon>
                     <PersonAdd />
                   </ListItemIcon>
-                  <ListItemText primary={t('signup')} />
+                  <ListItemText primary={'Signup'} />
                 </ListItem>
               </a>
             </Link>
@@ -209,7 +207,7 @@ const SidebarNav = props => {
                   <ListItemIcon>
                     <Person className={classes.buttonIcon} />
                   </ListItemIcon>
-                  <ListItemText primary={t('login')} />
+                  <ListItemText primary={'Login'} />
                 </ListItem>
               </a>
             </Link>
@@ -220,7 +218,7 @@ const SidebarNav = props => {
               <ListItemIcon>
                 <Settings />
               </ListItemIcon>
-              <ListItemText primary={t('settings')} />
+              <ListItemText primary={'Settings'} />
               {accountOpen ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
 
@@ -236,56 +234,27 @@ const SidebarNav = props => {
                       <ListItemIcon>
                         <PersonOutline />
                       </ListItemIcon>
-                      <ListItemText primary={t('account')} />
+                      <ListItemText primary={'Account'} />
                     </ListItem>
                   </a>
                 </Link>
 
-                <Link href="/account/orders">
-                  <a>
-                    <ListItem button>
-                      <ListItemIcon>
-                        <ShoppingBasket />
-                      </ListItemIcon>
-                      <ListItemText primary={t('orders')} />
-                    </ListItem>
-                  </a>
-                </Link>
-
-                <Link href="/account/subscriptions">
-                  <a>
-                    <ListItem button>
-                      <ListItemIcon>
-                        <Image
-                          className={classes.buttonIcon}
-                          src={'/images/photos/w.png'}
-                          alt={'waytoogood'}
-                          loading="lazy"
-                          width={24}
-                          height={21}
-                        />
-                      </ListItemIcon>
-                      <ListItemText primary={t('subscriptions')} />
-                    </ListItem>
-                  </a>
-                </Link>
-
-                <Link href="/account/productReviews">
+                {/* <Link href="/account/productReviews">
                   <a>
                     <ListItem button>
                       <ListItemIcon>
                         <RateReview />
                       </ListItemIcon>
-                      <ListItemText primary={t('reviews')} />
+                      <ListItemText primary={'reviews'} />
                     </ListItem>
                   </a>
-                </Link>
+                </Link> */}
 
                 <ListItem onClick={() => onClickLogout()} button>
                   <ListItemIcon>
                     <ExitToApp />
                   </ListItemIcon>
-                  <ListItemText primary={t('logout')} />
+                  <ListItemText primary={'Logout'} />
                 </ListItem>
               </List>
             </Collapse>

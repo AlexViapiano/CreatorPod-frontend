@@ -6,7 +6,6 @@ import { SectionAlternate, CardBase } from 'components/organisms'
 import { Hero, General } from './components'
 import { connect } from 'react-redux'
 import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
 const useStyles = makeStyles(theme => ({
   root: {
@@ -98,7 +97,6 @@ const Account = props => {
     userLoading,
     ...rest
   } = props
-  const { t } = useTranslation('account')
   const classes = useStyles()
   const router = useRouter()
 

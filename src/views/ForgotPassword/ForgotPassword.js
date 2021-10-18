@@ -4,7 +4,6 @@ import { ForgotPasswordForm } from './components'
 import Image from 'next/image'
 import { SectionHeader } from 'components/molecules'
 import { HeroShaped } from 'components/organisms'
-import { useTranslation } from 'next-i18next'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -46,7 +45,7 @@ const useStyles = makeStyles(theme => ({
 
 const ForgotPassword = props => {
   const classes = useStyles()
-  const { t } = useTranslation('forgotPassword')
+
   return (
     <div className={classes.root}>
       <HeroShaped

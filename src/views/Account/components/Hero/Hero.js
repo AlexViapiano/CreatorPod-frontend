@@ -3,7 +3,6 @@ import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
 import { SectionHeader } from 'components/molecules'
 import { Section } from 'components/organisms'
-import { useTranslation } from 'next-i18next'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -24,7 +23,6 @@ const useStyles = makeStyles(theme => ({
 const Hero = props => {
   const { className, ...rest } = props
   const classes = useStyles()
-  const { t } = useTranslation('account')
   return (
     <div className={clsx(classes.root, className)} {...rest}>
       <Section className={classes.section}>

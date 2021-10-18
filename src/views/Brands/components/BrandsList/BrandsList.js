@@ -5,7 +5,6 @@ import { Grid, Typography } from '@material-ui/core'
 import Link from 'next/link'
 import _ from 'lodash'
 import Image from 'next/image'
-import { useTranslation } from 'next-i18next'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -43,7 +42,6 @@ const useStyles = makeStyles(theme => ({
 const BrandsList = props => {
   const { brands, className, ...rest } = props
   const classes = useStyles()
-  const { t } = useTranslation('brands')
   var sortedBrands = _.orderBy(brands, 'name', 'asc')
   return (
     <div className={clsx(classes.root, className)} {...rest}>
@@ -82,7 +80,7 @@ const BrandsList = props => {
             )
           })
         ) : (
-          <div>{t('no-results-found')}</div>
+          <div>No results found</div>
         )}
       </Grid>
     </div>

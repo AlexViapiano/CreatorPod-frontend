@@ -5,7 +5,6 @@ import { colors, FormControl, InputAdornment, Button } from '@material-ui/core'
 import { SectionHeader } from 'components/molecules'
 import { Section } from 'components/organisms'
 import Image from 'next/image'
-import { useTranslation } from 'next-i18next'
 
 const useStyles = makeStyles(theme => ({
   root: {

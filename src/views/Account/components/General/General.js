@@ -21,7 +21,6 @@ import {
   updateUser,
   uploadPicture,
 } from '../../../../../redux/session/action'
-import { useTranslation } from 'next-i18next'
 import usePlacesAutocomplete, { getDetails } from 'use-places-autocomplete'
 
 const useStyles = makeStyles(theme => ({
@@ -113,7 +112,6 @@ const General = props => {
   const isMd = useMediaQuery(theme.breakpoints.up('md'), {
     defaultMatches: true,
   })
-  const { t } = useTranslation('account')
   const [loading, setLoading] = useState(false)
   const [image, setImage] = useState({ preview: '', raw: '' })
   const [firstName, setFirstName] = useState('')
@@ -217,7 +215,7 @@ const General = props => {
           color="primary"
           size="large"
         >
-          {t('confirm')}
+          Confirm
         </Button>
         <br /> <br />
         <Button
@@ -355,7 +353,7 @@ const General = props => {
               color="primary"
               size="large"
             >
-              {t('save')}
+              Save
             </Button>
           )}
         </Grid>

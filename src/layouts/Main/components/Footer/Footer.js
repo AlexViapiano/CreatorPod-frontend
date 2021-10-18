@@ -23,7 +23,6 @@ import { API_URL } from '../../../../../redux/api'
 import Link from 'next/link'
 import Image from 'next/image'
 import { changeLocale } from '../../../../../redux/session/action'
-import { useTranslation } from 'next-i18next'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -177,7 +176,6 @@ const CustomRouterLink = forwardRef((props, ref) => (
 const Footer = props => {
   const { className, locale, changeLocale, ...rest } = props
   const router = useRouter()
-  const { t } = useTranslation('common')
 
   const pages = {
     landings: {
@@ -347,19 +345,6 @@ const Footer = props => {
               </div>
             </div>
           </Grid>
-          {/* <Grid container align="center" justify="center">
-            <FormControl size="small" variant="outlined" className={classes.formControl}>
-              <InputLabel>{t('language')}</InputLabel>
-              <Select
-                value={locale ? locale : 'en'}
-                onChange={event => onChangeLocale(event.target.value)}
-                label="Language"
-              >
-                <MenuItem value={'en'}>{t('english')}</MenuItem>
-                <MenuItem value={'fr'}>{t('french')}</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid> */}
         </Grid>
       </div>
     </div>

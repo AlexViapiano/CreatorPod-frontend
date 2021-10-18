@@ -4,7 +4,6 @@ import { Grid } from '@material-ui/core'
 import { Section, SectionAlternate } from 'components/organisms'
 import { Content, Hero, SidebarInfo, BrandProducts } from './components'
 import CircularProgress from '@material-ui/core/CircularProgress'
-import { useTranslation } from 'next-i18next'
 import * as pixels from '../../utils/pixels'
 
 const useStyles = makeStyles(theme => ({
@@ -38,7 +37,6 @@ const useStyles = makeStyles(theme => ({
 const Brand = props => {
   const { brand } = props
   const classes = useStyles()
-  const { t } = useTranslation('brand')
 
   if (!brand)
     return (
@@ -47,7 +45,7 @@ const Brand = props => {
           <div className={classes.loadingContainer}>
             <CircularProgress />
             <br></br>
-            <div>{t('loading')}</div>
+            <div>Loading</div>
           </div>
         </Section>
       </div>

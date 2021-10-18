@@ -7,7 +7,6 @@ import { SectionHeader } from 'components/molecules'
 import { Section } from 'components/organisms'
 import Link from 'next/link'
 import Newsletter from '../../../../common/Newsletter.js'
-import { useTranslation } from 'next-i18next'
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -51,7 +50,6 @@ const useStyles = makeStyles(theme => ({
 const Story = props => {
   const { className, ...rest } = props
   const classes = useStyles()
-  const { t } = useTranslation('about')
   const theme = useTheme()
   const isMd = useMediaQuery(theme.breakpoints.up('md'), {
     defaultMatches: true,

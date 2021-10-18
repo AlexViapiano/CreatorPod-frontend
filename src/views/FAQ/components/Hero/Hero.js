@@ -5,7 +5,6 @@ import { colors, Button } from '@material-ui/core'
 import Image from 'next/image'
 import { SectionHeader } from 'components/molecules'
 import { Section } from 'components/organisms'
-import { useTranslation } from 'next-i18next'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -42,7 +41,6 @@ const useStyles = makeStyles(theme => ({
 const Hero = props => {
   const { className, ...rest } = props
   const classes = useStyles()
-  const { t } = useTranslation('faq')
 
   return (
     <div className={clsx(classes.root, className)} {...rest}>

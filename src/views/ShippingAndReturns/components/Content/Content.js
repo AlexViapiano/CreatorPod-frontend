@@ -2,7 +2,6 @@ import React from 'react'
 import clsx from 'clsx'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { useMediaQuery, colors, Typography, GridList, GridListTile } from '@material-ui/core'
-import { useTranslation } from 'next-i18next'
 
 const useStyles = makeStyles(theme => ({
   root: {},

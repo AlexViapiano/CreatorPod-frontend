@@ -6,7 +6,6 @@ import validate from 'validate.js'
 import { connect } from 'react-redux'
 import { forgotPassword } from '../../../../../redux/session/action'
 import Link from 'next/link'
-import { useTranslation } from 'next-i18next'
 import Dialog from '@material-ui/core/Dialog'
 import CloseIcon from '@material-ui/icons/Close'
 import { useMediaQuery } from '@material-ui/core'
@@ -71,7 +70,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const ForgotPasswordForm = ({ onClose, forgotPassword, user, setView }) => {
   const router = useRouter()
   const classes = useStyles()
-  const { t } = useTranslation('forgotPassword')
   const theme = useTheme()
   const isSm = useMediaQuery(theme.breakpoints.up('sm'), { defaultMatches: true })
 
@@ -151,7 +149,7 @@ const ForgotPasswordForm = ({ onClose, forgotPassword, user, setView }) => {
                 color="primary"
                 fullWidth
               >
-                {t('send')}
+                Send
               </Button>
             </Grid>
             <Grid item xs={12}>
@@ -184,12 +182,12 @@ const ForgotPasswordForm = ({ onClose, forgotPassword, user, setView }) => {
               <CloseIcon className={classes.close} />
             </IconButton>
             <Typography variant="h8" className={classes.title}>
-              {t('reset-password')}
+              Reset Password
             </Typography>
           </div>
           <DialogContent>
             <Typography variant="subtitle1" color="textSecondary" align="center">
-              {t('confirmation')}
+              Confirm
               <br></br>
               <Link href="/">
                 <Button
@@ -198,7 +196,7 @@ const ForgotPasswordForm = ({ onClose, forgotPassword, user, setView }) => {
                   variant="contained"
                   color="primairy"
                 >
-                  <span>{t('home')}</span>
+                  <span>Home</span>
                 </Button>
               </Link>
             </Typography>

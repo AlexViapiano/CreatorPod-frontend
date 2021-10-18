@@ -3,7 +3,6 @@ import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { Button } from '@material-ui/core'
 import SendIcon from '@material-ui/icons/Send'
 import { SectionHeader } from 'components/molecules'
-import { useTranslation } from 'next-i18next'
 import NewsletterPopup from './NewsletterPopup'
 import { connect } from 'react-redux'
 import { setPopupTriggered } from '../../redux/session/action'
@@ -46,15 +45,13 @@ const Newsletter = props => {
     }
   }, [])
 
-  const { t } = useTranslation('common')
-
   return (
     <div className={classes.root} {...rest}>
       {showModal ? <NewsletterPopup /> : null}
 
       <SectionHeader
-        title={<span className={classes.title}>{t('newsletter-title')}</span>}
-        subtitle={<span className={classes.subtitle}>{t('newsletter-subtitle')}</span>}
+        title={<span className={classes.title}>Newsletter</span>}
+        subtitle={<span className={classes.subtitle}>Newsletter Subtitle</span>}
         titleProps={{
           variant: 'body1',
           color: 'textPrimary',
@@ -68,7 +65,7 @@ const Newsletter = props => {
         variant="contained"
         color="primary"
       >
-        {t('signup')}
+        Signup
         <SendIcon className={classes.buttonIcon} aria-hidden="true" />
       </Button>
     </div>

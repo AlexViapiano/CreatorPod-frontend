@@ -12,7 +12,6 @@ import Image from 'next/image'
 import { store } from 'react-notifications-component'
 import CardGiftcardIcon from '@material-ui/icons/CardGiftcard'
 import LocalOfferIcon from '@material-ui/icons/LocalOffer'
-import { useTranslation } from 'next-i18next'
 import { API_URL } from '../../../../../redux/api'
 import { createBillingPortalSession, logout } from '../../../../../redux/session/action'
 import {
@@ -351,7 +350,6 @@ const Navbar = props => {
   } = props
   const classes = useStyles()
   const router = useRouter()
-  const { t } = useTranslation('common')
   const [anchorEl, setAnchorEl] = useState(null)
   const [openedPopoverId, setOpenedPopoverId] = useState(null)
 
@@ -460,7 +458,7 @@ const Navbar = props => {
                     <a>
                       <Button>
                         <Typography color="textSecondary" className={classes.listItemText}>
-                          {t('login')}
+                          Login
                         </Typography>
                       </Button>
                     </a>
@@ -473,7 +471,7 @@ const Navbar = props => {
                     <a>
                       <Button>
                         <Typography color="textSecondary" className={classes.listItemText}>
-                          {t('signup')}
+                          Signup
                         </Typography>
                       </Button>
                     </a>

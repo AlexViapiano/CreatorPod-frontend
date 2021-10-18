@@ -7,7 +7,6 @@ import validate from 'validate.js'
 import Link from 'next/link'
 import { connect } from 'react-redux'
 import { signup } from '../../../../../redux/session/action'
-import { useTranslation } from 'next-i18next'
 
 import ReCAPTCHA from 'react-google-recaptcha'
 const recaptchaRef = React.createRef()
@@ -81,7 +80,6 @@ const SignupForm = ({ signup, user, setView }) => {
     touched: {},
     errors: {},
   })
-  const { t } = useTranslation('signUp')
 
   React.useEffect(() => {
     const errors = validate(formState.values, schema)

@@ -11,7 +11,6 @@ import {
 } from '@material-ui/core'
 import { SectionHeader } from 'components/molecules'
 import { API_URL } from '../../../../../redux/api'
-import { useTranslation } from 'next-i18next'
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -55,7 +54,6 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const ContactUsForm = props => {
-  const { t } = useTranslation('contactUsForm')
   const { className, ...rest } = props
   const classes = useStyles()
   const theme = useTheme()

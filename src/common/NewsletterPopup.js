@@ -5,7 +5,6 @@ import Dialog from '@material-ui/core/Dialog'
 import DialogContent from '@material-ui/core/DialogContent'
 import Slide from '@material-ui/core/Slide'
 import { useMediaQuery } from '@material-ui/core'
-import { useTranslation } from 'next-i18next'
 import CloseIcon from '@material-ui/icons/Close'
 import Image from 'next/image'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -119,7 +118,6 @@ const NewsletterPopup = props => {
   const theme = useTheme()
   const isSm = useMediaQuery(theme.breakpoints.up('sm'), { defaultMatches: true })
   const isXs = useMediaQuery(theme.breakpoints.down('xs'), { defaultMatches: true })
-  const { t } = useTranslation('common')
 
   return (
     <div className={classes.root} {...rest}>

@@ -6,7 +6,6 @@ import validate from 'validate.js'
 import { connect } from 'react-redux'
 import { resetPassword } from '../../../../../redux/session/action'
 import Link from 'next/link'
-import { useTranslation } from 'next-i18next'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -33,7 +32,6 @@ const schema = {
 const PasswordResetForm = ({ resetPassword, user, setView }) => {
   const router = useRouter()
   const classes = useStyles()
-  const { t } = useTranslation('passwordReset')
 
   const [password, setPassword] = useState('')
   const [passwordConfirmation, setPasswordConfirmation] = useState('')
@@ -143,17 +141,17 @@ const PasswordResetForm = ({ resetPassword, user, setView }) => {
                 color="primary"
                 fullWidth
               >
-                {t('send')}
+                Send
               </Button>
             </Grid>
           </Grid>
         </form>
       ) : (
         <Typography variant="subtitle1" color="textSecondary" align="center">
-          {t('error')}
+          Error...
           <br></br>
           <Link href="/">
-            <a className={classes.a}>{t('home')}</a>
+            <a className={classes.a}>{'Home'}</a>
           </Link>
         </Typography>
       )}

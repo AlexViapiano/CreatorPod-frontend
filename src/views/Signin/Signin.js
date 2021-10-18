@@ -5,7 +5,6 @@ import Image from 'next/image'
 import { SectionHeader } from 'components/molecules'
 import { HeroShaped } from 'components/organisms'
 import Link from 'next/link'
-import { useTranslation } from 'next-i18next'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -52,7 +51,6 @@ const useStyles = makeStyles(theme => ({
 
 const Signin = props => {
   const classes = useStyles()
-  const { t } = useTranslation('signIn')
 
   return (
     <div className={classes.root}>

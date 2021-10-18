@@ -8,7 +8,6 @@ import { connect } from 'react-redux'
 import { login } from '../../../../../redux/session/action'
 import clsx from 'clsx'
 import { API_URL } from '../../../../../redux/api'
-import { useTranslation } from 'next-i18next'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -49,7 +48,6 @@ const schema = {
 const SigninForm = ({ login }) => {
   const router = useRouter()
   const classes = useStyles()
-  const { t } = useTranslation('signIn')
 
   const [formState, setFormState] = React.useState({
     isValid: false,
@@ -95,8 +93,8 @@ const SigninForm = ({ login }) => {
         } else {
           console.error(res.error)
           var errors = {
-            email: [t('e-mail-invalid')],
-            password: [t('e-mail-invalid')],
+            email: ['Email invalid'],
+            password: ['Password invalid'],
           }
           setFormState(formState => ({
             ...formState,

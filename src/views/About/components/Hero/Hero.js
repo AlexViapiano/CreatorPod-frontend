@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import Image from 'next/image'
 import { SectionHeader } from 'components/molecules'
 import { Section } from 'components/organisms'
-import { useTranslation } from 'next-i18next'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -41,7 +40,6 @@ const useStyles = makeStyles(theme => ({
 const Hero = props => {
   const { className, ...rest } = props
   const classes = useStyles()
-  const { t } = useTranslation('about')
 
   return (
     <div className={clsx(classes.root, className)} {...rest}>
@@ -53,9 +51,9 @@ const Hero = props => {
         layout="fill"
         objectFit="cover"
       />
-      {/* <Section className={classes.section}>
+      <Section className={classes.section}>
         <SectionHeader
-          title={t('about-us')}
+          title={'About Us'}
           // subtitle="We are founded by a leading academic and researcher in the field of Industrial Systems Engineering."
           align="left"
           data-aos="fade-up"
@@ -65,7 +63,7 @@ const Hero = props => {
             variant: 'h3',
           }}
         />
-      </Section> */}
+      </Section>
     </div>
   )
 }

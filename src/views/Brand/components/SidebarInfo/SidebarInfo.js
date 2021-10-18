@@ -20,7 +20,6 @@ import {
   RedditShareButton,
   WhatsappShareButton,
 } from 'react-share'
-import { useTranslation } from 'next-i18next'
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -116,7 +115,6 @@ const SidebarInfo = props => {
   const { brand, className, ...rest } = props
   const classes = useStyles()
   const router = useRouter()
-  const { t } = useTranslation('brand')
   const pageUrl = APP_URL + router.asPath
 
   return (
@@ -130,7 +128,7 @@ const SidebarInfo = props => {
             gutterBottom
             className={classes.sectionTitle}
           >
-            {t('about')}
+            About
           </Typography>
         )}
         <Grid container spacing={0}>

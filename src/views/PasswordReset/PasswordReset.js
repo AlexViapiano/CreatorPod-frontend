@@ -4,7 +4,6 @@ import { PasswordResetForm } from './components'
 import Image from 'next/image'
 import { SectionHeader } from 'components/molecules'
 import { HeroShaped } from 'components/organisms'
-import { useTranslation } from 'next-i18next'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -46,7 +45,6 @@ const useStyles = makeStyles(theme => ({
 
 const PasswordReset = props => {
   const classes = useStyles()
-  const { t } = useTranslation('passwordReset')
 
   return (
     <div className={classes.root}>
