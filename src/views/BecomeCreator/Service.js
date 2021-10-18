@@ -12,6 +12,8 @@ import {
   Team,
   VideoSection,
 } from './components'
+import Dialog from '@material-ui/core/Dialog'
+import DialogContent from '@material-ui/core/DialogContent'
 
 import { partners, advantages, reviews, integrations, customizations, team } from './data'
 
@@ -100,6 +102,155 @@ const Service = () => {
         </Section>
         <VideoSection /> */}
       </Section>
+      <Dialog open={focusForm} onClose={() => setFocusForm(false)}>
+        <DialogContent className={classes.dialogContactForm}>
+          <Grid container spacing={isMd ? 4 : 2}>
+            <Grid item xs={12}>
+              <Typography variant="h4" className={classes.textWhite}>
+                Tell Us About Yourself!
+              </Typography>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Typography variant="subtitle1" color="textPrimary" className={classes.inputTitle}>
+                Name
+              </Typography>
+              <TextField
+                value={companyName ? companyName : ''}
+                onChange={event => setCompanyName(event.target.value)}
+                placeholder={'Name'}
+                variant="outlined"
+                size="medium"
+                name="companyName"
+                fullWidth
+                type="text"
+                disabled={loading || sent}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Typography variant="subtitle1" color="textPrimary" className={classes.inputTitle}>
+                Phone Number
+              </Typography>
+              <TextField
+                value={phoneNumber ? phoneNumber : ''}
+                onChange={event => setPhoneNumber(event.target.value)}
+                placeholder={'Phone Number'}
+                variant="outlined"
+                size="medium"
+                name="phoneNumber"
+                fullWidth
+                type="text"
+                disabled={loading || sent}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Typography variant="subtitle1" color="textPrimary" className={classes.inputTitle}>
+                {t('e-mail')}
+              </Typography>
+              <TextField
+                value={email ? email : ''}
+                onChange={event => setEmail(event.target.value)}
+                placeholder={'Email'}
+                variant="outlined"
+                size="medium"
+                name="email"
+                fullWidth
+                type="text"
+                disabled={loading || sent}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Typography variant="subtitle1" color="textPrimary" className={classes.inputTitle}>
+                {t('website')}
+              </Typography>
+              <TextField
+                value={website ? website : ''}
+                onChange={event => setWebsite(event.target.value)}
+                placeholder={''}
+                variant="outlined"
+                size="medium"
+                name="website"
+                fullWidth
+                type="text"
+                disabled={loading || sent}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Typography variant="subtitle1" color="textPrimary" className={classes.inputTitle}>
+                {t('company-description')}
+              </Typography>
+              <TextField
+                value={description ? description : ''}
+                onChange={event => setDescription(event.target.value)}
+                placeholder={t('company-description-placeholder')}
+                variant="outlined"
+                size="medium"
+                name="companyDescription"
+                fullWidth
+                type="text"
+                multiline
+                rows={4}
+                disabled={loading || sent}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Typography variant="subtitle1" color="textPrimary" className={classes.inputTitle}>
+                {t('tell-us')}
+              </Typography>
+              <TextField
+                value={tellUsMore ? tellUsMore : ''}
+                onChange={event => setTellUsMore(event.target.value)}
+                placeholder={t('tell-us-placeholder')}
+                variant="outlined"
+                size="medium"
+                name="tellUsMore"
+                fullWidth
+                type="text"
+                multiline
+                rows={4}
+                disabled={loading || sent}
+              />
+            </Grid>
+            <Grid item container justify="flex-start" xs={12}>
+              {loading ? (
+                <center>
+                  <CircularProgress />
+                </center>
+              ) : sent ? (
+                <>
+                  <p className={classes.message}>
+                    {t('confirmation')}
+                    <br></br>
+                    {t('confirmation-2')}
+                  </p>
+                  <p>
+                    <Button
+                      onClick={() => setFocusForm(false)}
+                      className={classes.btnWhite}
+                      variant="contained"
+                      type="submit"
+                      size="large"
+                    >
+                      {t('close')}
+                    </Button>
+                  </p>
+                </>
+              ) : error ? (
+                <p className={classes.message}>{t('error')}</p>
+              ) : (
+                <Button
+                  onClick={() => handleSubmit()}
+                  className={classes.btnWhite}
+                  variant="contained"
+                  type="submit"
+                  size="large"
+                >
+                  {t('send')}
+                </Button>
+              )}
+            </Grid>
+          </Grid>{' '}
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }

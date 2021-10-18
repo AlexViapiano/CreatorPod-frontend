@@ -46,7 +46,7 @@ const useStyles = makeStyles(theme => ({
   },
   topSection: {
     background: 'rgb(213,237,132)',
-    background: 'linear-gradient(45deg, #a0c037 0%, #FFFB7D 100%)',
+    background: 'linear-gradient(45deg, #c1e0ff 0%, #a6a9ff 100%)',
     minHeight: 150,
     display: 'flex',
     justifyContent: 'center',

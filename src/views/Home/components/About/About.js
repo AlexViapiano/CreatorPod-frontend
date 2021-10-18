@@ -62,7 +62,7 @@ const About = props => {
                       Get Started
                     </Button>
                   </Link>,
-                  <Link href="/for-creators">
+                  <Link href="/become-creator">
                     <Button variant="outlined" color="primary" size={isMd ? 'large' : 'medium'}>
                       Become a creator
                     </Button>

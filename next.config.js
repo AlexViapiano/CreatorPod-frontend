@@ -35,7 +35,7 @@ module.exports = phase => {
       return 'APP_URL:not (isDev,isProd && !isStaging,isProd && isStaging)'
     })(),
     STRIPE_KEY: process.env.STRIPE_KEY,
-    SENTRY_DSN: process.env.SENTRY_DSN,
+    // SENTRY_DSN: process.env.SENTRY_DSN,
   }
   console.info(
     '----------------------------------------------' +
@@ -66,19 +66,19 @@ module.exports = phase => {
         })
       )
 
-      if (!isDev) {
-        config.plugins.push(
-          new SentryWebpackPlugin({
-            include: '.next',
-            ignore: ['node_modules'],
-            urlPrefix: '~/_next',
-            release: 'waytoogood@1.0.1',
-            org: 'way-too-good',
-            project: 'waytoogood-frontend',
-            authToken: process.env.SENTRY_AUTH_TOKEN,
-          })
-        )
-      }
+      // if (!isDev) {
+      //   config.plugins.push(
+      //     new SentryWebpackPlugin({
+      //       include: '.next',
+      //       ignore: ['node_modules'],
+      //       urlPrefix: '~/_next',
+      //       release: 'waytoogood@1.0.1',
+      //       org: 'way-too-good',
+      //       project: 'waytoogood-frontend',
+      //       authToken: process.env.SENTRY_AUTH_TOKEN,
+      //     })
+      //   )
+      // }
 
       return config
     },
