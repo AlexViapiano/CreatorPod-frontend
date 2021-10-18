@@ -28,6 +28,7 @@ import {
   Settings,
   ShoppingBasket,
   RateReview,
+  EmojiPeople,
 } from '@material-ui/icons'
 
 const useStyles = makeStyles(theme => ({
@@ -188,6 +189,16 @@ const SidebarNav = props => {
         )}
       </div>
       <List {...rest} className={clsx(classes.root, className)}>
+        <Link href={'/become-creator'}>
+          <a>
+            <ListItem button>
+              <ListItemIcon>
+                <EmojiPeople className={classes.buttonIcon} />
+              </ListItemIcon>
+              <ListItemText primary={'Become A Creator'} />
+            </ListItem>
+          </a>
+        </Link>
         {user && Object.keys(user).length === 0 ? (
           <>
             <Link href="/signup">

@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { AppBar, Toolbar, IconButton, Divider, Drawer } from '@material-ui/core'
+import { Grid, Typography, TextField, Button, CircularProgress } from '@material-ui/core'
 import ForumIcon from '@material-ui/icons/Forum'
 import { Section } from 'components/organisms'
 import {
@@ -69,15 +69,44 @@ const useStyles = makeStyles(theme => ({
 
 const Service = () => {
   const classes = useStyles()
+  const [focusForm, setFocusForm] = React.useState(false)
+  const [loading, setLoading] = useState(false)
+  const [sent, setSent] = useState(false)
+  const [error, setError] = useState(false)
+  const [name, setName] = useState('')
+  const [phoneNumber, setPhoneNumber] = useState('')
+  const [email, setEmail] = useState('')
+  const [website, setWebsite] = useState('')
+  const [description, setDescription] = useState('')
+  const [tellUsMore, setTellUsMore] = useState('')
 
-  const [openBottombar, setOpenBottombar] = React.useState(false)
+  const handleSubmit = async event => {
+    setLoading(true)
+    const data = {
+      companyName: name,
+      phoneNumber: phoneNumber,
+      email: email,
+      website: website,
+      description: description,
+      tellUsMore: tellUsMore,
+    }
 
-  const handleBottombarOpen = () => {
-    setOpenBottombar(true)
-  }
-
-  const handleBottombarClose = () => {
-    setOpenBottombar(false)
+    return fetch(`${API_URL}/become-supplier`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    })
+      .then(response => response.json())
+      .then(res => {
+        setLoading(false)
+        if (res.sent) {
+          setSent(true)
+        } else if (res.error) {
+          console.error(res.error)
+          setError(true)
+        }
+        return res
+      })
   }
 
   return (
@@ -104,7 +133,7 @@ const Service = () => {
       </Section>
       <Dialog open={focusForm} onClose={() => setFocusForm(false)}>
         <DialogContent className={classes.dialogContactForm}>
-          <Grid container spacing={isMd ? 4 : 2}>
+          <Grid container spacing={2}>
             <Grid item xs={12}>
               <Typography variant="h4" className={classes.textWhite}>
                 Tell Us About Yourself!
@@ -115,12 +144,12 @@ const Service = () => {
                 Name
               </Typography>
               <TextField
-                value={companyName ? companyName : ''}
-                onChange={event => setCompanyName(event.target.value)}
+                value={name ? name : ''}
+                onChange={event => setName(event.target.value)}
                 placeholder={'Name'}
                 variant="outlined"
                 size="medium"
-                name="companyName"
+                name="name"
                 fullWidth
                 type="text"
                 disabled={loading || sent}
@@ -144,7 +173,7 @@ const Service = () => {
             </Grid>
             <Grid item xs={12} sm={6}>
               <Typography variant="subtitle1" color="textPrimary" className={classes.inputTitle}>
-                {t('e-mail')}
+                E-mail
               </Typography>
               <TextField
                 value={email ? email : ''}
@@ -160,7 +189,7 @@ const Service = () => {
             </Grid>
             <Grid item xs={12} sm={6}>
               <Typography variant="subtitle1" color="textPrimary" className={classes.inputTitle}>
-                {t('website')}
+                Website
               </Typography>
               <TextField
                 value={website ? website : ''}
@@ -176,15 +205,15 @@ const Service = () => {
             </Grid>
             <Grid item xs={12} sm={6}>
               <Typography variant="subtitle1" color="textPrimary" className={classes.inputTitle}>
-                {t('company-description')}
+                Description
               </Typography>
               <TextField
                 value={description ? description : ''}
                 onChange={event => setDescription(event.target.value)}
-                placeholder={t('company-description-placeholder')}
+                placeholder="Description"
                 variant="outlined"
                 size="medium"
-                name="companyDescription"
+                name="description"
                 fullWidth
                 type="text"
                 multiline
@@ -194,12 +223,12 @@ const Service = () => {
             </Grid>
             <Grid item xs={12} sm={6}>
               <Typography variant="subtitle1" color="textPrimary" className={classes.inputTitle}>
-                {t('tell-us')}
+                Tell Us More
               </Typography>
               <TextField
                 value={tellUsMore ? tellUsMore : ''}
                 onChange={event => setTellUsMore(event.target.value)}
-                placeholder={t('tell-us-placeholder')}
+                placeholder="Tell Us More"
                 variant="outlined"
                 size="medium"
                 name="tellUsMore"
@@ -217,11 +246,7 @@ const Service = () => {
                 </center>
               ) : sent ? (
                 <>
-                  <p className={classes.message}>
-                    {t('confirmation')}
-                    <br></br>
-                    {t('confirmation-2')}
-                  </p>
+                  <p className={classes.message}>Confirmed </p>
                   <p>
                     <Button
                       onClick={() => setFocusForm(false)}
@@ -230,12 +255,12 @@ const Service = () => {
                       type="submit"
                       size="large"
                     >
-                      {t('close')}
+                      Close
                     </Button>
                   </p>
                 </>
               ) : error ? (
-                <p className={classes.message}>{t('error')}</p>
+                <p className={classes.message}>Error</p>
               ) : (
                 <Button
                   onClick={() => handleSubmit()}
@@ -244,11 +269,11 @@ const Service = () => {
                   type="submit"
                   size="large"
                 >
-                  {t('send')}
+                  Send
                 </Button>
               )}
             </Grid>
-          </Grid>{' '}
+          </Grid>
         </DialogContent>
       </Dialog>
     </div>

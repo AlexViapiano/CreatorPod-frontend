@@ -452,11 +452,22 @@ const Navbar = props => {
             </div>
 
             <List className={classes.iconsContainer}>
+              <ListItem className={classes.listItemButton}>
+                <Link href={'/become-creator'}>
+                  <a>
+                    <Button>
+                      <Typography color="textSecondary" className={classes.listItemText}>
+                        Become A Creator
+                      </Typography>
+                    </Button>
+                  </a>
+                </Link>
+              </ListItem>
               {isMd && user && Object.keys(user).length === 0 && (
                 <ListItem className={classes.listItemButton}>
                   <Link href={'/signin'}>
                     <a>
-                      <Button>
+                      <Button color="primary" variant="outlined">
                         <Typography color="textSecondary" className={classes.listItemText}>
                           Login
                         </Typography>
@@ -469,7 +480,7 @@ const Navbar = props => {
                 <ListItem className={classes.listItemButton}>
                   <Link href={'/signup'}>
                     <a>
-                      <Button>
+                      <Button color="primary" variant="outlined">
                         <Typography color="textSecondary" className={classes.listItemText}>
                           Signup
                         </Typography>
