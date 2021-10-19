@@ -66,20 +66,6 @@ module.exports = phase => {
         })
       )
 
-      // if (!isDev) {
-      //   config.plugins.push(
-      //     new SentryWebpackPlugin({
-      //       include: '.next',
-      //       ignore: ['node_modules'],
-      //       urlPrefix: '~/_next',
-      //       release: 'waytoogood@1.0.1',
-      //       org: 'way-too-good',
-      //       project: 'waytoogood-frontend',
-      //       authToken: process.env.SENTRY_AUTH_TOKEN,
-      //     })
-      //   )
-      // }
-
       return config
     },
   }

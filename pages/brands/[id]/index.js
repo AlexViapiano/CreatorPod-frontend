@@ -11,10 +11,7 @@ const BrandPage = props => {
     <div className="container">
       <Head>
         <title>{props?.brand?.title}</title>
-        <meta
-          name="keywords"
-          content="Way Too Good, way too good, waytoogood, health food, vegan, gluten free, keto, organic"
-        ></meta>
+        <meta name="keywords" content=""></meta>
         <meta name="description" content={props?.brand?.description} />
         <meta property="og:image" content={imageUrl} />
       </Head>

@@ -227,7 +227,6 @@ const Faq = props => {
               <Image
                 className={classes.image}
                 src={question?.screenshot}
-                alt="Way Too Good Explore Marketplace"
                 loading="lazy"
                 layout="fill"
                 objectFit="contain"

@@ -13,10 +13,7 @@ export default class MyDocument extends Document {
           <link rel="manifest" href="/site.webmanifest" />
           <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#a0c037" />
 
-          <meta
-            name="keywords"
-            content="Way Too Good, way too good, waytoogood, health food, vegan, gluten free, keto, organic"
-          ></meta>
+          <meta name="keywords" content=""></meta>
           <meta name="msapplication-TileColor" content="#da532c" />
           <meta name="theme-color" content="#ffffff" />
           <meta charSet="utf-8" />

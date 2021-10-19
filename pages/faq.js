@@ -7,10 +7,7 @@ const faqPage = () => {
     <div className="container">
       <Head>
         <title>FAQ</title>
-        <meta
-          name="keywords"
-          content="Way Too Good, way too good, waytoogood, health food, vegan, gluten free, keto, organic"
-        ></meta>
+        <meta name="keywords" content=""></meta>
         <meta name="description" content="Your question might have already been answered" />
       </Head>
       <Main>

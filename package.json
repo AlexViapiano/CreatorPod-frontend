@@ -1,8 +1,8 @@
 {
-  "name": "waytoogood",
-  "description": "A next generation health food marketplace",
+  "name": "creatorpod",
+  "description": "The easiest way to find creators ready to work with your brand!",
   "author": "Alex Viapiano",
-  "email": "alex@waytoogood.com",
+  "email": "alexviapiano@hotmail.com",
   "version": "1.0.4",
   "private": true,
   "scripts": {

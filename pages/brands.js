@@ -9,10 +9,7 @@ const BrandsPage = props => {
     <div className="container">
       <Head>
         <title>Brands</title>
-        <meta
-          name="keywords"
-          content="Way Too Good, way too good, waytoogood, health food, vegan, gluten free, keto, organic, discover, healthy snacks"
-        ></meta>
+        <meta name="keywords" content=""></meta>
         <meta
           name="description"
           content="We are a health food marketplace that exposes many new brands and products for you to discover!"

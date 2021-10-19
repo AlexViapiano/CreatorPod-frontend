@@ -37,18 +37,10 @@ function MyApp({ Component, pageProps, locale, changeLocale }) {
     // ------------------------ Marked Parser ----------------------
     marked.setOptions({ breaks: true })
 
-    if (APP_URL.includes('creatorpod.app') {
+    if (APP_URL.includes('creatorpod.app')) {
       setTimeout(function() {
         // --------------------------- Hotjar -------------------------
         hotjar.initialize(2659473, 6)
-
-        // --------------------------- Sentry -------------------------
-        // Sentry.init({
-        //   enabled: APP_URL != 'http://localhost:3000',
-        //   integrations: [new Integrations.BrowserTracing()],
-        //   dsn: 'https://a9c6e6829e6e4d42b1a0bac65ea7cf30@o548074.ingest.sentry.io/5701245', //process.env.SENTRY_DSN,
-        //   release: 'waytoogood@1.0.1',
-        // })
       }, 10000)
     }
   }, [router.events])
@@ -61,11 +53,8 @@ function MyApp({ Component, pageProps, locale, changeLocale }) {
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#a0c037" />
-        <title>Way Too Good</title>
-        <meta
-          name="keywords"
-          content="Way Too Good, way too good, waytoogood, health food, vegan, gluten free, keto, organic"
-        ></meta>
+        <title>Creatorpod</title>
+        <meta name="keywords" content=""></meta>
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
         <meta charSet="utf-8" />
