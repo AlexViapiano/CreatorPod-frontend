@@ -3,10 +3,6 @@ import clsx from 'clsx'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { useMediaQuery, Grid, Button, Divider } from '@material-ui/core'
 import Image from 'next/image'
-import { SectionHeader } from 'components/molecules'
-import { Section } from 'components/organisms'
-import Link from 'next/link'
-import Newsletter from '../../../../common/Newsletter.js'
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -58,7 +54,7 @@ const Story = props => {
   return (
     <div className={clsx(classes.root, className)} {...rest}>
       <div className={classes.logoContainer}>
-        <Image src="/images/photos/wtg-com.png" alt="WayTooGood_Logo" height={75} width={300} />
+        <Image src="/images/photos/wtg-com.png" alt="Logo" height={75} width={300} />
       </div>
     </div>
   )

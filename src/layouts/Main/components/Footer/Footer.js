@@ -227,7 +227,7 @@ const Footer = props => {
         </ListItem>
         {item.pages.map((page, i) => (
           <ListItem disableGutters key={i} className={classes.menuGroupItem}>
-            <Link href={page.title == 'WTG Admin' ? API_URL + '/admin' : page.href}>
+            <Link href={page.href}>
               <a>
                 <Typography variant="body2" className={clsx(classes.navLink, 'submenu-item')}>
                   {page.title}
@@ -281,7 +281,7 @@ const Footer = props => {
             </ListItem>
             <ListItem disableGutters className={classes.socialIconContainer}>
               <a
-                href="https://www.facebook.com/Waytoogoodcom-104295958140575"
+                href="https://www.facebook.com/"
                 className={classes.socialIcon}
                 target="_blank"
                 rel="noopener"
@@ -289,7 +289,7 @@ const Footer = props => {
                 <FacebookIcon className={classes.icon} />
               </a>
               <a
-                href="https://www.instagram.com/waytoogoodofficial/"
+                href="https://www.instagram.com/"
                 className={classes.socialIcon}
                 target="_blank"
                 rel="noopener"
@@ -297,7 +297,7 @@ const Footer = props => {
                 <InstagramIcon className={classes.icon} />
               </a>
               {/* <a
-                href="https://twitter.com/Waytoogoodinc"
+                href="https://twitter.com/"
                 className={classes.socialIcon}
                 target="_blank"
                 rel="noopener"
@@ -307,7 +307,7 @@ const Footer = props => {
                 </IconButton>
               </a> */}
               {/* <a
-                href="https://www.pinterest.com/waytoogoodofficial"
+                href="https://www.pinterest.com/"
                 className={classes.socialIcon}
                 target="_blank"
                 rel="noopener"
@@ -317,7 +317,7 @@ const Footer = props => {
                 </IconButton>
               </a> */}
               {/* <a
-                href="https://www.linkedin.com/company/way-too-good-inc/"
+                href="https://www.linkedin.com/company"
                 className={classes.socialIcon}
                 target="_blank"
                 rel="noopener"

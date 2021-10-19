@@ -169,7 +169,7 @@ const SidebarInfo = props => {
             <FacebookShareButton
               url={pageUrl}
               quote={brand?.name}
-              hashtag="#waytoogood"
+              hashtag="#creatorpod"
               className={classes.socialIcon}
             >
               <FacebookIcon />
@@ -177,7 +177,7 @@ const SidebarInfo = props => {
             <TwitterShareButton
               url={pageUrl}
               title={brand?.name}
-              hashtag="#waytoogood"
+              hashtag="#creatorpod"
               className={classes.socialIcon}
             >
               <TwitterIcon />
@@ -195,7 +195,7 @@ const SidebarInfo = props => {
             <RedditShareButton
               url={pageUrl}
               title={brand?.name}
-              hashtag="#waytoogood"
+              hashtag="#creatorpod"
               className={classes.socialIcon}
             >
               <RedditIcon />
@@ -203,7 +203,7 @@ const SidebarInfo = props => {
             <WhatsappShareButton
               url={pageUrl}
               title={brand?.name}
-              hashtag="#waytoogood"
+              hashtag="#creatorpod"
               className={classes.socialIcon}
             >
               <WhatsAppIcon />

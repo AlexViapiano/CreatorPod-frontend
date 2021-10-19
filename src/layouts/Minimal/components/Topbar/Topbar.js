@@ -60,7 +60,7 @@ const Topbar = props => {
             <Image
               className={classes.logoImage}
               src="/images/photos/wtg.png"
-              alt="WayTooGood_Logo"
+              alt="Logo"
               width={175}
               height={45}
             />
