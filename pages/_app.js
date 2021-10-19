@@ -11,7 +11,6 @@ import 'theme/index.scss'
 import 'swiper/css/swiper.min.css'
 import 'aos/dist/aos.css'
 import { hotjar } from 'react-hotjar'
-//import * as Sentry from '@sentry/node'
 const marked = require('marked')
 import { wrapper } from '../redux/store'
 import { changeLocale } from '../redux/session/action'
