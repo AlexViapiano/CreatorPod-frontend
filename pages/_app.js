@@ -37,12 +37,9 @@ function MyApp({ Component, pageProps, locale, changeLocale }) {
     // ------------------------ Marked Parser ----------------------
     marked.setOptions({ breaks: true })
 
-    if (APP_URL.includes('creatorpod.app')) {
-      setTimeout(function() {
-        // --------------------------- Hotjar -------------------------
-        hotjar.initialize(2659473, 6)
-      }, 10000)
-    }
+    setTimeout(function() {
+      hotjar.initialize(2659473, 6)
+    }, 10000)
   }, [router.events])
 
   return (
