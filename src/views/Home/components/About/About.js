@@ -49,22 +49,25 @@ const About = props => {
                           'Influencers Posts',
                           'A new company face',
                         ],
-                        typeSpeed: 50,
+                        typeSpeed: 75,
+                        backDelay: 1000,
+                        backSpeed: 0,
                         loop: true,
                       }}
                     />
                   </Typography>
                 }
-                subtitle="Looking for UGC videos or picture to use as Ads or Post? Look no further! Our network of creators are ready to create custom content for your company!"
+                subtitle="The easiest way to find creators ready to work with your brand!"
+                // subtitle="Looking for UGC videos or picture to use as Ads or Post? Look no further! Our network of creators are ready to create custom content for your company!"
                 ctaGroup={[
                   <Link href="/signup">
                     <Button variant="contained" color="primary" size={isMd ? 'large' : 'medium'}>
-                      Get Started
+                      Find a Creator
                     </Button>
                   </Link>,
-                  <Link href="/become-creator">
+                  <Link href="/faq">
                     <Button variant="outlined" color="primary" size={isMd ? 'large' : 'medium'}>
-                      Become a creator
+                      Learn More
                     </Button>
                   </Link>,
                 ]}
@@ -75,7 +78,7 @@ const About = props => {
           </Grid>
         </Grid>
         <Grid item container justify="center" xs={12} md={6} data-aos={'fade-up'}>
-          <Image src="/images/photos/billo-1.png" alt="Dashboard" />
+          <Image src="/images/photos/phone2.png" alt="Dashboard" />
         </Grid>
       </Grid>
     </div>

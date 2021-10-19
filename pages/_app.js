@@ -40,7 +40,7 @@ function MyApp({ Component, pageProps, locale, changeLocale }) {
     if (APP_URL == 'https://waytoogood.com') {
       setTimeout(function() {
         // --------------------------- Hotjar -------------------------
-        hotjar.initialize(2334004, 6)
+        hotjar.initialize(1249296, 6)
 
         // --------------------------- Sentry -------------------------
         // Sentry.init({

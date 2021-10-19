@@ -1,13 +1,13 @@
 import React from 'react'
 import Signin from 'views/Signin'
-import Minimal from 'layouts/Minimal'
+import Main from 'layouts/Main'
 
 const SigninPage = props => {
   return (
     <div className="container">
-      <Minimal>
+      <Main>
         <Signin />
-      </Minimal>
+      </Main>
     </div>
   )
 }
