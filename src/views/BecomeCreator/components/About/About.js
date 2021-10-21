@@ -57,7 +57,7 @@ const About = props => {
           </Grid>
         </Grid>
         <Grid item container justify="center" xs={12} md={6} data-aos={'fade-up'}>
-          <Image src="/images/photos/phone2.png" alt="Dashboard" />
+          <Image src="/images/photos/phone1.png" alt="Dashboard" />
         </Grid>
       </Grid>
     </div>

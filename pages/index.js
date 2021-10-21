@@ -9,7 +9,7 @@ const HomePage = props => {
   return (
     <div className="home-container">
       <Head>
-        <title>Creatorpod</title>
+        <title>CreatorPod</title>
         <meta
           name="description"
           content="The easiest way to find creators ready to work with your brand!"
