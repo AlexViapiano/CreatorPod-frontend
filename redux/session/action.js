@@ -631,3 +631,38 @@ export const setUTM = (utm_source, utm_medium, utm_campaign) => {
     },
   }
 }
+
+export const joinWaitlist = creds => {
+  return dispatch => {
+    dispatch({ type: actionTypes.REQUEST_SIGNUP })
+    var loginInfo = {
+      username: creds.username,
+      first_name: creds.first_name,
+      last_name: creds.last_name,
+      email: creds.email,
+      password: creds.password,
+      phone_number: creds.phone_number,
+    }
+    return fetch(`${API_URL}/auth/local/register`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(loginInfo),
+    })
+      .then(response => response.json())
+      .then(res => {
+        if (!res.error) {
+          localStorage.setItem('jwt', JSON.stringify(res.jwt))
+          dispatch({
+            type: actionTypes.RECIEVE_SIGNUP,
+            payload: { res },
+          })
+          dispatch(createStripeCustomer(res.user.id))
+        }
+        return res
+      })
+      .catch(err => {
+        console.error('err', err)
+        return err
+      })
+  }
+}

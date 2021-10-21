@@ -463,7 +463,18 @@ const Navbar = props => {
                   </a>
                 </Link>
               </ListItem>
-              {isMd && user && Object.keys(user).length === 0 && (
+              <ListItem className={classes.listItemButton}>
+                <Link href={'/signup'}>
+                  <a>
+                    <Button variant="outlined">
+                      <Typography color="textSecondary" className={classes.listItemText}>
+                        Get Started
+                      </Typography>
+                    </Button>
+                  </a>
+                </Link>
+              </ListItem>
+              {/* {isMd && user && Object.keys(user).length === 0 && (
                 <ListItem className={classes.listItemButton}>
                   <Link href={'/signin'}>
                     <a>
@@ -503,7 +514,7 @@ const Navbar = props => {
                     }
                   />
                 </ListItem>
-              )}
+              )} */}
             </List>
           </div>
         </Toolbar>

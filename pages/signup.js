@@ -1,12 +1,14 @@
 import React from 'react'
-import Signup from 'views/Signup'
+//import Signup from 'views/Signup'
+import Join from 'views/Join'
 import Main from 'layouts/Main'
 
 const SignupPage = props => {
   return (
     <div className="container">
       <Main>
-        <Signup />
+        {/* <Signup /> */}
+        <Join />
       </Main>
     </div>
   )
