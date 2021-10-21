@@ -1,9 +1,10 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { SignupForm } from './components'
 import Image from 'next/image'
 import { SectionHeader } from 'components/molecules'
 import { HeroShaped } from 'components/organisms'
+import { useMediaQuery } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -13,6 +14,17 @@ const useStyles = makeStyles(theme => ({
     '& .hero-shaped__wrapper': {
       [theme.breakpoints.up('md')]: {
         minHeight: `calc(100vh - ${theme.mixins.toolbar['@media (min-width:600px)'].minHeight}px)`,
+      },
+    },
+    [theme.breakpoints.down('sm')]: {
+      '& .hero-shaped__cover': {
+        height: 200,
+      },
+      '& .hero-shaped__': {
+        height: 200,
+      },
+      '& .hero-shaped__right-side': {
+        height: 200,
       },
     },
     [theme.breakpoints.down('xs')]: {
@@ -40,7 +52,7 @@ const useStyles = makeStyles(theme => ({
   },
   image: {
     objectFit: 'cover',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       maxHeight: 200,
     },
   },
@@ -48,6 +60,13 @@ const useStyles = makeStyles(theme => ({
 
 const Signup = props => {
   const classes = useStyles()
+  const theme = useTheme()
+  const isSm = useMediaQuery(theme.breakpoints.up('sm'), {
+    defaultMatches: true,
+  })
+  const isMd = useMediaQuery(theme.breakpoints.up('md'), {
+    defaultMatches: true,
+  })
 
   return (
     <div className={classes.root}>
@@ -67,7 +86,13 @@ const Signup = props => {
         rightSide={
           <Image
             className={classes.image}
-            src="/images/hero/cover-2.jpg"
+            src={
+              !isSm
+                ? '/images/hero/cover-2-mobile.jpg'
+                : !isMd
+                ? '/images/hero/cover-2-tablet.jpg'
+                : '/images/hero/cover-2.jpg'
+            }
             alt="Signup"
             loading="lazy"
             layout="fill"

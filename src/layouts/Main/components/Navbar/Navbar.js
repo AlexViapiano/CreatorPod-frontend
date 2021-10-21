@@ -313,7 +313,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
     minWidth: 150,
-    marginTop: 10,
+    marginTop: 2,
   },
   mobileContainer: {
     width: '100%',
@@ -538,6 +538,15 @@ const Navbar = props => {
         {/* <IconButton onClick={onSidebarOpen}>
           <MenuIcon />
         </IconButton> */}
+        <Link href={'/become-creator'}>
+          <a>
+            <Button variant="outlined" size="small">
+              <Typography color="textSecondary" className={classes.listItemText}>
+                Become A Creator
+              </Typography>
+            </Button>
+          </a>
+        </Link>
       </Toolbar>
     </AppBar>
   )

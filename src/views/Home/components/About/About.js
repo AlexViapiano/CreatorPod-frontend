@@ -36,10 +36,10 @@ const About = props => {
               <SectionHeader
                 title={
                   <Typography color="textPrimary" variant="h2" align="center">
-                    Sell More with <br />
+                    Sell more with <br />
                     <TypedText
                       component="span"
-                      variant="h2"
+                      variant="h3"
                       color="secondary"
                       className={classes.typed}
                       typedProps={{
