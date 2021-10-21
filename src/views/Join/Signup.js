@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { SignupForm } from './components'
 import Image from 'next/image'
 import { SectionHeader } from 'components/molecules'
 import { HeroShaped } from 'components/organisms'
 import { useMediaQuery } from '@material-ui/core'
+import * as pixels from '../../utils/pixels'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -66,6 +67,14 @@ const Signup = props => {
   })
   const isMd = useMediaQuery(theme.breakpoints.up('md'), {
     defaultMatches: true,
+  })
+
+  useEffect(() => {
+    pixels.viewContent({
+      content_id: 'JoinWaitlist',
+      content_name: 'JoinWaitlist',
+      content_type: 'product',
+    })
   })
 
   return (
