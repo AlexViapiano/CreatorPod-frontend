@@ -142,7 +142,7 @@ const NewsletterPopup = props => {
               <CloseIcon className={classes.closeIcon} />
             </IconButton>
             <div className={classes.wtgLogo}>
-              <Image src="/images/photos/wtg.png" width={190} height={45} />
+              <Image src="/images/photos/logo.png" width={190} height={45} />
             </div>
             <IconButton
               edge="start"

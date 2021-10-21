@@ -441,10 +441,10 @@ const Navbar = props => {
                 <a>
                   <Image
                     className={classes.logoImage}
-                    src="/images/photos/wtg-com.png"
+                    src="/images/photos/logo.png"
                     alt="WayTooGood_Logo"
                     width={200}
-                    height={45}
+                    height={35}
                     priority={true}
                   />
                 </a>
@@ -520,10 +520,10 @@ const Navbar = props => {
               <a>
                 <Image
                   className={classes.logoImage}
-                  src="/images/photos/wtg.png"
+                  src="/images/photos/logo.png"
                   alt="WayTooGood_Logo"
                   width={150}
-                  height={40}
+                  height={25}
                   priority={true}
                 />
               </a>

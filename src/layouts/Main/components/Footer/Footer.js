@@ -269,10 +269,10 @@ const Footer = props => {
                 <Link href="/">
                   <a>
                     <Image
-                      src="/images/photos/wtg-green-white.png"
+                      src="/images/photos/logo.png"
                       alt="wtg"
                       width={150}
-                      height={37}
+                      height={25}
                       loading="lazy"
                     />
                   </a>

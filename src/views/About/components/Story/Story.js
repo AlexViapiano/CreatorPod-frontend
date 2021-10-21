@@ -54,7 +54,7 @@ const Story = props => {
   return (
     <div className={clsx(classes.root, className)} {...rest}>
       <div className={classes.logoContainer}>
-        <Image src="/images/photos/wtg-com.png" alt="Logo" height={75} width={300} />
+        <Image src="/images/photos/logo.png" alt="Logo" height={75} width={300} />
       </div>
     </div>
   )
