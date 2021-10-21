@@ -535,9 +535,9 @@ const Navbar = props => {
             </Link>
           </div>
         </div>
-        <IconButton onClick={onSidebarOpen}>
+        {/* <IconButton onClick={onSidebarOpen}>
           <MenuIcon />
-        </IconButton>
+        </IconButton> */}
       </Toolbar>
     </AppBar>
   )
