@@ -123,18 +123,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const SidebarNav = props => {
-  const {
-    user,
-    cart,
-    setDiet,
-    setCategory,
-    setSale,
-    logout,
-    pages,
-    onClose,
-    className,
-    ...rest
-  } = props
+  const { user, logout, pages, onClose, className, ...rest } = props
   const classes = useStyles()
   const router = useRouter()
   const [accountOpen, setAccountOpen] = useState(false)

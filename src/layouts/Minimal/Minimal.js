@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import { Topbar } from './components'
 import { connect } from 'react-redux'
 import { getUser, changeCountry } from '../../../redux/session/action'
-import ReactNotification from 'react-notifications-component'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -20,16 +19,12 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Minimal = props => {
-  const { user, cart, getUser, children, className, ...rest } = props
+  const { user, getUser, children, className, ...rest } = props
   const classes = useStyles()
-  const [cartFetched, setCartFetched] = useState(false)
   const [userFetched, setUserFetched] = useState(false)
   const [displayCountryModal, setDisplayCountryModal] = useState(false)
 
   useEffect(() => {
-    if (!cartFetched) {
-      setCartFetched(true)
-    }
     if (
       !userFetched &&
       user &&
@@ -43,11 +38,10 @@ const Minimal = props => {
     var country = localStorage.getItem('country')
     if (country) changeCountry(country)
     else setDisplayCountryModal(true)
-  }, [user, cart])
+  }, [user])
 
   return (
     <div className={clsx(classes.root, className)}>
-      <ReactNotification />
       <Topbar />
       <main className={classes.content}>{children}</main>
     </div>
@@ -56,7 +50,6 @@ const Minimal = props => {
 
 const mapStateToProps = state => ({
   user: state.session?.user,
-  cart: state.orders?.cart,
 })
 
 const mapDispatchToProps = dispatch => {

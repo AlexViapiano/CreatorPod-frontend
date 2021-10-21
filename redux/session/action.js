@@ -42,14 +42,6 @@ export const actionTypes = {
 }
 
 export const changeLocale = newLocale => async (dispatch, getState) => {
-  // const { session } = getState()
-  // const { locale } = session
-
-  // localStorage.setItem('locale', newLocale)
-  // var localStarage_locale = localStorage.getItem('locale')
-  // var locale = 'en'
-  // if (localStarage_cart) cart = JSON.parse(localStarage_cart)
-
   return dispatch({ type: actionTypes.CHANGE_LOCALE, payload: { locale: newLocale } })
 }
 
@@ -68,7 +60,9 @@ export const changeCountry = (newCountry, updateCart) => async (dispatch, getSta
 export const getUser = () => {
   return dispatch => {
     dispatch({ type: actionTypes.REQUEST_GET_USER })
-    var jwt = JSON.parse(localStorage.getItem('jwt'))
+    var localJwt = localStorage.getItem('jwt')
+    if (localJwt == 'undefined') return
+    var jwt = JSON.parse(localJwt)
     var token = 'Bearer ' + jwt
 
     return fetch(`${API_URL}/users/me`, {

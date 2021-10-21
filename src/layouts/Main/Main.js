@@ -6,7 +6,6 @@ import { Navbar, Footer, Sidebar, CountryModal, Notifications, CookiesConsent } 
 import { connect } from 'react-redux'
 import { getUser, getGoogleUser, changeCountry } from '../../../redux/session/action'
 import { useRouter } from 'next/router'
-import ReactNotification from 'react-notifications-component'
 import { makeStyles } from '@material-ui/core/styles'
 import { Breadcrumbs } from 'nextjs-breadcrumbs'
 
@@ -61,11 +60,10 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Main = props => {
-  const { user, cart, diets, getUser, getGoogleUser, changeCountry, children, ...rest } = props
+  const { user, diets, getUser, getGoogleUser, changeCountry, children, ...rest } = props
   const router = useRouter()
   const classes = useStyles()
   const [openSidebar, setOpenSidebar] = useState(false)
-  const [cartFetched, setCartFetched] = useState(false)
   const [userFetched, setUserFetched] = useState(false)
   const [displayCountryModal, setDisplayCountryModal] = useState(false)
 
@@ -77,9 +75,6 @@ const Main = props => {
       setUserFetched(true)
     }
 
-    if (!cartFetched) {
-      setCartFetched(true)
-    }
     if (
       !userFetched &&
       user &&
@@ -95,7 +90,7 @@ const Main = props => {
     // else setDisplayCountryModal(true)
 
     // if (diets.length == 0) getDiets()
-  }, [user, cart])
+  }, [user])
 
   const handleSidebarOpen = () => {
     setOpenSidebar(true)
@@ -108,7 +103,6 @@ const Main = props => {
   const breadcrumbs = Breadcrumbs()
   return (
     <div>
-      <ReactNotification />
       <Navbar onSidebarOpen={handleSidebarOpen} />
       <Sidebar onClose={handleSidebarClose} open={openSidebar} variant="temporary" />
       <main>
