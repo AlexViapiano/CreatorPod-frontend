@@ -17,33 +17,34 @@ const BrandsPage = props => {
       </Head>
 
       <Main>
-        <Brands brands={props.brands} />
+        {/* <Brands brands={props.brands} /> */}
+        <Brands brands={[]} />
       </Main>
     </div>
   )
 }
 
-export async function getStaticProps({ locale }) {
-  try {
-    const res = await fetch(`${API_URL}/brands?_locale=` + locale, {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-    })
-    const response = await res.json()
-    return {
-      props: {
-        brands: response,
-      },
-      revalidate: 60,
-    }
-  } catch (err) {
-    return {
-      props: {
-        brands: [],
-      },
-      revalidate: 60,
-    }
-  }
-}
+// export async function getStaticProps({ locale }) {
+//   try {
+//     const res = await fetch(`${API_URL}/brands?_locale=` + locale, {
+//       method: 'GET',
+//       headers: { 'Content-Type': 'application/json' },
+//     })
+//     const response = await res.json()
+//     return {
+//       props: {
+//         brands: response,
+//       },
+//       revalidate: 60,
+//     }
+//   } catch (err) {
+//     return {
+//       props: {
+//         brands: [],
+//       },
+//       revalidate: 60,
+//     }
+//   }
+// }
 
 export default BrandsPage

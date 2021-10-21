@@ -62,7 +62,7 @@ const Topbar = props => {
               src="/images/photos/logo.png"
               alt="Logo"
               width={175}
-              height={45}
+              height={35}
             />
           </a>
         </Link>

@@ -1,6 +1,3 @@
-// Use the SentryWebpack plugin to upload the source maps during build step
-// const SentryWebpackPlugin = require('@sentry/webpack-plugin')
-
 const withImages = require('next-images')
 module.exports = withImages()
 
@@ -35,7 +32,6 @@ module.exports = phase => {
       return 'APP_URL:not (isDev,isProd && !isStaging,isProd && isStaging)'
     })(),
     STRIPE_KEY: process.env.STRIPE_KEY,
-    // SENTRY_DSN: process.env.SENTRY_DSN,
   }
   console.info(
     '----------------------------------------------' +
@@ -57,9 +53,6 @@ module.exports = phase => {
     },
     productionBrowserSourceMaps: true,
     webpack: (config, options) => {
-      // if (!options.isServer) {
-      //   config.resolve.alias['@sentry/node'] = '@sentry/browser'
-      // }
       config.plugins.push(
         new options.webpack.DefinePlugin({
           'process.env.NEXT_IS_SERVER': JSON.stringify(options.isServer.toString()),
