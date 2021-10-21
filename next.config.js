@@ -20,9 +20,9 @@ module.exports = phase => {
 
   const env = {
     API_URL: (() => {
-      if (isDev) return 'https://www.master-7rqtwti-uakq3f6fmyqti.ca-1.platformsh.site/'
-      if (isStaging) return 'https://www.master-7rqtwti-uakq3f6fmyqti.ca-1.platformsh.site/'
-      if (isProd) return 'https://www.master-7rqtwti-uakq3f6fmyqti.ca-1.platformsh.site/'
+      if (isDev) return 'https://www.master-7rqtwti-uakq3f6fmyqti.ca-1.platformsh.site'
+      if (isStaging) return 'https://www.master-7rqtwti-uakq3f6fmyqti.ca-1.platformsh.site'
+      if (isProd) return 'https://www.master-7rqtwti-uakq3f6fmyqti.ca-1.platformsh.site'
       return 'API_URL:not (isDev,isProd && !isStaging,isProd && isStaging)'
     })(),
     APP_URL: (() => {

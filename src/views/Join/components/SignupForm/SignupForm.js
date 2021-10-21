@@ -3,13 +3,8 @@ import { useRouter } from 'next/router'
 import { makeStyles } from '@material-ui/core/styles'
 import { Typography, Grid, Button, TextField } from '@material-ui/core'
 import validate from 'validate.js'
-
-import Link from 'next/link'
 import { connect } from 'react-redux'
-import { signup, joinWaitlist } from '../../../../../redux/session/action'
-
-import ReCAPTCHA from 'react-google-recaptcha'
-const recaptchaRef = React.createRef()
+import { joinWaitlist } from '../../../../../redux/session/action'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -36,12 +31,12 @@ const schema = {
       maximum: 300,
     },
   },
-  // username: {
-  //   presence: { allowEmpty: false, message: 'is required' },
-  //   length: {
-  //     maximum: 120,
-  //   },
-  // },
+  company: {
+    presence: { allowEmpty: false, message: 'is required' },
+    length: {
+      maximum: 120,
+    },
+  },
   first_name: {
     presence: { allowEmpty: false, message: 'is required' },
     length: {
@@ -54,21 +49,21 @@ const schema = {
       maximum: 120,
     },
   },
-  // password: {
-  //   presence: { allowEmpty: false, message: 'is required' },
-  //   length: {
-  //     minimum: 8,
-  //   },
-  // },
   phone_number: {
     presence: { allowEmpty: false, message: 'is required' },
     length: {
       minimum: 6,
     },
   },
+  // website: {
+  //   presence: { allowEmpty: true, message: 'is required' },
+  //   length: {
+  //     maximum: 120,
+  //   },
+  // },
 }
 
-const SignupForm = ({ signup, user, setView }) => {
+const SignupForm = ({ joinWaitlist, user, setView }) => {
   const router = useRouter()
   const classes = useStyles()
   // const [isVerified, setIsVerified] = useState(false)
@@ -112,12 +107,6 @@ const SignupForm = ({ signup, user, setView }) => {
     event.preventDefault()
 
     if (formState.isValid) {
-      // if (!isVerified) {
-      //   alert('Please verify that you are a human!')
-      //   return
-      // }
-      //signup(formState.values).then(res => {
-
       joinWaitlist(formState.values).then(res => {
         if (!res.error) {
           router.push('/')
@@ -178,13 +167,43 @@ const SignupForm = ({ signup, user, setView }) => {
               label={'Company'}
               variant="outlined"
               size="medium"
-              name="username"
+              name="company"
               fullWidth
-              helperText={hasError('username') ? formState.errors.username[0] : null}
-              error={hasError('username')}
+              helperText={hasError('company') ? formState.errors.company[0] : null}
+              error={hasError('company')}
               onChange={handleChange}
-              type="username"
-              value={formState.values.username || ''}
+              type="company"
+              value={formState.values.company || ''}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              placeholder={'Website'}
+              label={'Website'}
+              variant="outlined"
+              size="medium"
+              name="website"
+              fullWidth
+              helperText={hasError('website') ? formState.errors.website[0] : null}
+              error={hasError('website')}
+              onChange={handleChange}
+              type="website"
+              value={formState.values.website || ''}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              placeholder={'E-mail'}
+              label={'E-mail'}
+              variant="outlined"
+              size="medium"
+              name="email"
+              fullWidth
+              helperText={hasError('email') ? formState.errors.email[0] : null}
+              error={hasError('email')}
+              onChange={handleChange}
+              type="email"
+              value={formState.values.email || ''}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -202,49 +221,6 @@ const SignupForm = ({ signup, user, setView }) => {
               value={formState.values.phone_number || ''}
             />
           </Grid>
-          <Grid item xs={12}>
-            <TextField
-              placeholder={'E-mail'}
-              label={'E-mail'}
-              variant="outlined"
-              size="medium"
-              name="email"
-              fullWidth
-              helperText={hasError('email') ? formState.errors.email[0] : null}
-              error={hasError('email')}
-              onChange={handleChange}
-              type="email"
-              value={formState.values.email || ''}
-            />
-          </Grid>
-          {/* <Grid item xs={12}>
-            <TextField
-              placeholder={'Password'}
-              label={'Password'}
-              variant="outlined"
-              size="medium"
-              name="password"
-              fullWidth
-              helperText={hasError('password') ? formState.errors.password[0] : null}
-              error={hasError('password')}
-              onChange={handleChange}
-              type="password"
-              value={formState.values.password || ''}
-            />
-          </Grid> */}
-          {/* <Grid item xs={12}>
-            <i>
-              <Typography variant="subtitle2">Required fields</Typography>
-            </i>
-          </Grid> */}
-
-          {/* <Grid align="center" item xs={12}>
-            <ReCAPTCHA
-              ref={recaptchaRef}
-              onChange={() => setIsVerified(true)}
-              sitekey="6LfZvv8ZAAAAALnt9R8q0J7p8JrE7iUgy3uorGVA"
-            />
-          </Grid> */}
 
           {error && (
             <Grid align="center" item xs={12}>
@@ -261,14 +237,6 @@ const SignupForm = ({ signup, user, setView }) => {
               Join Waitlist
             </Button>
           </Grid>
-          {/* <Grid item xs={12}>
-            <Typography variant="subtitle1" color="textSecondary" align="center">
-              Already have an account?
-              <Link href="/signin">
-                <a className={classes.a}>Sign In</a>
-              </Link>
-            </Typography>
-          </Grid> */}
         </Grid>
       </form>
     </div>
@@ -280,11 +248,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  // signup: creds => {
-  //   return dispatch(signup(creds))
-  // },
   joinWaitlist: creds => {
-    return dispatch(signup(creds))
+    return dispatch(joinWaitlist(creds))
   },
 })
 

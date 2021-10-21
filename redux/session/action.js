@@ -636,14 +636,14 @@ export const joinWaitlist = creds => {
   return dispatch => {
     dispatch({ type: actionTypes.REQUEST_SIGNUP })
     var loginInfo = {
-      username: creds.username,
-      first_name: creds.first_name,
-      last_name: creds.last_name,
+      firstname: creds.first_name,
+      lastname: creds.last_name,
       email: creds.email,
-      password: creds.password,
       phone_number: creds.phone_number,
+      company: creds.company,
+      website: creds.website,
     }
-    return fetch(`${API_URL}/auth/local/register`, {
+    return fetch(`${API_URL}/businesses`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(loginInfo),
@@ -651,12 +651,10 @@ export const joinWaitlist = creds => {
       .then(response => response.json())
       .then(res => {
         if (!res.error) {
-          localStorage.setItem('jwt', JSON.stringify(res.jwt))
           dispatch({
             type: actionTypes.RECIEVE_SIGNUP,
             payload: { res },
           })
-          dispatch(createStripeCustomer(res.user.id))
         }
         return res
       })
