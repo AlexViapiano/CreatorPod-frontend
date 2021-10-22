@@ -16,6 +16,13 @@ const useStyles = makeStyles(theme => ({
     borderRadius: 0,
     background: 'transparent',
   },
+  subtitleContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  subtitle: {
+    maxWidth: 650,
+  },
 }))
 
 const Integrations = props => {
@@ -70,7 +77,14 @@ const Integrations = props => {
     <div className={clsx(classes.root, className)} data-aos="fade-up" {...rest}>
       <SectionHeader
         title="Boot Sales with UGC"
-        subtitle="UGC photos and videos are 5x more likely to convert than non-UGC. Boost engagement, build social proof and drive more sales for your brand."
+        subtitle={
+          <div className={classes.subtitleContainer}>
+            <div className={classes.subtitle}>
+              UGC photos and videos are 5x more likely to convert than non-UGC. Boost engagement,
+              build social proof and drive more sales for your brand.
+            </div>
+          </div>
+        }
         fadeUp
       />
       <Grid container spacing={4}>
@@ -82,7 +96,7 @@ const Integrations = props => {
             alignItems="center"
             direction="column"
             xs={4}
-            sm={2}
+            sm={4}
             md={2}
             data-aos={'fade-up'}
           >
