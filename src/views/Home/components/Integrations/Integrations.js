@@ -29,47 +29,36 @@ const Integrations = props => {
   const { className, ...rest } = props
   const classes = useStyles()
 
-  const theme = useTheme()
-  const isMd = useMediaQuery(theme.breakpoints.up('md'), {
-    defaultMatches: true,
-  })
-
   const data = [
-    {
-      logo: '/images/logos/instagram.png',
-      name: 'Instagram',
-      title:
-        "Sync your team's work and activity to share automatically in a channel with a simple plugin.",
-    },
     {
       logo: '/images/logos/facebook.png',
       name: 'Facebook',
-      title:
-        'Communicate important messages to your users through TheFront using Mailchimp as the delivery service.',
+      title: '',
     },
     {
-      logo: '/images/logos/Tiktok.png',
+      logo: '/images/logos/instagram.png',
+      name: 'Instagram',
+      title: '',
+    },
+    {
+      logo: '/images/logos/tiktok.png',
       name: 'Tik Tok',
-      title:
-        'Sync any file store to Dropbox for automated sharing with people outside the company.',
-    },
-    {
-      logo: '/images/logos/amazon.png',
-      name: 'Amazon',
-      title:
-        'Sync any file store to Google Drive for automated sharing with people outside the company.',
+      title: '',
     },
     {
       logo: '/images/logos/youtube.png',
       name: 'Youtube',
-      title:
-        'Easily manage and edit any Adwords campaign inline to improve ROI with constant review.',
+      title: '',
     },
     {
       logo: '/images/logos/snapchat.png',
       name: 'Snap Chat',
-      title:
-        'Keep your entire team in sync with development and easily manage tasks, goals, and deadlines.',
+      title: '',
+    },
+    {
+      logo: '/images/logos/amazon.png',
+      name: 'Amazon',
+      title: '',
     },
   ]
 
