@@ -202,7 +202,7 @@ const SignupForm = ({ joinWaitlist, setSuccess }) => {
               <br />
               <Typography variant="subtitle1" color="textSecondary" align="center">
                 Are you a brand?
-                <Link href="/join">
+                <Link href="/signup">
                   <a className={classes.a}>Learn More</a>
                 </Link>
               </Typography>

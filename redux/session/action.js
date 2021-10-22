@@ -39,6 +39,8 @@ export const actionTypes = {
   RECIEVE_PAYMENT_METHODS: 'RECIEVE_PAYMENT_METHODS',
   SET_POPUP_TRIGGERED: 'SET_POPUP_TRIGGERED',
   SET_UTM: 'SET_UTM',
+  REQUEST_GENERATE_LEAD: 'REQUEST_GENERATE_LEAD',
+  RECEIVE_GENERATE_LEAD: 'RECEIVE_GENERATE_LEAD',
 }
 
 export const changeLocale = newLocale => async (dispatch, getState) => {
@@ -647,6 +649,34 @@ export const joinWaitlist = (endpoint, creds) => {
         if (!res.error) {
           dispatch({
             type: actionTypes.RECIEVE_SIGNUP,
+            payload: { res },
+          })
+        }
+        return res
+      })
+      .catch(err => {
+        console.error('err', err)
+        return err
+      })
+  }
+}
+
+export const generateLead = page => {
+  return dispatch => {
+    dispatch({ type: actionTypes.REQUEST_GENERATE_LEAD })
+    var data = {
+      Page: page,
+    }
+    return fetch(`${API_URL}/leads`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    })
+      .then(response => response.json())
+      .then(res => {
+        if (!res.error) {
+          dispatch({
+            type: actionTypes.RECEIVE_GENERATE_LEAD,
             payload: { res },
           })
         }

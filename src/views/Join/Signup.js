@@ -7,6 +7,8 @@ import { HeroShaped } from 'components/organisms'
 import { useMediaQuery } from '@material-ui/core'
 import * as pixels from '../../utils/pixels'
 import CheckCircle from '@material-ui/icons/CheckCircle'
+import { generateLead } from '../../../redux/session/action'
+import { connect } from 'react-redux'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -85,6 +87,7 @@ const Signup = props => {
         content_name: 'BusinessWaitlist',
         // content_type: 'product',
       })
+      props.generateLead('Business Waitlist')
       setEventTriggered(true)
     }
   })
@@ -143,4 +146,10 @@ const Signup = props => {
   )
 }
 
-export default Signup
+const mapDispatchToProps = dispatch => ({
+  generateLead: page => {
+    return dispatch(generateLead(page))
+  },
+})
+
+export default connect(null, mapDispatchToProps)(Signup)
