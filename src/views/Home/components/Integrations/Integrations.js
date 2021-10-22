@@ -69,8 +69,8 @@ const Integrations = props => {
   return (
     <div className={clsx(classes.root, className)} data-aos="fade-up" {...rest}>
       <SectionHeader
-        title="Get Higher Conversions with Our Videos"
-        subtitle="Fine tuned for your favorite social media platforms"
+        title="Boot Sales with UGC"
+        subtitle="UGC photos and videos are 5x more likely to convert than non-UGC. Boost engagement, build social proof and drive more sales for your brand."
         fadeUp
       />
       <Grid container spacing={4}>

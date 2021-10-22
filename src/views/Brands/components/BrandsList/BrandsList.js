@@ -52,7 +52,7 @@ const BrandsList = props => {
               ? brand.logo.formats.thumbnail.url
               : brand?.logo?.url
               ? brand.logo.url
-              : '/images/photos/w-brand.png'
+              : '/images/photos/brand.png'
             return (
               <Grid item xs={12} md={6} key={index} data-aos="fade-up">
                 <Link href="/brands/[url]" as={`/brands/${brand?.url}`}>
