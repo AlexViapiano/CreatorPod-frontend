@@ -69,12 +69,16 @@ const Signup = props => {
     defaultMatches: true,
   })
 
-  const [leadTriggered, setLeadTriggered] = useState(false)
+  const [eventTriggered, setEventTriggered] = useState(false)
 
   useEffect(() => {
-    if (!leadTriggered) {
-      pixels.lead()
-      setLeadTriggered(true)
+    if (!eventTriggered) {
+      pixels.viewContent({
+        content_id: 1,
+        content_name: 'BusinessWaitlist',
+        // content_type: 'product',
+      })
+      setEventTriggered(true)
     }
   })
 

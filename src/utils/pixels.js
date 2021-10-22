@@ -14,6 +14,20 @@ export const lead = (options = {}) => {
   if (window.gtag) window.gtag('event', 'generate_lead', options)
 }
 
+export const completeRegistration = (options = {}) => {
+  if (APP_URL != 'https://www.creatorpod.app/') return
+  if (window.fbq) window.fbq('track', 'CompleteRegistration', options)
+  if (window.ttq) window.ttq.track('CompleteRegistration', options)
+  if (window.gtag) window.gtag('event', 'sign_up', options)
+}
+
+export const viewContent = (options = {}) => {
+  if (APP_URL != 'https://www.creatorpod.app/') return
+  if (window.fbq) window.fbq('track', 'ViewContent', options)
+  if (window.ttq) window.ttq.track('ViewContent', options)
+  if (window.gtag) window.gtag('event', 'view_item', options)
+}
+
 // export const addToCart = (options = {}) => {
 //   if (APP_URL != 'https://www.creatorpod.app/') return
 //   if (window.fbq)
@@ -29,13 +43,6 @@ export const lead = (options = {}) => {
 //       content_name: options.content_name,
 //     })
 //   if (window.gtag) window.gtag('event', 'add_to_cart', options)
-// }
-
-// export const viewContent = (options = {}) => {
-//   if (APP_URL != 'https://www.creatorpod.app/') return
-//   if (window.fbq) window.fbq('track', 'ViewContent', options)
-//   if (window.ttq) window.ttq.track('ViewContent', options)
-//   if (window.gtag) window.gtag('event', 'view_item', options)
 // }
 
 // export const search = (options = {}) => {

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { SignupForm } from './components'
 import Image from 'next/image'
@@ -69,9 +69,18 @@ const Signup = props => {
     defaultMatches: true,
   })
 
-  // useEffect(() => {
-  //   pixels.lead()
-  // })
+  const [eventTriggered, setEventTriggered] = useState(false)
+
+  useEffect(() => {
+    if (!eventTriggered) {
+      pixels.viewContent({
+        content_id: 1,
+        content_name: 'CreatorRegister',
+        // content_type: 'product',
+      })
+      setEventTriggered(true)
+    }
+  })
 
   return (
     <div className={classes.root}>

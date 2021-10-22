@@ -6,6 +6,7 @@ import validate from 'validate.js'
 import { connect } from 'react-redux'
 import { joinWaitlist } from '../../../../../redux/session/action'
 import Link from 'next/link'
+import * as pixels from '../../../utils/pixels'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -96,6 +97,7 @@ const SignupForm = ({ joinWaitlist }) => {
     event.preventDefault()
 
     if (formState.isValid) {
+      pixels.completeRegistration()
       joinWaitlist('creators', formState.values).then(res => {
         if (!res.error) {
           router.push('/')
