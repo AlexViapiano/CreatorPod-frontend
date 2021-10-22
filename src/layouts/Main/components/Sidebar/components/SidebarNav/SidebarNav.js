@@ -16,7 +16,7 @@ import { logout } from '../../../../../../../redux/session/action'
 import { useRouter } from 'next/router'
 import { connect } from 'react-redux'
 import Link from 'next/link'
-import { store } from 'react-notifications-component'
+// import { store } from 'react-notifications-component'
 import Image from 'next/image'
 import {
   Person,
