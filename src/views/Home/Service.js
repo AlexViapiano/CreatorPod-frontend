@@ -60,8 +60,24 @@ const useStyles = makeStyles(theme => ({
     maxWidth: 800,
     margin: '0 auto',
   },
+  '@global': {
+    '@keyframes gradient': {
+      '0%': {
+        backgroundPosition: `0% 50%`,
+      },
+      '50%': {
+        backgroundPosition: `100% 50%`,
+      },
+      '100%': {
+        backgroundPosition: `0% 50%`,
+      },
+    },
+  },
   background: {
-    backgroundImage: `linear-gradient(117deg, rgb(255 231 253) 0%, rgb(223 233 255) 35%, rgb(243 255 245) 60%, rgb(252 255 225) 100%)`,
+    //backgroundImage: `linear-gradient(117deg, rgb(255 231 253) 0%, rgb(223 233 255) 35%, rgb(243 255 245) 60%, rgb(252 255 225) 100%)`,
+    background: `linear-gradient(90deg, rgba(255,228,228,1) 0%, rgba(198,220,255,1) 15%, rgba(235,255,220,1) 33%, rgba(255,252,227,1) 51%, rgba(254,233,255,1) 68%, rgba(215,217,255,1) 85%, rgba(255,228,228,1) 100%)`,
+    backgroundSize: `400% 400%`,
+    animation: `gradient 15s ease infinite`,
   },
 }))
 
