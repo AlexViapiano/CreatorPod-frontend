@@ -6,6 +6,7 @@ import { SectionHeader } from 'components/molecules'
 import { HeroShaped } from 'components/organisms'
 import { useMediaQuery } from '@material-ui/core'
 import * as pixels from '../../utils/pixels'
+import CheckCircle from '@material-ui/icons/CheckCircle'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -57,6 +58,11 @@ const useStyles = makeStyles(theme => ({
       maxHeight: 200,
     },
   },
+  checkIcon: {
+    color: theme.palette.success.light,
+    fontSize: 60,
+    marginTop: 15,
+  },
 }))
 
 const Signup = props => {
@@ -70,6 +76,7 @@ const Signup = props => {
   })
 
   const [eventTriggered, setEventTriggered] = useState(false)
+  const [success, setSuccess] = useState(false)
 
   useEffect(() => {
     if (!eventTriggered) {
@@ -87,14 +94,32 @@ const Signup = props => {
       <HeroShaped
         leftSide={
           <div className={classes.formContainer}>
-            <SectionHeader
-              title="Join The Waitlist"
-              subtitle="The easiest way to find creators ready to work with your brand!"
-              titleProps={{
-                variant: 'h3',
-              }}
-            />
-            <SignupForm />
+            {success ? (
+              <SectionHeader
+                title="Successfully Joined The Waitlist"
+                subtitle={
+                  <div>
+                    We'll send you an invite to get started soon!
+                    <br />
+                    <CheckCircle className={classes.checkIcon} />
+                  </div>
+                }
+                titleProps={{
+                  variant: 'h4',
+                }}
+              />
+            ) : (
+              <>
+                <SectionHeader
+                  title="Join The Waitlist"
+                  subtitle="The easiest way to find creators ready to work with your brand!"
+                  titleProps={{
+                    variant: 'h3',
+                  }}
+                />
+                <SignupForm setSuccess={setSuccess} />
+              </>
+            )}
           </div>
         }
         rightSide={

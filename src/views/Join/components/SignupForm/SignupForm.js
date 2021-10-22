@@ -65,7 +65,7 @@ const schema = {
   // },
 }
 
-const SignupForm = ({ joinWaitlist, user, setView }) => {
+const SignupForm = ({ joinWaitlist, setSuccess }) => {
   const router = useRouter()
   const classes = useStyles()
   // const [isVerified, setIsVerified] = useState(false)
@@ -112,7 +112,8 @@ const SignupForm = ({ joinWaitlist, user, setView }) => {
       pixels.lead()
       joinWaitlist('businesses', formState.values).then(res => {
         if (!res.error) {
-          router.push('/')
+          setSuccess(true)
+          //router.push('/')
         } else {
           setError(res)
         }

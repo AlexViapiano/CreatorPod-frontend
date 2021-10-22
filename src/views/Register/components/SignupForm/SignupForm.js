@@ -53,7 +53,7 @@ const schema = {
   },
 }
 
-const SignupForm = ({ joinWaitlist }) => {
+const SignupForm = ({ joinWaitlist, setSuccess }) => {
   const router = useRouter()
   const classes = useStyles()
   // const [isVerified, setIsVerified] = useState(false)
@@ -100,7 +100,8 @@ const SignupForm = ({ joinWaitlist }) => {
       pixels.completeRegistration()
       joinWaitlist('creators', formState.values).then(res => {
         if (!res.error) {
-          router.push('/')
+          setSuccess(true)
+          //router.push('/')
         } else {
           setError(res)
         }
