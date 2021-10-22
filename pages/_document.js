@@ -26,7 +26,7 @@ export default class MyDocument extends Document {
             name="google-site-verification"
             content="jOog9-4ykWdxaSRmjnrYIMbUPai7pYAkvkSyp2HNKf0"
           />
-          <meta name="facebook-domain-verification" content="ihyrwiqty051nrmvody3kbakz7kk1u" />
+          <meta name="facebook-domain-verification" content="g274oerwrobnsk69rnw28rftrj1cj1" />
           <script
             dangerouslySetInnerHTML={{
               __html: `
