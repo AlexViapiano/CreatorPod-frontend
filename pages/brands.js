@@ -9,11 +9,11 @@ const BrandsPage = props => {
     <div className="container">
       <Head>
         <title>Brands</title>
-        <meta name="keywords" content=""></meta>
         <meta
           name="description"
-          content="We are a health food marketplace that exposes many new brands and products for you to discover!"
-        />
+          content="The easiest way to find creators ready to work with your brand!"
+        ></meta>
+        <meta name="keywords" content=""></meta>
       </Head>
 
       <Main>
