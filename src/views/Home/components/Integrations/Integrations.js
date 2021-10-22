@@ -11,8 +11,8 @@ import { DescriptionListIcon } from 'components/organisms'
 const useStyles = makeStyles(theme => ({
   root: {},
   avatar: {
-    width: 70,
-    height: 70,
+    width: 40,
+    height: 40,
     borderRadius: 0,
     background: 'transparent',
   },
@@ -29,37 +29,37 @@ const Integrations = props => {
 
   const data = [
     {
-      logo: '/images/logos/instagram.svg',
+      logo: '/images/logos/instagram.png',
       name: 'Instagram',
       title:
         "Sync your team's work and activity to share automatically in a channel with a simple plugin.",
     },
     {
-      logo: '/images/logos/facebook.svg',
+      logo: '/images/logos/facebook.png',
       name: 'Facebook',
       title:
         'Communicate important messages to your users through TheFront using Mailchimp as the delivery service.',
     },
     {
-      logo: '/images/logos/tik-tok.png',
+      logo: '/images/logos/Tiktok.png',
       name: 'Tik Tok',
       title:
         'Sync any file store to Dropbox for automated sharing with people outside the company.',
     },
     {
-      logo: '/images/logos/twitter.svg',
+      logo: '/images/logos/amazon.png',
       name: 'Twitter',
       title:
         'Sync any file store to Google Drive for automated sharing with people outside the company.',
     },
     {
-      logo: '/images/logos/youtube.svg',
+      logo: '/images/logos/youtube.png',
       name: 'Youtube',
       title:
         'Easily manage and edit any Adwords campaign inline to improve ROI with constant review.',
     },
     {
-      logo: '/images/logos/snapchat.svg',
+      logo: '/images/logos/snapchat.png',
       name: 'Snap Chat',
       title:
         'Keep your entire team in sync with development and easily manage tasks, goals, and deadlines.',

@@ -65,11 +65,11 @@ const About = props => {
                       Find a Creator
                     </Button>
                   </Link>,
-                  <Link href="/faq">
-                    <Button variant="outlined" color="primary" size={isMd ? 'large' : 'medium'}>
-                      Learn More
-                    </Button>
-                  </Link>,
+                  // <Link href="/faq">
+                  //   <Button variant="outlined" color="primary" size={isMd ? 'large' : 'medium'}>
+                  //     Learn More
+                  //   </Button>
+                  // </Link>,
                 ]}
                 align={'center'}
                 disableGutter

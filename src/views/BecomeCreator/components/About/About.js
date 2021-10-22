@@ -44,11 +44,11 @@ const About = props => {
                   <Button variant="contained" color="primary" size={isMd ? 'large' : 'medium'}>
                     Get Started
                   </Button>,
-                  <Link href="/faq">
-                    <Button variant="outlined" color="primary" size={isMd ? 'large' : 'medium'}>
-                      Learn More
-                    </Button>
-                  </Link>,
+                  // <Link href="/faq">
+                  //   <Button variant="outlined" color="primary" size={isMd ? 'large' : 'medium'}>
+                  //     Learn More
+                  //   </Button>
+                  // </Link>,
                 ]}
                 align={'center'}
                 disableGutter
