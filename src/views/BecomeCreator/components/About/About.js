@@ -36,14 +36,17 @@ const About = props => {
               <SectionHeader
                 title={
                   <Typography color="textPrimary" variant="h2" align="center">
-                    Join our community of video creators
+                    Only authentic collaborations
                   </Typography>
                 }
-                subtitle="Get hired by the brands you love to create authentic video ads, get free products and earn cash rewards. On Billo, you’ll have access to thousands of brands looking for video creators like you."
+                subtitle="You're always in control. Collaborate with brands your audience will love."
                 ctaGroup={[
-                  <Button variant="contained" color="primary" size={isMd ? 'large' : 'medium'}>
-                    Get Started
-                  </Button>,
+                  <Link href="/register">
+                    <Button variant="contained" color="primary" size={isMd ? 'large' : 'medium'}>
+                      Join Now
+                    </Button>
+                  </Link>,
+
                   // <Link href="/faq">
                   //   <Button variant="outlined" color="primary" size={isMd ? 'large' : 'medium'}>
                   //     Learn More

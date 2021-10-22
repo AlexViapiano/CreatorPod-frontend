@@ -32,12 +32,6 @@ const schema = {
       maximum: 300,
     },
   },
-  company: {
-    presence: { allowEmpty: false, message: 'is required' },
-    length: {
-      maximum: 120,
-    },
-  },
   first_name: {
     presence: { allowEmpty: false, message: 'is required' },
     length: {
@@ -56,15 +50,9 @@ const schema = {
       minimum: 6,
     },
   },
-  // website: {
-  //   presence: { allowEmpty: true, message: 'is required' },
-  //   length: {
-  //     maximum: 120,
-  //   },
-  // },
 }
 
-const SignupForm = ({ joinWaitlist, user, setView }) => {
+const SignupForm = ({ joinWaitlist }) => {
   const router = useRouter()
   const classes = useStyles()
   // const [isVerified, setIsVerified] = useState(false)
@@ -108,7 +96,7 @@ const SignupForm = ({ joinWaitlist, user, setView }) => {
     event.preventDefault()
 
     if (formState.isValid) {
-      joinWaitlist('businesses', formState.values).then(res => {
+      joinWaitlist('creators', formState.values).then(res => {
         if (!res.error) {
           router.push('/')
         } else {
@@ -164,36 +152,6 @@ const SignupForm = ({ joinWaitlist, user, setView }) => {
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
-              placeholder={'Company'}
-              label={'Company'}
-              variant="outlined"
-              size="medium"
-              name="company"
-              fullWidth
-              helperText={hasError('company') ? formState.errors.company[0] : null}
-              error={hasError('company')}
-              onChange={handleChange}
-              type="company"
-              value={formState.values.company || ''}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              placeholder={'Website'}
-              label={'Website'}
-              variant="outlined"
-              size="medium"
-              name="website"
-              fullWidth
-              helperText={hasError('website') ? formState.errors.website[0] : null}
-              error={hasError('website')}
-              onChange={handleChange}
-              type="website"
-              value={formState.values.website || ''}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
               placeholder={'E-mail'}
               label={'E-mail'}
               variant="outlined"
@@ -240,9 +198,9 @@ const SignupForm = ({ joinWaitlist, user, setView }) => {
             <Grid item xs={12}>
               <br />
               <Typography variant="subtitle1" color="textSecondary" align="center">
-                Are you a creator?
-                <Link href="/register">
-                  <a className={classes.a}>Get started here</a>
+                Are you a brand?
+                <Link href="/join">
+                  <a className={classes.a}>Learn More</a>
                 </Link>
               </Typography>
             </Grid>

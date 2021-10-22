@@ -626,7 +626,7 @@ export const setUTM = (utm_source, utm_medium, utm_campaign) => {
   }
 }
 
-export const joinWaitlist = creds => {
+export const joinWaitlist = (endpoint, creds) => {
   return dispatch => {
     dispatch({ type: actionTypes.REQUEST_SIGNUP })
     var loginInfo = {
@@ -637,7 +637,7 @@ export const joinWaitlist = creds => {
       company: creds.company,
       website: creds.website,
     }
-    return fetch(`${API_URL}/businesses`, {
+    return fetch(`${API_URL}/${endpoint}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(loginInfo),

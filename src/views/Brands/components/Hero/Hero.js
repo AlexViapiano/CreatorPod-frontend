@@ -82,7 +82,7 @@ const Hero = props => {
     <div className={clsx(classes.root, className)} {...rest}>
       <Image
         className={classes.image}
-        src="/images/hero/hero-brands.jpg"
+        src="/images/hero/hero-generic.jpg"
         alt="Privacy Policy"
         loading="lazy"
         layout="fill"

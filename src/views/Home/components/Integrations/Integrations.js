@@ -55,7 +55,7 @@ const Integrations = props => {
     },
     {
       logo: '/images/logos/amazon.png',
-      name: 'Twitter',
+      name: 'Amazon',
       title:
         'Sync any file store to Google Drive for automated sharing with people outside the company.',
     },
