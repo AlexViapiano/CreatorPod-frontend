@@ -1,5 +1,12 @@
 import { APP_URL } from '../../redux/api'
 
+// log the pageview with their URL
+export const pageview = url => {
+  window.gtag('config', process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS, {
+    page_path: url,
+  })
+}
+
 export const addToCart = (options = {}) => {
   if (APP_URL != 'https://www.creatorpod.app/') return
   if (window.fbq)

@@ -14,9 +14,26 @@ import { hotjar } from 'react-hotjar'
 const marked = require('marked')
 import { wrapper } from '../redux/store'
 import { changeLocale } from '../redux/session/action'
+import * as pixels from '../src/utils/pixels'
 
 function MyApp({ Component, pageProps, locale, changeLocale }) {
   const router = useRouter()
+
+  React.useEffect(() => {
+    const handleRouteChange = url => {
+      console.log(url)
+      pixels.pageview(url)
+    }
+    //When the component is mounted, subscribe to router changes
+    //and log those page views
+    router.events.on('routeChangeComplete', handleRouteChange)
+
+    // If the component is unmounted, unsubscribe
+    // from the event with the `off` method
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
 
   React.useEffect(() => {
     if (router.locale != locale) changeLocale(router.locale)
