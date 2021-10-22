@@ -36,12 +36,12 @@ const Integrations = props => {
       title: '',
     },
     {
-      logo: '/images/logos/instagram.png',
+      logo: '/images/logos/Instagram.png',
       name: 'Instagram',
       title: '',
     },
     {
-      logo: '/images/logos/tiktok.png',
+      logo: '/images/logos/Tiktok.png',
       name: 'Tik Tok',
       title: '',
     },
@@ -56,7 +56,7 @@ const Integrations = props => {
       title: '',
     },
     {
-      logo: '/images/logos/amazon.png',
+      logo: '/images/logos/Amazon.png',
       name: 'Amazon',
       title: '',
     },

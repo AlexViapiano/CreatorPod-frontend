@@ -30,8 +30,8 @@ const Features = props => {
   return (
     <div className={clsx(classes.root, className)} data-aos="fade-up" {...rest}>
       <SectionHeader
-        title={<span>How Does It Work?</span>}
-        subtitle="Companies from across the globe have had fantastic experiences using TheFront."
+        title={<span>How It Work?</span>}
+        //subtitle="Companies from across the globe have had fantastic experiences using TheFront."
         // ctaGroup={[
         //   <Button variant="outlined" size={isMd ? 'large' : 'medium'} color="secondary">
         //     See all integrations
@@ -53,10 +53,8 @@ const Features = props => {
           <CardBase liftUp variant="outlined" align="left">
             <PostAddIcon />
             <DescriptionListIcon
-              title={'Create Job Post'}
-              subtitle={
-                'Create a job Post that so the creator knows your product/service, goals, type of content and advertising style.'
-              }
+              title={'CREATE POST'}
+              subtitle={`Let creators know what your looking for find out who's interested`}
               align="left"
             />
             <div style={{ flexGrow: 1 }} />
@@ -75,10 +73,8 @@ const Features = props => {
           <CardBase liftUp variant="outlined" align="left">
             <SearchIcon />
             <DescriptionListIcon
-              title={`Find Out Who's Interested`}
-              subtitle={
-                'Our creators will view your posting and let you know if they are interested to work with you! Find a creator you want to work with? Invite them to view your posting.'
-              }
+              title={`SELECT CREATORS`}
+              subtitle={'Review and select a creator to get the job!'}
               align="left"
             />
             <div style={{ flexGrow: 1 }} />
@@ -97,10 +93,8 @@ const Features = props => {
           <CardBase liftUp variant="outlined" align="left">
             <PersonIcon />
             <DescriptionListIcon
-              title={'Pick Creators'}
-              subtitle={
-                'Go over the pool of creators profiles and pick which ones you want to work with based on their past work and fees.'
-              }
+              title={'RECEIVE CONTENT'}
+              subtitle={'Get fresh UGC video ads delivered to your inbox!'}
               align="left"
             />
             <div style={{ flexGrow: 1 }} />
