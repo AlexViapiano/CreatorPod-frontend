@@ -21,7 +21,6 @@ function MyApp({ Component, pageProps, locale, changeLocale }) {
 
   React.useEffect(() => {
     const handleRouteChange = url => {
-      console.log(url)
       pixels.pageview(url)
     }
     //When the component is mounted, subscribe to router changes

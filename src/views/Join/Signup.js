@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { SignupForm } from './components'
 import Image from 'next/image'
@@ -69,12 +69,13 @@ const Signup = props => {
     defaultMatches: true,
   })
 
+  const [leadTriggered, setLeadTriggered] = useState(false)
+
   useEffect(() => {
-    pixels.viewContent({
-      content_id: 'JoinWaitlist',
-      content_name: 'JoinWaitlist',
-      content_type: 'product',
-    })
+    if (!leadTriggered) {
+      pixels.lead()
+      setLeadTriggered(true)
+    }
   })
 
   return (

@@ -70,11 +70,7 @@ const Signup = props => {
   })
 
   // useEffect(() => {
-  //   pixels.viewContent({
-  //     content_id: 'JoinWaitlist',
-  //     content_name: 'JoinWaitlist',
-  //     content_type: 'product',
-  //   })
+  //   pixels.lead()
   // })
 
   return (

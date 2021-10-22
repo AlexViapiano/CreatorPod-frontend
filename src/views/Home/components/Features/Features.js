@@ -46,8 +46,8 @@ const Features = props => {
           alignItems="center"
           direction="column"
           xs={12}
-          sm={6}
-          md={3}
+          sm={4}
+          md={4}
           data-aos="fade-up"
         >
           <CardBase liftUp variant="outlined" align="left">
@@ -66,8 +66,8 @@ const Features = props => {
           alignItems="center"
           direction="column"
           xs={12}
-          sm={6}
-          md={3}
+          sm={4}
+          md={4}
           data-aos="fade-up"
         >
           <CardBase liftUp variant="outlined" align="left">
@@ -86,8 +86,8 @@ const Features = props => {
           alignItems="center"
           direction="column"
           xs={12}
-          sm={6}
-          md={3}
+          sm={4}
+          md={4}
           data-aos="fade-up"
         >
           <CardBase liftUp variant="outlined" align="left">
@@ -95,28 +95,6 @@ const Features = props => {
             <DescriptionListIcon
               title={'RECEIVE CONTENT'}
               subtitle={'Get fresh UGC video ads delivered to your inbox!'}
-              align="left"
-            />
-            <div style={{ flexGrow: 1 }} />
-          </CardBase>
-        </Grid>
-        <Grid
-          item
-          container
-          alignItems="center"
-          direction="column"
-          xs={12}
-          sm={6}
-          md={3}
-          data-aos="fade-up"
-        >
-          <CardBase liftUp variant="outlined" align="left">
-            <PlayIcon />
-            <DescriptionListIcon
-              title={'Get Videos'}
-              subtitle={
-                'Once chosen our creators will have your videos created within 72 hours! Want to request some last minute changes? Let the creator know and they’ll be happy to do so.'
-              }
               align="left"
             />
             <div style={{ flexGrow: 1 }} />
