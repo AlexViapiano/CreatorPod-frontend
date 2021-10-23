@@ -87,6 +87,12 @@ const useStyles = makeStyles(theme => ({
     boxShadow: `rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px`,
     borderRadius: 5,
   },
+  backgroundFade: {
+    background: `linear-gradient(0deg, rgba(246,255,245,1) 1%, rgba(255,255,247,1) 58%, rgba(255,255,255,1) 100%)`,
+  },
+  noPaddingBottom: {
+    paddingBottom: 0,
+  },
 }))
 
 const Service = () => {
@@ -109,17 +115,18 @@ const Service = () => {
           <About data={partners} />
         </Section>
       </div>
-      <Section>
+      <Section className={classes.noPaddingBottom}>
         <Integrations />
         <div className={classes.howItWorksContainer}>
           <Features data={customizations} />
         </div>
         <Advantages data={advantages} />
-        <Section>
-          <Divider />
-        </Section>
-        <VideoSection />
       </Section>
+      <div className={classes.backgroundFade}>
+        <Section>
+          <VideoSection />
+        </Section>
+      </div>
     </div>
   )
 }
