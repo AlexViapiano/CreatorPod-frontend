@@ -73,11 +73,19 @@ const useStyles = makeStyles(theme => ({
       },
     },
   },
-  background: {
+  backgroundAnimation: {
     //backgroundImage: `linear-gradient(117deg, rgb(255 231 253) 0%, rgb(223 233 255) 35%, rgb(243 255 245) 60%, rgb(252 255 225) 100%)`,
     background: `linear-gradient(90deg, rgba(255,228,228,1) 0%, rgba(198,220,255,1) 15%, rgba(235,255,220,1) 33%, rgba(255,252,227,1) 51%, rgba(254,233,255,1) 68%, rgba(215,217,255,1) 85%, rgba(255,228,228,1) 100%)`,
     backgroundSize: `400% 400%`,
     animation: `gradient 15s ease infinite`,
+  },
+  howItWorksContainer: {
+    background:
+      'linear-gradient(130deg, rgba(249,253,255,1) 0%, rgba(252,251,249,1) 49%, rgba(252,251,249,1) 50%, rgba(248,246,242,1) 100%)',
+    padding: 40,
+    margin: '80px 0px',
+    boxShadow: `rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px`,
+    borderRadius: 5,
   },
 }))
 
@@ -96,20 +104,16 @@ const Service = () => {
 
   return (
     <div className={classes.root}>
-      <div className={classes.background}>
+      <div className={classes.backgroundAnimation}>
         <Section>
           <About data={partners} />
         </Section>
       </div>
       <Section>
         <Integrations />
-        <Section>
-          <Divider />
-        </Section>
-        <Features data={customizations} />
-        <Section>
-          <Divider />
-        </Section>
+        <div className={classes.howItWorksContainer}>
+          <Features data={customizations} />
+        </div>
         <Advantages data={advantages} />
         <Section>
           <Divider />

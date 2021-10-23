@@ -110,6 +110,17 @@ export default class MyDocument extends Document {
             }(document, 'script', 'facebook-jssdk'));`,
             }}
           ></script>
+
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `            
+              window.CHIPBOT_ID = 'act_-XhXN5mlCHBl';
+              window.CHIPBOT_DOMAIN_ID = 'dom_fWST3Q5rMp-p';
+              
+              !function(c,h,i,p,b,o,t){o=h.createElement(i),t=h.getElementsByTagName(i)[0],o.async=1,o.src="https://static.getchipbot.com/edge/p/chipbot.js",t.parentNode.insertBefore(o,t)}(window,document,"script");
+             `,
+            }}
+          ></script>
         </Head>
         <body>
           <Main />

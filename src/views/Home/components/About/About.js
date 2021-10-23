@@ -16,6 +16,20 @@ const useStyles = makeStyles(theme => ({
   typed: {
     fontWeight: 600,
   },
+  image: {
+    boxShadow: `rgb(0 0 0 / 35%) 0px 5px 15px`,
+    borderRadius: 30,
+  },
+  cta: {
+    width: 250,
+    height: 50,
+    borderRadius: 50,
+    transition: 'all .2s ease-in-out',
+    '&:hover': {
+      transform: 'scale(1.10)',
+      transition: 'all .2s ease-in-out',
+    },
+  },
 }))
 
 const About = props => {
@@ -29,7 +43,7 @@ const About = props => {
 
   return (
     <div className={clsx(classes.root, className)} data-aos="fade-up" {...rest}>
-      <Grid container justify="center" alignItems="center" spacing={isMd ? 4 : 0}>
+      <Grid container justify="center" alignItems="center" spacing={4}>
         <Grid item xs={12} md={6} data-aos={'fade-up'}>
           <Grid container spacing={2} alignItems="flex-start">
             <Grid item xs={12}>
@@ -49,8 +63,8 @@ const About = props => {
                           'Influencers Posts',
                           'A new company face',
                         ],
-                        typeSpeed: 75,
-                        backDelay: 1000,
+                        typeSpeed: 100,
+                        backDelay: 1500,
                         backSpeed: 0,
                         loop: true,
                       }}
@@ -61,7 +75,12 @@ const About = props => {
                 // subtitle="Looking for UGC videos or picture to use as Ads or Post? Look no further! Our network of creators are ready to create custom content for your company!"
                 ctaGroup={[
                   <Link href="/signup">
-                    <Button variant="contained" color="primary" size={isMd ? 'large' : 'medium'}>
+                    <Button
+                      className={classes.cta}
+                      variant="contained"
+                      color="primary"
+                      size={'large'}
+                    >
                       Find a Creator
                     </Button>
                   </Link>,
@@ -78,7 +97,7 @@ const About = props => {
           </Grid>
         </Grid>
         <Grid item container justify="center" xs={12} md={6} data-aos={'fade-up'}>
-          <Image src="/images/photos/phone2.png" alt="Dashboard" />
+          <Image src="/images/photos/phone2.png" alt="Dashboard" className={classes.image} />
         </Grid>
       </Grid>
     </div>
