@@ -99,14 +99,17 @@ const Main = props => {
   const handleSidebarClose = () => {
     setOpenSidebar(false)
   }
-
   const breadcrumbs = Breadcrumbs()
   return (
     <div>
       <Navbar onSidebarOpen={handleSidebarOpen} />
       <Sidebar onClose={handleSidebarClose} open={openSidebar} variant="temporary" />
       <main>
-        {router.route != '/' && <div className={classes.breadcrumbs}>{breadcrumbs}</div>}
+        {router.route != '/' &&
+          router.route != '/join' &&
+          router.route != '/register' &&
+          router.route != '/signup' &&
+          router.route != '/login' && <div className={classes.breadcrumbs}>{breadcrumbs}</div>}
         <span className={classes.pageSize}>{children}</span>
       </main>
       <CookiesConsent />
