@@ -136,7 +136,8 @@ const Signup = props => {
                 : '/images/hero/cover-2.jpg'
             }
             alt="Signup"
-            loading="lazy"
+            // loading="lazy"
+            priority={true}
             layout="fill"
             objectFit="cover"
           />

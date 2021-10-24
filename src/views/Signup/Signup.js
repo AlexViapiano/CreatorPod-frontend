@@ -69,7 +69,8 @@ const Signup = props => {
             className={classes.image}
             src="/images/hero/cover-2.jpg"
             alt="Signup"
-            loading="lazy"
+            priority={true}
+            // loading="lazy"
             layout="fill"
             objectFit="cover"
           />

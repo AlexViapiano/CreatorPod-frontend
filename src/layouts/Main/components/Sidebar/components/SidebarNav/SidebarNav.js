@@ -29,6 +29,8 @@ import {
   ShoppingBasket,
   RateReview,
   EmojiPeople,
+  ListAlt,
+  HeadsetMic,
 } from '@material-ui/icons'
 
 const useStyles = makeStyles(theme => ({
@@ -47,8 +49,8 @@ const useStyles = makeStyles(theme => ({
   },
   topSection: {
     background: 'rgb(213,237,132)',
-    background: 'linear-gradient(45deg, #c1e0ff 0%, #a6a9ff 100%)',
-    minHeight: 150,
+    background: 'linear-gradient(45deg, #c1e0ff 0%, #ffffff 100%)',
+    minHeight: 100,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -142,7 +144,16 @@ const SidebarNav = props => {
     <>
       <div className={classes.topSection}>
         {user && Object.keys(user).length === 0 ? (
-          <div></div>
+          <div>
+            <Image
+              className={classes.image}
+              src="/images/photos/symbol.png"
+              alt="Symbol"
+              loading="lazy"
+              width={96}
+              height={96}
+            />
+          </div>
         ) : (
           <>
             <Avatar
@@ -188,7 +199,27 @@ const SidebarNav = props => {
             </ListItem>
           </a>
         </Link>
-        {user && Object.keys(user).length === 0 ? (
+        <Link href={'/contact'}>
+          <a>
+            <ListItem button>
+              <ListItemIcon>
+                <HeadsetMic className={classes.buttonIcon} />
+              </ListItemIcon>
+              <ListItemText primary={'Contact Us'} />
+            </ListItem>
+          </a>
+        </Link>
+        <Link href={'/faq'}>
+          <a>
+            <ListItem button>
+              <ListItemIcon>
+                <ListAlt className={classes.buttonIcon} />
+              </ListItemIcon>
+              <ListItemText primary={'FAQ'} />
+            </ListItem>
+          </a>
+        </Link>
+        {/* {user && Object.keys(user).length === 0 ? (
           <>
             <Link href="/signup">
               <a>
@@ -239,17 +270,6 @@ const SidebarNav = props => {
                   </a>
                 </Link>
 
-                {/* <Link href="/account/productReviews">
-                  <a>
-                    <ListItem button>
-                      <ListItemIcon>
-                        <RateReview />
-                      </ListItemIcon>
-                      <ListItemText primary={'reviews'} />
-                    </ListItem>
-                  </a>
-                </Link> */}
-
                 <ListItem onClick={() => onClickLogout()} button>
                   <ListItemIcon>
                     <ExitToApp />
@@ -259,7 +279,7 @@ const SidebarNav = props => {
               </List>
             </Collapse>
           </>
-        )}
+        )} */}
       </List>
     </>
   )

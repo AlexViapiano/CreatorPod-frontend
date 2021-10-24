@@ -16,6 +16,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('xs')]: {
       height: 200,
     },
+    background: `linear-gradient(138deg, rgb(249, 255, 245) 1%, rgb(240, 255, 255) 21%, rgb(243, 244, 255) 48%, rgb(251, 245, 255) 76%, rgb(255, 249, 254) 100%)`,
   },
   image: {
     height: 400,
@@ -43,14 +44,6 @@ const Hero = props => {
 
   return (
     <div className={clsx(classes.root, className)} {...rest}>
-      <Image
-        className={classes.image}
-        src="/images/hero/hero-generic.jpg"
-        alt="About"
-        loading="lazy"
-        layout="fill"
-        objectFit="cover"
-      />
       <Section className={classes.section}>
         <SectionHeader
           title={'About Us'}

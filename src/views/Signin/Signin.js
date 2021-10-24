@@ -79,7 +79,8 @@ const Signin = props => {
             className={classes.image}
             src="/images/hero/cover-1.jpg"
             alt="Signin"
-            loading="lazy"
+            // loading="lazy"
+            priority={true}
             layout="fill"
             objectFit="cover"
           />

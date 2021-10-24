@@ -535,10 +535,10 @@ const Navbar = props => {
             </Link>
           </div>
         </div>
-        {/* <IconButton onClick={onSidebarOpen}>
+        <IconButton onClick={onSidebarOpen}>
           <MenuIcon />
-        </IconButton> */}
-        <Link href={'/become-creator'}>
+        </IconButton>
+        {/* <Link href={'/become-creator'}>
           <a>
             <Button variant="outlined" size="small">
               <Typography color="textSecondary" className={classes.listItemText}>
@@ -546,7 +546,7 @@ const Navbar = props => {
               </Typography>
             </Button>
           </a>
-        </Link>
+        </Link> */}
       </Toolbar>
     </AppBar>
   )
