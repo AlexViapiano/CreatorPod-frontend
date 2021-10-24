@@ -83,7 +83,7 @@ const useStyles = makeStyles(theme => ({
   socialIcon: {
     padding: 0,
     marginRight: theme.spacing(1),
-    color: 'rgba(255,255,255,.6)',
+    color: 'rgba(255,255,255,.8)',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -280,7 +280,7 @@ const Footer = props => {
             </ListItem>
             <ListItem disableGutters className={classes.socialIconContainer}>
               <a
-                href="https://www.facebook.com/"
+                href="https://www.facebook.com/creatorpodoffficial"
                 className={classes.socialIcon}
                 target="_blank"
                 rel="noopener"
@@ -288,7 +288,7 @@ const Footer = props => {
                 <FacebookIcon className={classes.icon} />
               </a>
               <a
-                href="https://www.instagram.com/"
+                href="https://www.instagram.com/creatorpodoffficial"
                 className={classes.socialIcon}
                 target="_blank"
                 rel="noopener"
