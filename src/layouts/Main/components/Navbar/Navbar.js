@@ -447,6 +447,28 @@ const Navbar = props => {
 
             <List className={classes.iconsContainer}>
               <ListItem className={classes.listItemButton}>
+                <Link href={'/howItWorks'}>
+                  <a>
+                    <Button>
+                      <Typography color="textSecondary" className={classes.listItemText}>
+                        How It Works
+                      </Typography>
+                    </Button>
+                  </a>
+                </Link>
+              </ListItem>
+              <ListItem className={classes.listItemButton}>
+                <Link href={'/pricing'}>
+                  <a>
+                    <Button>
+                      <Typography color="textSecondary" className={classes.listItemText}>
+                        Pricing
+                      </Typography>
+                    </Button>
+                  </a>
+                </Link>
+              </ListItem>
+              <ListItem className={classes.listItemButton}>
                 <Link href={'/become-creator'}>
                   <a>
                     <Button>

@@ -31,6 +31,8 @@ import {
   EmojiPeople,
   ListAlt,
   HeadsetMic,
+  LocalOffer,
+  Help,
 } from '@material-ui/icons'
 
 const useStyles = makeStyles(theme => ({
@@ -189,6 +191,26 @@ const SidebarNav = props => {
         )}
       </div>
       <List {...rest} className={clsx(classes.root, className)}>
+        <Link href={'/howItWorks'}>
+          <a>
+            <ListItem button>
+              <ListItemIcon>
+                <Help className={classes.buttonIcon} />
+              </ListItemIcon>
+              <ListItemText primary={'How It Works'} />
+            </ListItem>
+          </a>
+        </Link>
+        <Link href={'/pricing'}>
+          <a>
+            <ListItem button>
+              <ListItemIcon>
+                <LocalOffer className={classes.buttonIcon} />
+              </ListItemIcon>
+              <ListItemText primary={'Pricing'} />
+            </ListItem>
+          </a>
+        </Link>
         <Link href={'/become-creator'}>
           <a>
             <ListItem button>
