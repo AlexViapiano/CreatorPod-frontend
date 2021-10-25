@@ -65,7 +65,7 @@ const Integrations = props => {
   return (
     <div className={clsx(classes.root, className)} data-aos="fade-up" {...rest}>
       <SectionHeader
-        title="Boot Sales with UGC"
+        title="Boost Sales with UGC"
         subtitle={
           <div className={classes.subtitleContainer}>
             <div className={classes.subtitle}>
@@ -74,6 +74,7 @@ const Integrations = props => {
             </div>
           </div>
         }
+        titleVariant="h3"
         fadeUp
       />
       <Grid container spacing={4}>
