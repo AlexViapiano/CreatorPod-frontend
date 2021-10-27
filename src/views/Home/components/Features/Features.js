@@ -11,14 +11,14 @@ import SearchIcon from '@material-ui/icons/Search'
 import PersonIcon from '@material-ui/icons/Person'
 import PlayIcon from '@material-ui/icons/PlayArrow'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {},
   learnMoreLink: {
     marginTop: theme.spacing(2),
   },
 }))
 
-const Features = props => {
+const Features = (props) => {
   const { data, className, ...rest } = props
   const classes = useStyles()
 
@@ -30,7 +30,7 @@ const Features = props => {
   return (
     <div className={clsx(classes.root, className)} data-aos="fade-up" {...rest}>
       <SectionHeader
-        title={<span>How It Work?</span>}
+        title={<span>How does CreatorPod work?</span>}
         //subtitle="Companies from across the globe have had fantastic experiences using TheFront."
         // ctaGroup={[
         //   <Button variant="outlined" size={isMd ? 'large' : 'medium'} color="secondary">

@@ -23,7 +23,7 @@ import {
   Avatar,
 } from '@material-ui/core'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: -1,
     boxShadow: 'none',
@@ -331,7 +331,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Navbar = props => {
+const Navbar = (props) => {
   const {
     user,
     className,
@@ -360,9 +360,9 @@ const Navbar = props => {
     setOpenedPopoverId(null)
   }
 
-  const onClickAccount = view => {
+  const onClickAccount = (view) => {
     if (view == 'subscription' && user?.id && stripeCustomer) {
-      createBillingPortalSession(user.id).then(res => {
+      createBillingPortalSession(user.id).then((res) => {
         var url = res.url.replace('http:', '').replace('https:', '')
         if (!res.error) router.push(url)
       })
@@ -446,7 +446,7 @@ const Navbar = props => {
             </div>
 
             <List className={classes.iconsContainer}>
-              <ListItem className={classes.listItemButton}>
+              {/* <ListItem className={classes.listItemButton}>
                 <Link href={'/howItWorks'}>
                   <a>
                     <Button>
@@ -456,7 +456,7 @@ const Navbar = props => {
                     </Button>
                   </a>
                 </Link>
-              </ListItem>
+              </ListItem> */}
               <ListItem className={classes.listItemButton}>
                 <Link href={'/pricing'}>
                   <a>
@@ -574,17 +574,17 @@ const Navbar = props => {
   )
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   user: state.session?.user,
   stripeCustomer: state.session.stripeCustomer,
   subscriptions: state.session.subscriptions,
 })
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   logout: () => {
     return dispatch(logout())
   },
-  createBillingPortalSession: userId => {
+  createBillingPortalSession: (userId) => {
     return dispatch(createBillingPortalSession(userId))
   },
 })
