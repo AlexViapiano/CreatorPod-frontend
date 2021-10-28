@@ -628,7 +628,7 @@ export const setUTM = (utm_source, utm_medium, utm_campaign) => {
   }
 }
 
-export const joinWaitlist = (endpoint, creds) => {
+export const joinWaitlist = (endpoint, creds, video) => {
   return dispatch => {
     dispatch({ type: actionTypes.REQUEST_SIGNUP })
     var loginInfo = {
@@ -638,6 +638,8 @@ export const joinWaitlist = (endpoint, creds) => {
       phone_number: creds.phone_number,
       company: creds.company,
       website: creds.website,
+      city: creds.city,
+      handles: creds.handles,
     }
     return fetch(`${API_URL}/${endpoint}`, {
       method: 'POST',
@@ -651,6 +653,7 @@ export const joinWaitlist = (endpoint, creds) => {
             type: actionTypes.RECIEVE_SIGNUP,
             payload: { res },
           })
+          if (video) dispatch(uploadVideo(res.id, video))
         }
         return res
       })
@@ -658,6 +661,40 @@ export const joinWaitlist = (endpoint, creds) => {
         console.error('err', err)
         return err
       })
+  }
+}
+
+export const uploadVideo = (creatorId, video) => {
+  return dispatch => {
+    dispatch({ type: actionTypes.REQUEST_UPLOAD })
+
+    const data = new FormData()
+    data.append('files', video)
+
+    var jwt = JSON.parse(localStorage.getItem('jwt'))
+    var token = 'Bearer ' + jwt
+    return axios({
+      method: 'POST',
+      url: `${API_URL}/upload`,
+      data,
+      // headers: {
+      //   Authorization: token,
+      // },
+    }).then(res => {
+      console.log(res)
+      axios
+        .put(`${API_URL}/creators/${creatorId}`, { video: res.data[0].id })
+        .then(response => {
+          dispatch({
+            type: actionTypes.RECIEVE_UPLOAD,
+          })
+        })
+        .catch(error => {
+          console.error(error)
+        })
+
+      return res
+    })
   }
 }
 

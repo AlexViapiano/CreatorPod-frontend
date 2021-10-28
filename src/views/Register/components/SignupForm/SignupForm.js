@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import { makeStyles } from '@material-ui/core/styles'
-import { Typography, Grid, Button, TextField } from '@material-ui/core'
+import { Typography, Grid, Button, TextField, InputLabel } from '@material-ui/core'
 import validate from 'validate.js'
 import { connect } from 'react-redux'
 import { joinWaitlist } from '../../../../../redux/session/action'
@@ -51,6 +51,18 @@ const schema = {
       minimum: 6,
     },
   },
+  city: {
+    presence: { allowEmpty: false, message: 'is required' },
+    length: {
+      minimum: 3,
+    },
+  },
+  handles: {
+    presence: { allowEmpty: false, message: 'is required' },
+    length: {
+      minimum: 3,
+    },
+  },
 }
 
 const SignupForm = ({ joinWaitlist, setSuccess }) => {
@@ -58,6 +70,7 @@ const SignupForm = ({ joinWaitlist, setSuccess }) => {
   const classes = useStyles()
   // const [isVerified, setIsVerified] = useState(false)
   const [error, setError] = useState(null)
+  const [video, setVideo] = useState({ preview: '', raw: '' })
 
   const [formState, setFormState] = React.useState({
     isValid: false,
@@ -98,7 +111,7 @@ const SignupForm = ({ joinWaitlist, setSuccess }) => {
 
     if (formState.isValid) {
       pixels.completeRegistration()
-      joinWaitlist('creators', formState.values).then(res => {
+      joinWaitlist('creators', formState.values, video.raw).then(res => {
         if (!res.error) {
           setSuccess(true)
           //router.push('/')
@@ -119,10 +132,34 @@ const SignupForm = ({ joinWaitlist, setSuccess }) => {
 
   const hasError = field => (formState.touched[field] && formState.errors[field] ? true : false)
 
+  const handleUpload = e => {
+    if (e.target.files.length) {
+      setVideo({
+        preview: URL.createObjectURL(e.target.files[0]),
+        raw: e.target.files[0],
+      })
+    }
+  }
+
   return (
     <div className={classes.root}>
       <form name="password-reset-form" method="post" onSubmit={handleSubmit}>
         <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <TextField
+              placeholder={'E-mail'}
+              label={'E-mail'}
+              variant="outlined"
+              size="medium"
+              name="email"
+              fullWidth
+              helperText={hasError('email') ? formState.errors.email[0] : null}
+              error={hasError('email')}
+              onChange={handleChange}
+              type="email"
+              value={formState.values.email || ''}
+            />
+          </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
               placeholder={'First name'}
@@ -155,21 +192,6 @@ const SignupForm = ({ joinWaitlist, setSuccess }) => {
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
-              placeholder={'E-mail'}
-              label={'E-mail'}
-              variant="outlined"
-              size="medium"
-              name="email"
-              fullWidth
-              helperText={hasError('email') ? formState.errors.email[0] : null}
-              error={hasError('email')}
-              onChange={handleChange}
-              type="email"
-              value={formState.values.email || ''}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
               placeholder={'Phone #'}
               label={'Phone #'}
               variant="outlined"
@@ -183,6 +205,56 @@ const SignupForm = ({ joinWaitlist, setSuccess }) => {
               value={formState.values.phone_number || ''}
             />
           </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              placeholder={'City'}
+              label={'City'}
+              variant="outlined"
+              size="medium"
+              name="city"
+              fullWidth
+              helperText={hasError('city') ? formState.errors.city[0] : null}
+              error={hasError('city')}
+              onChange={handleChange}
+              type="city"
+              value={formState.values.city || ''}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              placeholder={'Social Media Handles'}
+              label={'Social Media Handles'}
+              variant="outlined"
+              size="medium"
+              name="handles"
+              fullWidth
+              helperText={hasError('handles') ? formState.errors.handles[0] : null}
+              error={hasError('handles')}
+              onChange={handleChange}
+              type="handles"
+              value={formState.values.handles || ''}
+              helperText="Ex: TikTok - @Johndoe; Instagram - @Johndoe"
+              multiline
+              rows={2}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <InputLabel>Video Example</InputLabel>
+          </Grid>
+          <Grid item xs={12}>
+            <div size="large" variant={video?.raw?.name ? null : 'outlined'} type="submit">
+              <label htmlFor="upload-button">
+                {video?.raw?.name ? video?.raw?.name : 'Upload'}
+              </label>
+            </div>
+
+            <input
+              type="file"
+              id="upload-button"
+              style={{ display: 'none' }}
+              onChange={handleUpload}
+            ></input>
+          </Grid>
 
           {error && (
             <Grid align="center" item xs={12}>
@@ -193,7 +265,6 @@ const SignupForm = ({ joinWaitlist, setSuccess }) => {
               </Typography>
             </Grid>
           )}
-
           <Grid item xs={12}>
             <Button size="large" variant="contained" type="submit" color="primary" fullWidth>
               Join Waitlist
@@ -219,8 +290,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  joinWaitlist: (endpoint, creds) => {
-    return dispatch(joinWaitlist(endpoint, creds))
+  joinWaitlist: (endpoint, creds, video) => {
+    return dispatch(joinWaitlist(endpoint, creds, video))
   },
 })
 

@@ -16,6 +16,10 @@ const useStyles = makeStyles(theme => ({
   typed: {
     fontWeight: 600,
   },
+  image: {
+    boxShadow: `rgb(0 0 0 / 35%) 0px 5px 15px`,
+    borderRadius: 30,
+  },
 }))
 
 const About = props => {
@@ -60,7 +64,16 @@ const About = props => {
           </Grid>
         </Grid>
         <Grid item container justify="center" xs={12} md={6} data-aos={'fade-up'}>
-          <Image src="/images/photos/phone1.png" alt="Dashboard" />
+          {/* <Image src="/images/photos/phone1.png" alt="Dashboard" /> */}
+          <video
+            className={classes.image}
+            autoPlay
+            muted
+            loop
+            style={{ width: '300px', height: '533px' }}
+          >
+            <source src="/images/video/home.mp4" />
+          </video>
         </Grid>
       </Grid>
     </div>

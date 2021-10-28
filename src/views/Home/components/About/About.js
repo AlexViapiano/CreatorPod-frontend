@@ -97,7 +97,15 @@ const About = props => {
           </Grid>
         </Grid>
         <Grid item container justify="center" xs={12} md={6} data-aos={'fade-up'}>
-          <Image src="/images/photos/phone2.png" alt="Dashboard" className={classes.image} />
+          <video
+            className={classes.image}
+            autoPlay
+            muted
+            loop
+            style={{ width: '300px', height: '533px' }}
+          >
+            <source src="/images/video/home.mp4" />
+          </video>
         </Grid>
       </Grid>
     </div>
