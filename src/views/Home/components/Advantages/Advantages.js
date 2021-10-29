@@ -6,12 +6,23 @@ import { useMediaQuery } from '@material-ui/core'
 import { Grid, colors } from '@material-ui/core'
 import { SectionHeader } from 'components/molecules'
 import { CardBase, DescriptionListIcon } from 'components/organisms'
+import Image from 'next/image'
+// import PostAddIcon from '@material-ui/icons/PostAdd'
+// import SearchIcon from '@material-ui/icons/Search'
+// import PersonIcon from '@material-ui/icons/Person'
+// import PlayIcon from '@material-ui/icons/PlayArrow'
 
 const useStyles = makeStyles(theme => ({
   root: {},
   learnMoreLink: {
     marginTop: theme.spacing(2),
     color: theme.palette.secondary.main,
+  },
+  image: {
+    boxShadow: `rgb(0 0 0 / 35%) 0px 5px 15px`,
+    borderRadius: 30,
+    width: 225,
+    height: 400,
   },
 }))
 
@@ -24,148 +35,60 @@ const Advantages = props => {
     defaultMatches: true,
   })
 
-  const advantages = [
-    {
-      title: 'Build Recurring Revenue',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      icon: 'fas fa-money-bill-wave',
-    },
-    {
-      title: 'Competitive Differentation',
-      description:
-        'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      icon: 'fas fa-trophy',
-    },
-    {
-      title: 'Keep Your Clients Loyal',
-      description:
-        'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-      icon: 'fas fa-heart',
-    },
-    {
-      title: 'Automated Sales Process',
-      description:
-        'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      icon: 'fas fa-cog',
-    },
-  ]
-
   return (
     <div className={clsx(classes.root, className)} data-aos="fade-up" {...rest}>
       <SectionHeader
-        title={<span>What type of content can our creators promote?</span>}
+        title={<span>What type of content can our creators provide?</span>}
         subtitle="Everything... apparel, apps, consumer electronics, cosmetics, food, luxury, etc."
         fadeUp
       />
-      <Grid container spacing={isLg ? 10 : 2}>
-        <Grid
-          item
-          container
-          alignItems="center"
-          direction="column"
-          xs={12}
-          sm={6}
-          data-aos="fade-up"
-        >
-          <CardBase liftUp variant="outlined">
+      <Grid container justify="space-between" alignItems="center" spacing={5}>
+        <Grid container justify="center" alignItems="center" xs={12} sm={6}>
+          <div className={classes.image}>
+            <Image src="/images/photos/phone2.png" loading="lazy" width="225" height="400" />
+          </div>
+        </Grid>
+        <Grid container xs={12} sm={6} spacing={2}>
+          <Grid item container alignItems="center" direction="column" xs={12} data-aos="fade-up">
             <DescriptionListIcon
+              align="left"
+              // icon={<PostAddIcon />}
               title={'Product Unboxing'}
               subtitle={
                 'Send your product to our creators and they will create an authentic Unboxing video to show the world the great products you sell!'
               }
             />
-          </CardBase>
-        </Grid>
-        <Grid
-          item
-          container
-          alignItems="center"
-          direction="column"
-          xs={12}
-          sm={6}
-          data-aos="fade-up"
-        >
-          <CardBase liftUp variant="outlined">
+          </Grid>
+          <Grid item container alignItems="center" direction="column" xs={12} data-aos="fade-up">
             <DescriptionListIcon
-              title={'Product Recommendations'}
+              align="left"
+              // icon={<SearchIcon />}
+              title={'Product Demo'}
               subtitle={
                 'Our creators can give amazing videos on why your product/service is a great option and why people should buy it asap!'
               }
             />
-          </CardBase>
-        </Grid>
-        <Grid
-          item
-          container
-          alignItems="center"
-          direction="column"
-          xs={12}
-          sm={6}
-          data-aos="fade-up"
-        >
-          <CardBase liftUp variant="outlined">
+          </Grid>
+          <Grid item container alignItems="center" direction="column" xs={12} data-aos="fade-up">
+            <Grid container direction="row" noWrap>
+              <PlayIcon />
+              <DescriptionListIcon
+                align="left"
+                title={'Software Walkthrough'}
+                subtitle={
+                  'Sell more technical products such as SaaS services? Our creators can perform very quick walkthroughs on the highlights of your software for the world to see!'
+                }
+              />
+            </Grid>
+          </Grid>
+          <Grid item container alignItems="center" direction="column" xs={12} data-aos="fade-up">
             <DescriptionListIcon
-              title={'Short Skits'}
-              subtitle={
-                'Some of our creators love to get creative and make a short comedy script relating to your Prodcut!.'
-              }
+              align="left"
+              // icon={<PersonIcon />}
+              title={'Testimonials'}
+              subtitle={'BLAH BLAH BLAH BLAH BLAH'}
             />
-          </CardBase>
-        </Grid>
-        <Grid
-          item
-          container
-          alignItems="center"
-          direction="column"
-          xs={12}
-          sm={6}
-          data-aos="fade-up"
-        >
-          <CardBase liftUp variant="outlined">
-            <DescriptionListIcon
-              title={'Software Walkthrough'}
-              subtitle={
-                'Sell more technical products such as SaaS services? Our creators can perform very quick walkthroughs on the highlights of your software for the world to see!'
-              }
-            />
-          </CardBase>
-        </Grid>
-        <Grid
-          item
-          container
-          alignItems="center"
-          direction="column"
-          xs={12}
-          sm={6}
-          data-aos="fade-up"
-        >
-          <CardBase liftUp variant="outlined">
-            <DescriptionListIcon
-              title={'Mobile Games'}
-              subtitle={
-                'Everyone loves to play games and our Creators are no different. Our creators can walkthrough your mobile game showing everyone how much fun they are having!'
-              }
-            />
-          </CardBase>
-        </Grid>
-        <Grid
-          item
-          container
-          alignItems="center"
-          direction="column"
-          xs={12}
-          sm={6}
-          data-aos="fade-up"
-        >
-          <CardBase liftUp variant="outlined">
-            <DescriptionListIcon
-              title={'Product Unboxing'}
-              subtitle={
-                'Send your product to our creators and they will create an authentic Unboxing video to show the world the great products you sell!'
-              }
-            />
-          </CardBase>
+          </Grid>
         </Grid>
       </Grid>
     </div>

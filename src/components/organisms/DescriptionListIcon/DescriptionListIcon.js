@@ -43,7 +43,7 @@ const DescriptionListIcon = props => {
   return (
     <Grid
       container
-      spacing={2}
+      spacing={1}
       {...rest}
       className={clsx('description-list-icon', classes.root, className)}
     >

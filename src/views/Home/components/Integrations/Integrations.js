@@ -42,7 +42,7 @@ const Integrations = props => {
     },
     {
       logo: '/images/logos/Tiktok.png',
-      name: 'Tik Tok',
+      name: 'TikTok',
       title: '',
     },
     {
@@ -52,7 +52,7 @@ const Integrations = props => {
     },
     {
       logo: '/images/logos/snapchat.png',
-      name: 'Snap Chat',
+      name: 'Snapchat',
       title: '',
     },
     {

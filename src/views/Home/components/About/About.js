@@ -44,7 +44,7 @@ const About = props => {
   return (
     <div className={clsx(classes.root, className)} data-aos="fade-up" {...rest}>
       <Grid container justify="center" alignItems="center" spacing={4}>
-        <Grid item xs={12} md={6} data-aos={'fade-up'}>
+        <Grid item xs={12} sm={6} data-aos={'fade-up'}>
           <Grid container spacing={2} alignItems="flex-start">
             <Grid item xs={12}>
               <SectionHeader
@@ -96,7 +96,7 @@ const About = props => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item container justify="center" xs={12} md={6} data-aos={'fade-up'}>
+        <Grid item container justify="center" xs={12} sm={6} data-aos={'fade-up'}>
           <video
             className={classes.image}
             autoPlay

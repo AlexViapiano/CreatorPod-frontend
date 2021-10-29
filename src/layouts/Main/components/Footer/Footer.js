@@ -280,7 +280,7 @@ const Footer = props => {
             </ListItem>
             <ListItem disableGutters className={classes.socialIconContainer}>
               <a
-                href="https://www.facebook.com/creatorpodoffficial"
+                href="https://www.facebook.com/creatorpodofficial"
                 className={classes.socialIcon}
                 target="_blank"
                 rel="noopener"
@@ -288,7 +288,7 @@ const Footer = props => {
                 <FacebookIcon className={classes.icon} />
               </a>
               <a
-                href="https://www.instagram.com/creatorpodoffficial"
+                href="https://www.instagram.com/creatorpodofficial/"
                 className={classes.socialIcon}
                 target="_blank"
                 rel="noopener"

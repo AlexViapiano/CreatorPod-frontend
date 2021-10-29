@@ -42,7 +42,7 @@ const Integrations = props => {
     },
     {
       logo: '/images/logos/tik-tok.png',
-      name: 'Tik Tok',
+      name: 'TikTok',
       title:
         'Sync any file store to Dropbox for automated sharing with people outside the company.',
     },
@@ -60,7 +60,7 @@ const Integrations = props => {
     },
     {
       logo: '/images/logos/snapchat.svg',
-      name: 'Snap Chat',
+      name: 'Snapchat',
       title:
         'Keep your entire team in sync with development and easily manage tasks, goals, and deadlines.',
     },

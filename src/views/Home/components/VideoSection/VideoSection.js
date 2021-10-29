@@ -4,9 +4,9 @@ import clsx from 'clsx'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { useMediaQuery } from '@material-ui/core'
 import { Grid, Button, colors } from '@material-ui/core'
-import { Image } from 'components/atoms'
 import { SectionHeader } from 'components/molecules'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -37,6 +37,12 @@ const useStyles = makeStyles(theme => ({
     boxShadow: '0 8px 21px 0 rgba(30,76,165,.2)',
     borderRadius: '100%',
   },
+  image: {
+    boxShadow: `rgb(0 0 0 / 35%) 0px 5px 15px`,
+    borderRadius: 30,
+    width: 225,
+    height: 400,
+  },
 }))
 
 const VideoSection = props => {
@@ -54,10 +60,15 @@ const VideoSection = props => {
         container
         justify="space-between"
         alignItems="center"
-        spacing={isMd ? 4 : 2}
+        spacing={isMd ? 5 : 2}
         direction="row-reverse"
       >
-        <Grid item xs={12} md={6} data-aos={'fade-up'}>
+        <Grid item container justify="center" xs={12} sm={6} data-aos={'fade-up'}>
+          <div className={classes.image}>
+            <Image src="/images/photos/phone1.png" loading="lazy" width="225" height="400" />
+          </div>
+        </Grid>
+        <Grid item xs={12} sm={6} data-aos={'fade-up'}>
           <Grid container alignItems="flex-start">
             <Grid item xs={12}>
               <SectionHeader
@@ -70,13 +81,10 @@ const VideoSection = props => {
                     </Button>
                   </Link>,
                 ]}
-                align={isMd ? 'left' : 'center'}
+                align={'center'}
               />
             </Grid>
           </Grid>
-        </Grid>
-        <Grid item container justify="center" xs={12} md={6} data-aos={'fade-up'}>
-          <Image src="/images/photos/phone1.png" alt="Dashboard" />
         </Grid>
       </Grid>
     </div>

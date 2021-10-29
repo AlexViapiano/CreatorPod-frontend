@@ -10,15 +10,16 @@ import PostAddIcon from '@material-ui/icons/PostAdd'
 import SearchIcon from '@material-ui/icons/Search'
 import PersonIcon from '@material-ui/icons/Person'
 import PlayIcon from '@material-ui/icons/PlayArrow'
+import Image from 'next/image'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {},
   learnMoreLink: {
     marginTop: theme.spacing(2),
   },
 }))
 
-const Features = (props) => {
+const Features = props => {
   const { data, className, ...rest } = props
   const classes = useStyles()
 
@@ -51,7 +52,16 @@ const Features = (props) => {
           data-aos="fade-up"
         >
           <CardBase liftUp variant="outlined" align="left">
-            <PostAddIcon />
+            <Grid container justify="center">
+              <Image
+                className={classes.image}
+                src="/images/photos/how1.png"
+                loading="lazy"
+                width="140"
+                height="100"
+              />
+            </Grid>
+
             <DescriptionListIcon
               title={'CREATE POST'}
               subtitle={`Let creators know what your looking for find out who's interested`}
@@ -71,7 +81,15 @@ const Features = (props) => {
           data-aos="fade-up"
         >
           <CardBase liftUp variant="outlined" align="left">
-            <SearchIcon />
+            <Grid container justify="center">
+              <Image
+                className={classes.image}
+                src="/images/photos/how2.png"
+                loading="lazy"
+                width="65"
+                height="100"
+              />
+            </Grid>
             <DescriptionListIcon
               title={`SELECT CREATORS`}
               subtitle={'Review and select a creator to get the job!'}
@@ -91,7 +109,15 @@ const Features = (props) => {
           data-aos="fade-up"
         >
           <CardBase liftUp variant="outlined" align="left">
-            <PersonIcon />
+            <Grid container justify="center">
+              <Image
+                className={classes.image}
+                src="/images/photos/how3.png"
+                loading="lazy"
+                width="140"
+                height="100"
+              />
+            </Grid>
             <DescriptionListIcon
               title={'RECEIVE CONTENT'}
               subtitle={'Get fresh UGC video ads delivered to your inbox!'}

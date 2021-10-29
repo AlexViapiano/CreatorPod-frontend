@@ -14,7 +14,7 @@ const HomePage = props => {
           name="description"
           content="The easiest way to find creators ready to work with your brand!"
         ></meta>
-        <meta name="keywords" content=""></meta>
+        <meta name="keywords" content="UGC,user generated content,social media marketing"></meta>
       </Head>
       <Main>
         <Home />
