@@ -195,7 +195,7 @@ const Footer = props => {
           pages: [
             {
               title: 'Become a Creator',
-              href: '/become-creator',
+              href: '/register',
             },
             {
               title: 'FAQ',

@@ -35,7 +35,7 @@ import {
   Help,
 } from '@material-ui/icons'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
@@ -126,13 +126,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const SidebarNav = (props) => {
+const SidebarNav = props => {
   const { user, logout, pages, onClose, className, ...rest } = props
   const classes = useStyles()
   const router = useRouter()
   const [accountOpen, setAccountOpen] = useState(false)
 
-  const navigate = (view) => {
+  const navigate = view => {
     router.push('/' + view, undefined, { shallow: true })
     onClose()
   }
@@ -211,7 +211,7 @@ const SidebarNav = (props) => {
             </ListItem>
           </a>
         </Link>
-        <Link href={'/become-creator'}>
+        <Link href={'/register'}>
           <a>
             <ListItem button>
               <ListItemIcon>
@@ -221,7 +221,7 @@ const SidebarNav = (props) => {
             </ListItem>
           </a>
         </Link>
-        <Link href={'/contact'}>
+        {/* <Link href={'/contact'}>
           <a>
             <ListItem button>
               <ListItemIcon>
@@ -230,7 +230,7 @@ const SidebarNav = (props) => {
               <ListItemText primary={'Contact Us'} />
             </ListItem>
           </a>
-        </Link>
+        </Link> */}
         <Link href={'/faq'}>
           <a>
             <ListItem button>
@@ -307,11 +307,11 @@ const SidebarNav = (props) => {
   )
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: state.session?.user,
 })
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   logout: () => {
     return dispatch(logout())
   },
