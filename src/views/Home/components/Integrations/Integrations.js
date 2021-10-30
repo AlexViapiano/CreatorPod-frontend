@@ -9,7 +9,11 @@ import { SectionHeader } from 'components/molecules'
 import { DescriptionListIcon } from 'components/organisms'
 
 const useStyles = makeStyles(theme => ({
-  root: {},
+  root: {
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+  },
   avatar: {
     width: 40,
     height: 40,
@@ -22,6 +26,9 @@ const useStyles = makeStyles(theme => ({
   },
   subtitle: {
     maxWidth: 650,
+  },
+  socialContainer: {
+    maxWidth: 1000,
   },
 }))
 
@@ -77,7 +84,7 @@ const Integrations = props => {
         titleVariant="h3"
         fadeUp
       />
-      <Grid container spacing={4}>
+      <Grid className={classes.socialContainer} container spacing={4}>
         {data.map((item, index) => (
           <Grid
             key={index}
