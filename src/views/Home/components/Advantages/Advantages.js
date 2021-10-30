@@ -71,9 +71,9 @@ const Advantages = props => {
           </Grid>
           <Grid item container alignItems="center" direction="column" xs={12} data-aos="fade-up">
             <Grid container direction="row" noWrap>
-              <PlayIcon />
               <DescriptionListIcon
                 align="left"
+                // icon={<PlayIcon />}
                 title={'Software Walkthrough'}
                 subtitle={
                   'Sell more technical products such as SaaS services? Our creators can perform very quick walkthroughs on the highlights of your software for the world to see!'

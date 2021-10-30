@@ -182,28 +182,24 @@ const Footer = props => {
       id: 'landing-pages',
       children: {
         web: {
-          groupTitle: 'Info',
+          groupTitle: "Let's chat",
           pages: [
             {
-              title: 'Contact Us',
-              href: '/contact',
-            },
-            {
-              title: 'FAQ',
-              href: '/faq',
+              title: 'hello@creatorpod.app',
+              href: 'hello@creatorpod.app',
             },
           ],
         },
         creator: {
-          groupTitle: 'Pages',
+          groupTitle: 'Join Us!',
           pages: [
-            {
-              title: 'About Us',
-              href: '/about',
-            },
             {
               title: 'Become a Creator',
               href: '/become-creator',
+            },
+            {
+              title: 'FAQ',
+              href: '/faq',
             },
           ],
         },
