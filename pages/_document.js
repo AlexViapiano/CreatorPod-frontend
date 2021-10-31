@@ -111,7 +111,7 @@ export default class MyDocument extends Document {
             }}
           ></script>
 
-          <script
+          {/* <script
             dangerouslySetInnerHTML={{
               __html: `            
               window.CHIPBOT_ID = 'act_-XhXN5mlCHBl';
@@ -120,7 +120,7 @@ export default class MyDocument extends Document {
               !function(c,h,i,p,b,o,t){o=h.createElement(i),t=h.getElementsByTagName(i)[0],o.async=1,o.src="https://static.getchipbot.com/edge/p/chipbot.js",t.parentNode.insertBefore(o,t)}(window,document,"script");
              `,
             }}
-          ></script>
+          ></script> */}
         </Head>
         <body>
           <Main />

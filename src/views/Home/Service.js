@@ -80,12 +80,12 @@ const useStyles = makeStyles(theme => ({
     animation: `gradient 15s ease infinite`,
   },
   howItWorksContainer: {
-    background:
-      'linear-gradient(130deg, rgba(249,253,255,1) 0%, rgba(252,251,249,1) 49%, rgba(252,251,249,1) 50%, rgba(248,246,242,1) 100%)',
+    // background:
+    //   'linear-gradient(130deg, rgba(249,253,255,1) 0%, rgba(252,251,249,1) 49%, rgba(252,251,249,1) 50%, rgba(248,246,242,1) 100%)',
     padding: 40,
     margin: '80px 0px',
-    boxShadow: `rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px`,
-    borderRadius: 5,
+    // boxShadow: `rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px`,
+    // borderRadius: 5,
   },
   backgroundFade: {
     background: `linear-gradient(0deg, rgba(246,255,245,1) 1%, rgba(255,255,247,1) 58%, rgba(255,255,255,1) 100%)`,
