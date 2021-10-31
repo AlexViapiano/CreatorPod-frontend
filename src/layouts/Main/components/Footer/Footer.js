@@ -194,12 +194,12 @@ const Footer = props => {
           groupTitle: 'Join Us!',
           pages: [
             {
-              title: 'Become a Creator',
-              href: '/register',
+              title: 'Find a Creator',
+              href: '/signup',
             },
             {
-              title: 'FAQ',
-              href: '/faq',
+              title: 'Become a Creator',
+              href: '/register',
             },
           ],
         },

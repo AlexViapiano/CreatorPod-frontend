@@ -18,22 +18,7 @@ import { connect } from 'react-redux'
 import Link from 'next/link'
 // import { store } from 'react-notifications-component'
 import Image from 'next/image'
-import {
-  Person,
-  PersonOutline,
-  PersonAdd,
-  ExitToApp,
-  ExpandMore,
-  ExpandLess,
-  Settings,
-  ShoppingBasket,
-  RateReview,
-  EmojiPeople,
-  ListAlt,
-  HeadsetMic,
-  LocalOffer,
-  Help,
-} from '@material-ui/icons'
+import { Home, Check, EmojiPeople, LocalOffer } from '@material-ui/icons'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -149,11 +134,11 @@ const SidebarNav = props => {
           <div>
             <Image
               className={classes.image}
-              src="/images/photos/symbol.png"
+              src="/images/photos/logo.png"
               alt="Symbol"
               loading="lazy"
-              width={96}
-              height={96}
+              width={200}
+              height={35}
             />
           </div>
         ) : (
@@ -191,16 +176,16 @@ const SidebarNav = props => {
         )}
       </div>
       <List {...rest} className={clsx(classes.root, className)}>
-        {/* <Link href={'/howItWorks'}>
+        <Link href={'/'}>
           <a>
             <ListItem button>
               <ListItemIcon>
-                <Help className={classes.buttonIcon} />
+                <Home className={classes.buttonIcon} />
               </ListItemIcon>
-              <ListItemText primary={'How It Works'} />
+              <ListItemText primary={'Home'} />
             </ListItem>
           </a>
-        </Link> */}
+        </Link>
         <Link href={'/pricing'}>
           <a>
             <ListItem button>
@@ -208,6 +193,16 @@ const SidebarNav = props => {
                 <LocalOffer className={classes.buttonIcon} />
               </ListItemIcon>
               <ListItemText primary={'Pricing'} />
+            </ListItem>
+          </a>
+        </Link>
+        <Link href={'/signup'}>
+          <a>
+            <ListItem button>
+              <ListItemIcon>
+                <Check className={classes.buttonIcon} />
+              </ListItemIcon>
+              <ListItemText primary={'Get Started'} />
             </ListItem>
           </a>
         </Link>
@@ -230,7 +225,7 @@ const SidebarNav = props => {
               <ListItemText primary={'Contact Us'} />
             </ListItem>
           </a>
-        </Link> */}
+        </Link> 
         <Link href={'/faq'}>
           <a>
             <ListItem button>
@@ -240,7 +235,8 @@ const SidebarNav = props => {
               <ListItemText primary={'FAQ'} />
             </ListItem>
           </a>
-        </Link>
+        </Link> 
+        */}
         {/* {user && Object.keys(user).length === 0 ? (
           <>
             <Link href="/signup">
