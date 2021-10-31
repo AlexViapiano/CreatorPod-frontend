@@ -14,12 +14,13 @@ const useStyles = makeStyles(theme => ({
     minHeight: 1050,
   },
   breadcrumbs: {
+    display: 'none',
     position: 'absolute',
     zIndex: 1,
     fontSize: 10,
     width: '100%',
     height: 25,
-    display: 'flex',
+    // display: 'flex',
     justifyContent: 'center',
     '& nav': {
       display: 'flex',

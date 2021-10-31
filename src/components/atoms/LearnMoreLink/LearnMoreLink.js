@@ -1,10 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import { Typography, IconButton } from '@material-ui/core';
-import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
+import React from 'react'
+import clsx from 'clsx'
+import PropTypes from 'prop-types'
+import { makeStyles } from '@material-ui/core/styles'
+import { Typography, IconButton } from '@material-ui/core'
+import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -22,7 +21,7 @@ const useStyles = makeStyles(theme => ({
       background: 'transparent',
     },
   },
-}));
+}))
 
 /**
  * Component to display the "Learn More" link
@@ -40,9 +39,9 @@ const LearnMoreLink = props => {
     iconProps,
     typographyProps,
     ...rest
-  } = props;
+  } = props
 
-  const classes = useStyles();
+  const classes = useStyles()
 
   const children = (
     <>
@@ -63,30 +62,22 @@ const LearnMoreLink = props => {
         <ArrowRightAltIcon className="learn-more-link__arrow" />
       </IconButton>
     </>
-  );
+  )
 
   if (component === 'Link') {
     return (
-      <Link
-        to={href}
-        className={clsx('learn-more-link', classes.root, className)}
-        {...rest}
-      >
+      <Link to={href} className={clsx('learn-more-link', classes.root, className)} {...rest}>
         {children}
       </Link>
-    );
+    )
   }
 
   return (
-    <a
-      href={href}
-      className={clsx('learn-more-link', classes.root, className)}
-      {...rest}
-    >
+    <a href={href} className={clsx('learn-more-link', classes.root, className)} {...rest}>
       {children}
     </a>
-  );
-};
+  )
+}
 
 LearnMoreLink.defaultProps = {
   variant: 'subtitle1',
@@ -94,7 +85,7 @@ LearnMoreLink.defaultProps = {
   typographyProps: {},
   iconProps: {},
   component: 'Link',
-};
+}
 
 LearnMoreLink.propTypes = {
   /**
@@ -129,6 +120,6 @@ LearnMoreLink.propTypes = {
    * Additional properties to pass to the Typography component
    */
   typographyProps: PropTypes.object,
-};
+}
 
-export default LearnMoreLink;
+export default LearnMoreLink

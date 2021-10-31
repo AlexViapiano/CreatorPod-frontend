@@ -42,6 +42,7 @@ const useStyles = makeStyles(theme => ({
     borderRadius: 30,
     width: 225,
     height: 400,
+    margin: 20,
   },
 }))
 

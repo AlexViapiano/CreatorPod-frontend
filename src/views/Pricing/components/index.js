@@ -1,2 +1,4 @@
-export { default as Hero } from './Hero'
-export { default as Story } from './Story'
+export { default as Faq } from './Faq';
+export { default as Main } from './Main';
+export { default as Plans } from './Plans';
+export { default as Support } from './Support';

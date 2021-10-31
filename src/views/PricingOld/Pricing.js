@@ -1,14 +1,23 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Section, SectionAlternate } from 'components/organisms'
-import { Faq, Main, Support } from './components'
-
-import { pricings, faq, plans } from './data'
+import { Hero, Story } from './components'
 
 const useStyles = makeStyles(theme => ({
   root: {
     height: '100%',
     width: '100%',
+  },
+  sectionNoPaddingTop: {
+    paddingTop: 0,
+  },
+  sectionPartners: {
+    boxShadow: '0 5px 20px 0 rgba(90, 202, 157, 0.05)',
+    backgroundColor: theme.palette.text.primary,
+    '& .section-alternate__content': {
+      paddingTop: theme.spacing(5),
+      paddingBottom: theme.spacing(5),
+    },
   },
 }))
 
@@ -17,13 +26,10 @@ const Pricing = () => {
 
   return (
     <div className={classes.root}>
-      <Main data={pricings} />
+      <Hero />
       <Section>
-        <Faq data={faq} />
+        <Story />
       </Section>
-      <SectionAlternate>
-        <Support />
-      </SectionAlternate>
     </div>
   )
 }

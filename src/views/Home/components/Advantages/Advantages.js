@@ -23,6 +23,7 @@ const useStyles = makeStyles(theme => ({
     borderRadius: 30,
     width: 225,
     height: 400,
+    margin: 20,
   },
 }))
 
@@ -42,7 +43,7 @@ const Advantages = props => {
         subtitle="Everything... apparel, apps, consumer electronics, cosmetics, food, luxury, etc."
         fadeUp
       />
-      <Grid container justify="space-between" alignItems="center" spacing={5}>
+      <Grid container justify="center" alignItems="center" spacing={2}>
         <Grid container justify="center" alignItems="center" xs={12} sm={6}>
           <div className={classes.image}>
             <Image src="/images/photos/phone2.png" loading="lazy" width="225" height="400" />
