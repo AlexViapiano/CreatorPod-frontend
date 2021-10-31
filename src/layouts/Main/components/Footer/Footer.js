@@ -222,13 +222,21 @@ const Footer = props => {
         </ListItem>
         {item.pages.map((page, i) => (
           <ListItem disableGutters key={i} className={classes.menuGroupItem}>
-            <Link href={page.href}>
-              <a>
+            {page.href == 'hello@creatorpod.app' ? (
+              <a href="mailto:hello@creatorpod.app">
                 <Typography variant="body2" className={clsx(classes.navLink, 'submenu-item')}>
                   {page.title}
                 </Typography>
               </a>
-            </Link>
+            ) : (
+              <Link href={page.href}>
+                <a>
+                  <Typography variant="body2" className={clsx(classes.navLink, 'submenu-item')}>
+                    {page.title}
+                  </Typography>
+                </a>
+              </Link>
+            )}
           </ListItem>
         ))}
       </List>
