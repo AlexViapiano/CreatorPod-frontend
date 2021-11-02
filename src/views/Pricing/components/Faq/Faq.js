@@ -4,6 +4,7 @@ import clsx from 'clsx'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { useMediaQuery, Grid, ListItem, ListItemText } from '@material-ui/core'
 import { SectionHeader } from 'components/molecules'
+import Image from 'next/image'
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -39,6 +40,8 @@ const Faq = props => {
       <Grid container spacing={isMd ? 4 : 0}>
         {data.map((item, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
+            <Image src={item.icon} loading="lazy" width="50" height="50" />
+
             <ListItem key={index} data-aos="fade-up">
               <ListItemText
                 primary={item.title}

@@ -57,12 +57,7 @@ const About = props => {
                       color="secondary"
                       className={classes.typed}
                       typedProps={{
-                        strings: [
-                          'Video Ads',
-                          'Social Media Posts',
-                          'Influencers Posts',
-                          'A new company face',
-                        ],
+                        strings: ['Video Ads', 'Social Media Posts', 'A new company face'],
                         typeSpeed: 100,
                         backDelay: 1500,
                         backSpeed: 0,

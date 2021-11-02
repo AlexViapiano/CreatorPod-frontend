@@ -114,8 +114,8 @@ const Signup = props => {
             ) : (
               <>
                 <SectionHeader
-                  title="Collaborate with the best brands"
-                  subtitle="Get paid your true value while collaborating with world-class brands"
+                  title="Make videos and get paid by brand you love"
+                  subtitle="Get hired by the brands you love to create authentic video ads! Set your worth, do what you love and get paid! On CreatorPod, you’ll have access to thousands of brands looking for video creators like you."
                   titleProps={{
                     variant: 'h3',
                   }}

@@ -54,7 +54,7 @@ const Advantages = props => {
             <DescriptionListIcon
               align="left"
               // icon={<PostAddIcon />}
-              title={'Product Unboxing'}
+              title={'Unboxing'}
               subtitle={
                 'Send your product to our creators and they will create an authentic Unboxing video to show the world the great products you sell!'
               }
@@ -75,7 +75,7 @@ const Advantages = props => {
               <DescriptionListIcon
                 align="left"
                 // icon={<PlayIcon />}
-                title={'Software Walkthrough'}
+                title={'Product Reviews'}
                 subtitle={
                   'Sell more technical products such as SaaS services? Our creators can perform very quick walkthroughs on the highlights of your software for the world to see!'
                 }

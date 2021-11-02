@@ -5,13 +5,7 @@ export const pricings = [
     monthly: '49.99 / video',
     annual: 480,
     // priceSuffix: ' / MO',
-    // features: [
-    //   'Rich, responsive landing pages',
-    //   '100+ styled components',
-    //   'Flexible, simple license',
-    //   'Speedy build tooling',
-    //   '6 months free support included',
-    // ],
+    features: ['- High quality video', '- Premium Edit', '- 24 to 72 hours delivery'],
     disclaimer: 'Pay as you go!',
     isHighlighted: true,
   },
@@ -56,6 +50,7 @@ export const faq = [
     subtitle: 'Our new key fobs make it so easy!',
     text: 'Pick through our catalog of creators to find the perfect fit for you!',
     link: 'Check it out',
+    icon: '/images/icons/PickYourOwnCreator.svg',
   },
   {
     id: 'faq-2',
@@ -63,6 +58,7 @@ export const faq = [
     subtitle: 'Our new key fobs make it so easy!',
     text: 'Get your videos back in no longer than 72 hours.',
     link: 'Check it out',
+    icon: '/images/icons/24to72HourTurnaround.svg',
   },
   {
     id: 'faq-3',
@@ -72,6 +68,7 @@ export const faq = [
     text:
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt rerum minima a possimus, amet perferendis, temporibus obcaecati pariatur.',
     link: 'Check it out',
+    icon: '/images/icons/MoneyBackGuaranteed.svg',
   },
   {
     id: 'faq-4',
@@ -79,6 +76,7 @@ export const faq = [
     subtitle: 'Our new key fobs make it so easy!',
     text: 'We don’t lock you into any contracts that require you purchase content when not needed.',
     link: 'Check it out',
+    icon: '/images/icons/NoCommitments.svg',
   },
   {
     id: 'faq-5',
@@ -86,6 +84,7 @@ export const faq = [
     subtitle: 'Our new key fobs make it so easy!',
     text: 'We only accept the best creators to join our network.',
     link: 'Check it out',
+    icon: '/images/icons/HighQualityCreators.svg',
   },
   {
     id: 'faq-6',
@@ -93,6 +92,7 @@ export const faq = [
     subtitle: 'Our new key fobs make it so easy!',
     text: 'Work directly with your creator to provide creative suggestions.',
     link: 'Check it out',
+    icon: '/images/icons/GetDirectAccessToCreators.svg',
   },
 ]
 

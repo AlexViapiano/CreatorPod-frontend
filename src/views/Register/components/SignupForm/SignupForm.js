@@ -145,21 +145,6 @@ const SignupForm = ({ joinWaitlist, setSuccess }) => {
     <div className={classes.root}>
       <form name="password-reset-form" method="post" onSubmit={handleSubmit}>
         <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <TextField
-              placeholder={'E-mail'}
-              label={'E-mail'}
-              variant="outlined"
-              size="medium"
-              name="email"
-              fullWidth
-              helperText={hasError('email') ? formState.errors.email[0] : null}
-              error={hasError('email')}
-              onChange={handleChange}
-              type="email"
-              value={formState.values.email || ''}
-            />
-          </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
               placeholder={'First name'}
@@ -188,6 +173,21 @@ const SignupForm = ({ joinWaitlist, setSuccess }) => {
               onChange={handleChange}
               type="last_name"
               value={formState.values.last_name || ''}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              placeholder={'E-mail'}
+              label={'E-mail'}
+              variant="outlined"
+              size="medium"
+              name="email"
+              fullWidth
+              helperText={hasError('email') ? formState.errors.email[0] : null}
+              error={hasError('email')}
+              onChange={handleChange}
+              type="email"
+              value={formState.values.email || ''}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
