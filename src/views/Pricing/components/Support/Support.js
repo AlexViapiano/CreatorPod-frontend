@@ -24,6 +24,9 @@ const Support = props => {
   const isMd = useMediaQuery(theme.breakpoints.up('md'), {
     defaultMatches: true,
   })
+  const isSm = useMediaQuery(theme.breakpoints.up('sm'), {
+    defaultMatches: true,
+  })
 
   return (
     <div className={clsx(classes.root, className)} {...rest}>
@@ -45,23 +48,25 @@ const Support = props => {
             disableGutter
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <SectionHeader
-            title="Still have questions?"
-            titleVariant="h5"
-            subtitle="Click below to send us an email"
-            subtitleVariant="body1"
-            subtitleColor="textPrimary"
-            ctaGroup={[
-              <a href={'mailto:hello@creatorpod.app'}>
-                <Button color="primary" variant={'outlined'} fullWidth size="large">
-                  Contact Us
-                </Button>
-              </a>,
-            ]}
-            disableGutter
-          />
-        </Grid>
+        {isSm && (
+          <Grid item xs={12} sm={6}>
+            <SectionHeader
+              title="Still have questions?"
+              titleVariant="h5"
+              subtitle="Click below to send us an email"
+              subtitleVariant="body1"
+              subtitleColor="textPrimary"
+              ctaGroup={[
+                <a href={'mailto:hello@creatorpod.app'}>
+                  <Button color="primary" variant={'outlined'} fullWidth size="large">
+                    Contact Us
+                  </Button>
+                </a>,
+              ]}
+              disableGutter
+            />
+          </Grid>
+        )}
       </Grid>
     </div>
   )
