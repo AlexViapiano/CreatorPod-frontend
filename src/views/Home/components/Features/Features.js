@@ -56,7 +56,7 @@ const Features = props => {
         >
           <CardBase liftUp align="left">
             <Grid container className={classes.imageContainer} justify="center">
-              <Image src="/images/photos/how1.png" loading="lazy" width="140" height="100" />
+              <Image src="/images/photos/how1.svg" loading="lazy" width="140" height="100" />
             </Grid>
 
             <DescriptionListIcon
@@ -79,7 +79,7 @@ const Features = props => {
         >
           <CardBase liftUp align="left">
             <Grid className={classes.imageContainer} container justify="center">
-              <Image src="/images/photos/how2.png" loading="lazy" width="65" height="100" />
+              <Image src="/images/photos/how2.svg" loading="lazy" width="140" height="100" />
             </Grid>
             <DescriptionListIcon
               title={`SELECT CREATORS`}
@@ -101,7 +101,7 @@ const Features = props => {
         >
           <CardBase liftUp align="left">
             <Grid container className={classes.imageContainer} justify="center">
-              <Image src="/images/photos/how3.png" loading="lazy" width="140" height="100" />
+              <Image src="/images/photos/how3.svg" loading="lazy" width="140" height="100" />
             </Grid>
             <DescriptionListIcon
               title={'RECEIVE CONTENT'}

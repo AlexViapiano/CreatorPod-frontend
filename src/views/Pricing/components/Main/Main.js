@@ -75,6 +75,10 @@ const useStyles = makeStyles(theme => ({
       fontWeight: 'bold',
     },
   },
+  priceContainer: {
+    display: 'flex',
+    alignItems: 'flex-end',
+  },
 }))
 
 const Main = props => {
@@ -177,9 +181,14 @@ const Main = props => {
                     liftUp
                     subtitle={item.subtitle}
                     priceComponent={
-                      <Typography variant="h3" color="textPrimary">
-                        ${pricingOption === 'annual' ? item.annual : item.monthly}
-                      </Typography>
+                      <div className={classes.priceContainer}>
+                        <Typography variant="h3" color="textPrimary">
+                          ${pricingOption === 'annual' ? item.annual : item.monthly}
+                        </Typography>
+                        <Typography variant="h6" color="textPrimary">
+                          / month
+                        </Typography>
+                      </div>
                     }
                     features={item.features}
                     featureCheckComponent={

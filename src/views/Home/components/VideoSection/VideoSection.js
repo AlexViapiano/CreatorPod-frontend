@@ -44,6 +44,16 @@ const useStyles = makeStyles(theme => ({
     height: 400,
     margin: 20,
   },
+  cta: {
+    width: 250,
+    height: 50,
+    borderRadius: 50,
+    transition: 'all .2s ease-in-out',
+    '&:hover': {
+      transform: 'scale(1.10)',
+      transition: 'all .2s ease-in-out',
+    },
+  },
 }))
 
 const VideoSection = props => {
@@ -77,7 +87,12 @@ const VideoSection = props => {
                 subtitle="Creators are waiting to create custom-made video ads for you. What are you waiting for?"
                 ctaGroup={[
                   <Link href="/signup">
-                    <Button variant="outlined" color="primary" size={isMd ? 'large' : 'medium'}>
+                    <Button
+                      className={classes.cta}
+                      variant="contained"
+                      color="primary"
+                      size={isMd ? 'large' : 'medium'}
+                    >
                       Get Started
                     </Button>
                   </Link>,

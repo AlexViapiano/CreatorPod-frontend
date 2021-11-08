@@ -8,7 +8,7 @@ export default {
   white,
   alternate: 'rgb(247, 249, 250)',
   primary: {
-    main: '#4f5b6d',
+    main: '#6C63FF',
     light: '#79808c',
   },
   secondary: {

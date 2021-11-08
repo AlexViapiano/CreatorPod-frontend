@@ -2,7 +2,7 @@ export const pricings = [
   {
     title: 'Pay as you go',
     subtitle: 'as low as',
-    monthly: '49.99 / video',
+    monthly: '49.99',
     annual: 480,
     // priceSuffix: ' / MO',
     features: ['- High quality video', '- Premium Edit', '- 24 to 72 hours delivery'],

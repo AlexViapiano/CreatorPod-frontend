@@ -18,6 +18,9 @@ const useStyles = makeStyles(theme => ({
       marginBottom: theme.spacing(2),
     },
   },
+  icon: {
+    marginLeft: 7,
+  },
 }))
 
 const Faq = props => {
@@ -40,7 +43,9 @@ const Faq = props => {
       <Grid container spacing={isMd ? 4 : 0}>
         {data.map((item, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
-            <Image src={item.icon} loading="lazy" width="50" height="50" />
+            <div className={classes.icon}>
+              <Image src={item.icon} loading="lazy" width="50" height="50" />
+            </div>
 
             <ListItem key={index} data-aos="fade-up">
               <ListItemText

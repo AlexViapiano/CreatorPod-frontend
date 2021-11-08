@@ -6,10 +6,10 @@ import { useMediaQuery } from '@material-ui/core'
 import { Grid, colors } from '@material-ui/core'
 import { SectionHeader } from 'components/molecules'
 import { CardBase, DescriptionListIcon } from 'components/organisms'
-import Image from 'next/image'
 // import PostAddIcon from '@material-ui/icons/PostAdd'
 // import SearchIcon from '@material-ui/icons/Search'
-// import PersonIcon from '@material-ui/icons/Person'
+import PersonIcon from '@material-ui/icons/Person'
+import Image from 'next/image'
 // import PlayIcon from '@material-ui/icons/PlayArrow'
 
 const useStyles = makeStyles(theme => ({
@@ -24,6 +24,14 @@ const useStyles = makeStyles(theme => ({
     width: 225,
     height: 400,
     margin: 20,
+  },
+  container: {
+    display: 'flex',
+    alignItems: 'flex-start',
+  },
+  icon: {
+    marginTop: 10,
+    marginRight: 7,
   },
 }))
 
@@ -40,7 +48,7 @@ const Advantages = props => {
     <div className={clsx(classes.root, className)} data-aos="fade-up" {...rest}>
       <SectionHeader
         title={<span>What type of content can our creators provide?</span>}
-        subtitle="Everything... apparel, apps, consumer electronics, cosmetics, food, luxury, etc."
+        //subtitle="Everything... apparel, apps, consumer electronics, cosmetics, food, luxury, etc."
         fadeUp
       />
       <Grid container justify="center" alignItems="center" spacing={2}>
@@ -50,46 +58,56 @@ const Advantages = props => {
           </div>
         </Grid>
         <Grid container xs={12} sm={6} spacing={2}>
-          <Grid item container alignItems="center" direction="column" xs={12} data-aos="fade-up">
+          <div className={classes.container}>
+            <div className={classes.icon}>
+              <Image src={'/images/icons/checkmark.svg'} loading="lazy" width="40" height="40" />
+            </div>
             <DescriptionListIcon
               align="left"
-              // icon={<PostAddIcon />}
-              title={'Unboxing'}
+              title={'Product Unboxing'}
               subtitle={
-                'Send your product to our creators and they will create an authentic Unboxing video to show the world the great products you sell!'
+                'Send your product to our creators and they will create an authentic unboxing video to show the world the great products you sell!'
               }
             />
-          </Grid>
-          <Grid item container alignItems="center" direction="column" xs={12} data-aos="fade-up">
+          </div>
+          <div className={classes.container}>
+            <div className={classes.icon}>
+              <Image src={'/images/icons/checkmark.svg'} loading="lazy" width="40" height="40" />
+            </div>
             <DescriptionListIcon
               align="left"
-              // icon={<SearchIcon />}
               title={'Product Demo'}
               subtitle={
                 'Our creators can give amazing videos on why your product/service is a great option and why people should buy it asap!'
               }
             />
-          </Grid>
-          <Grid item container alignItems="center" direction="column" xs={12} data-aos="fade-up">
+          </div>
+          <div className={classes.container}>
+            <div className={classes.icon}>
+              <Image src={'/images/icons/checkmark.svg'} loading="lazy" width="40" height="40" />
+            </div>
             <Grid container direction="row" noWrap>
               <DescriptionListIcon
                 align="left"
-                // icon={<PlayIcon />}
-                title={'Product Reviews'}
+                title={'Testimonial Videos'}
                 subtitle={
-                  'Sell more technical products such as SaaS services? Our creators can perform very quick walkthroughs on the highlights of your software for the world to see!'
+                  'Get more buzz and hype around your product with testimonials by people who love it!'
                 }
               />
             </Grid>
-          </Grid>
-          <Grid item container alignItems="center" direction="column" xs={12} data-aos="fade-up">
+          </div>
+          <div className={classes.container}>
+            <div className={classes.icon}>
+              <Image src={'/images/icons/checkmark.svg'} loading="lazy" width="40" height="40" />
+            </div>
             <DescriptionListIcon
               align="left"
-              // icon={<PersonIcon />}
-              title={'Testimonials'}
-              subtitle={'BLAH BLAH BLAH BLAH BLAH'}
+              title={'How-To Videos'}
+              subtitle={
+                'Our creators will demonstrate how great your product by showcasing how great it works and how it can be used!'
+              }
             />
-          </Grid>
+          </div>
         </Grid>
       </Grid>
     </div>
