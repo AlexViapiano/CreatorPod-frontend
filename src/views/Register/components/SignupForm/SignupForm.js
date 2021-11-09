@@ -23,6 +23,23 @@ const useStyles = makeStyles(theme => ({
     fontSize: 20,
     fontWeight: 700,
   },
+  uploadBtn: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 2,
+    height: 40,
+    border: '1px solid #c4c4c4',
+  },
+  uploadBtnSuccess: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 2,
+    height: 40,
+    border: '1px solid #c4c4c4',
+    background: '#e7f0fe',
+  },
 }))
 
 const schema = {
@@ -239,12 +256,17 @@ const SignupForm = ({ joinWaitlist, setSuccess }) => {
             />
           </Grid>
           <Grid item xs={12}>
-            <InputLabel>Video Example</InputLabel>
+            <InputLabel>Video Example (Optional)</InputLabel>
           </Grid>
           <Grid item xs={12}>
-            <div size="large" variant={video?.raw?.name ? null : 'outlined'} type="submit">
+            <div
+              className={video?.raw?.name ? classes.uploadBtnSuccess : classes.uploadBtn}
+              size="large"
+              variant={video?.raw?.name ? null : 'outlined'}
+              type="submit"
+            >
               <label htmlFor="upload-button">
-                {video?.raw?.name ? video?.raw?.name : 'Upload'}
+                {video?.raw?.name ? video?.raw?.name : 'UPLOAD HERE'}
               </label>
             </div>
 

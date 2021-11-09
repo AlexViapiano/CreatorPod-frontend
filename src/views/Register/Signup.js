@@ -102,7 +102,7 @@ const Signup = props => {
                 title="Successfully Joined The Waitlist"
                 subtitle={
                   <div>
-                    We'll send you an invite to get started soon!
+                    We'll be in contact with you via email very soon!
                     <br />
                     <CheckCircle className={classes.checkIcon} />
                   </div>
