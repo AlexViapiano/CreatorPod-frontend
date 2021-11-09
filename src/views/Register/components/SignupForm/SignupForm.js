@@ -24,21 +24,31 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 700,
   },
   uploadBtn: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
     borderRadius: 2,
     height: 40,
     border: '1px solid #c4c4c4',
+    '& label': {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      cursor: 'pointer',
+      width: '100%',
+      height: '100%',
+    },
   },
   uploadBtnSuccess: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
     borderRadius: 2,
     height: 40,
     border: '1px solid #c4c4c4',
     background: '#e7f0fe',
+    '& label': {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      cursor: 'pointer',
+      width: '100%',
+      height: '100%',
+    },
   },
 }))
 
