@@ -6,109 +6,67 @@ import { useMediaQuery, colors, Grid, Typography, Button } from '@material-ui/co
 import { ToggleButtonGroup, ToggleButton } from '@material-ui/lab'
 import { Image, Icon } from 'components/atoms'
 import { SectionHeader } from 'components/molecules'
-import { Section, CardPricingStandard } from 'components/organisms'
+import { Section } from 'components/organisms'
 import Link from 'next/link'
 
 const useStyles = makeStyles(theme => ({
-  root: {},
+  root: {
+    background: 'linear-gradient(184deg, rgb(214 211 255) 0%, rgba(255,255,255,1) 70%)',
+  },
   pagePaddingTop: {
-    // paddingTop: theme.spacing(3),
-    [theme.breakpoints.up('md')]: {
-      // paddingTop: theme.spacing(5),
-      paddingBottom: theme.spacing(1),
-    },
-  },
-  textWhite: {
-    color: 'white',
-  },
-  fontWeightBold: {
-    fontWeight: 'bold',
-  },
-  toggleContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    margin: theme.spacing(0, 2),
-  },
-  toggleButtonGroup: {
-    background: 'transparent',
-  },
-  toggleButton: {
-    background: 'transparent',
-    border: '1px solid white',
-    padding: theme.spacing(1, 5),
-  },
-  toggleButtonActive: {
-    backgroundColor: 'white !important',
-  },
-  toggleTitle: {
-    textTransform: 'capitalize',
-  },
-  toggleTitleActive: {
-    color: theme.palette.primary.main,
-  },
-  pricingContainer: {
-    position: 'relative',
-    '& h3, h6': {
-      color: '#FFF',
-    },
-    '& .MuiTypography-root': {
-      color: '#FFF',
-    },
-    '& button': {
-      background: '#FFF',
-    },
-    '& li': {
-      padding: 0,
-    },
-    '& hr': {
-      display: 'none',
-    },
-  },
-  shapeContainer: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    width: '100%',
-    background: theme.palette.primary.main,
-    height: 171,
-  },
-  shapeImage: {
-    objectFit: 'cover',
+    paddingBottom: 0,
   },
   sectionNoPadding: {
     paddingTop: 0,
     paddingBottom: 0,
   },
-  cardPricing: {
-    background: theme.palette.primary.main,
-    '& .countup-number__count-wrapper': {
-      textAlign: 'left',
-      marginBottom: 0,
-      fontWeight: 'bold',
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    background: 'linear-gradient(119deg, rgba(126,116,252,1) 0%, rgba(104,104,255,1) 100%)',
+    width: 400,
+    height: 400,
+    borderRadius: 5,
+    padding: 20,
+    boxShadow: `rgba(100, 100, 111, 0.2) 0px 7px 29px 0px`,
+    transition: 'all .2s ease-in-out',
+    '&:hover': {
+      transform: 'scale(1.1)',
+      transition: 'all .5s ease-in-out',
     },
-    borderRadius: '20px',
+    [theme.breakpoints.down('xs')]: {
+      width: 325,
+      height: 325,
+    },
+  },
+  title: {
+    display: 'flex',
+    alignItems: 'center',
   },
   priceContainer: {
     display: 'flex',
     alignItems: 'flex-end',
   },
+  features: {
+    textAlign: 'left',
+    '& li': {
+      color: '#FFF',
+    },
+  },
+  textWhite: {
+    color: '#fff',
+  },
+  btnWhite: {
+    background: '#FFF',
+  },
 }))
 
 const Main = props => {
-  const { data, className, ...rest } = props
+  const { className, ...rest } = props
   const classes = useStyles()
-
   const theme = useTheme()
-  const isMd = useMediaQuery(theme.breakpoints.up('md'), {
-    defaultMatches: true,
-  })
-
-  const [pricingOption, setPricingOption] = React.useState('monthly')
-
-  const handleClick = (event, newPricingOption) => {
-    setPricingOption(newPricingOption)
-  }
 
   return (
     <div className={clsx(classes.root, className)} {...rest}>
@@ -123,56 +81,49 @@ const Main = props => {
           data-aos="fade-up"
         />
       </Section>
-      <div className={classes.pricingContainer}>
-        <div className={classes.pricingWrapper}>
-          <Section className={classes.sectionNoPadding}>
-            <Grid container justify="center" spacing={isMd ? 4 : 2}>
-              {data.map((item, index) => (
-                <Grid item xs={12} md={4} data-aos="fade-up" key={index}>
-                  <CardPricingStandard
-                    variant="outlined"
-                    withShadow={item.isHighlighted ? true : false}
-                    title={item.title}
-                    liftUp
-                    subtitle={item.subtitle}
-                    priceComponent={
-                      <div className={classes.priceContainer}>
-                        <Typography variant="h3" color="textPrimary">
-                          ${pricingOption === 'annual' ? item.annual : item.monthly}
-                        </Typography>
-                        <Typography variant="h6" color="textPrimary">
-                          / month
-                        </Typography>
-                      </div>
-                    }
-                    features={item.features}
-                    featureCheckComponent={
-                      <Icon
-                        fontIconClass="far fa-check-circle"
-                        fontIconColor={colors.indigo[500]}
-                      />
-                    }
-                    cta={
-                      <Link href={'/signup'}>
-                        <Button
-                          // color="primary"
-                          variant={item.isHighlighted ? 'contained' : 'outlined'}
-                          fullWidth
-                          size="large"
-                        >
-                          Start Now
-                        </Button>
-                      </Link>
-                    }
-                    disclaimer={item.disclaimer}
-                    className={classes.cardPricing}
-                  />
-                </Grid>
-              ))}
-            </Grid>
-          </Section>
+      <center>
+        <div className={classes.container}>
+          <Typography className={classes.textWhite} variant="h3" color="textPrimary">
+            Pay As You Go
+          </Typography>
+          <div className={classes.priceContainer}>
+            <Typography className={classes.textWhite} variant="h3" color="textPrimary">
+              $39.99
+            </Typography>
+            <Typography className={classes.textWhite} variant="h6" color="textPrimary">
+              / month
+            </Typography>
+          </div>
+          <div className={classes.features}>
+            <ul>
+              <li>
+                <Typography className={classes.textWhite} variant="h6" color="textPrimary">
+                  High quality
+                </Typography>
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <Typography className={classes.textWhite} variant="h6" color="textPrimary">
+                  Premium Editing
+                </Typography>
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <Typography className={classes.textWhite} variant="h6" color="textPrimary">
+                  24 to 72 hours delivery
+                </Typography>
+              </li>
+            </ul>
+          </div>
+          <Link href={'/signup'}>
+            <Button className={classes.btnWhite} variant={'contained'} fullWidth size="large">
+              Start Now
+            </Button>
+          </Link>
         </div>
-      </div>
+      </center>
     </div>
   )
 }

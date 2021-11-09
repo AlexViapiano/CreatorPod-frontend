@@ -5,7 +5,7 @@ export const pricings = [
     monthly: '49.99',
     annual: 480,
     // priceSuffix: ' / MO',
-    features: ['- High quality video', '- Premium Edit', '- 24 to 72 hours delivery'],
+    features: ['High quality video', 'Premium Edit', '24 to 72 hours delivery'],
     disclaimer: 'Pay as you go!',
     isHighlighted: true,
   },

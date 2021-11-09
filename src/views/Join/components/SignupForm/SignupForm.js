@@ -57,12 +57,12 @@ const schema = {
       minimum: 6,
     },
   },
-  // website: {
-  //   presence: { allowEmpty: true, message: 'is required' },
-  //   length: {
-  //     maximum: 120,
-  //   },
-  // },
+  website: {
+    presence: { allowEmpty: false, message: 'is required' },
+    length: {
+      maximum: 120,
+    },
+  },
 }
 
 const SignupForm = ({ joinWaitlist, setSuccess }) => {

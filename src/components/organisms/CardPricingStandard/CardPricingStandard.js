@@ -66,9 +66,6 @@ const CardPricingStandard = props => {
             </Typography>
           )}
         </Grid>
-        <Grid item xs={12} className="card-pricing-standard__divider-container">
-          <Divider className="card-pricing-standard__divider" />
-        </Grid>
         <Grid item xs={12} className="card-pricing-standard__content">
           {priceComponent}
         </Grid>
