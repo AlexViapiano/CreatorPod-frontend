@@ -92,7 +92,16 @@ const About = props => {
           </Grid>
         </Grid>
         <Grid item container justify="center" xs={12} sm={6} data-aos={'fade-up'}>
-          <video
+          <div
+            dangerouslySetInnerHTML={{
+              __html: `
+              <video className="app__backgroundVideo" autoplay loop muted playsinline style={{ width: '300px', height: '533px' }}>
+                <source src="/images/video/home.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>`,
+            }}
+          />
+          {/* <video
             className={classes.image}
             autoPlay
             muted
@@ -100,7 +109,7 @@ const About = props => {
             style={{ width: '300px', height: '533px' }}
           >
             <source src="/images/video/home.mp4" />
-          </video>
+          </video> */}
         </Grid>
       </Grid>
     </div>

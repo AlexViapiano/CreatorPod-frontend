@@ -33,14 +33,14 @@ const Support = props => {
       <Grid container spacing={isMd ? 4 : 2}>
         <Grid item xs={12} sm={6} className={classes.gridItemBorder}>
           <SectionHeader
-            title="Start today to get your first UGC’s now!"
+            title="Ready to boost your sales?"
             titleVariant="h5"
-            subtitle="View message performance and test against variants and control."
+            subtitle="Video creators on the CreatorPod are ready to help you drive sales with authentic, custom-made video ads."
             subtitleVariant="body1"
             subtitleColor="textPrimary"
             ctaGroup={[
               <Link href={'/signup'}>
-                <Button color="primary" variant={'outlined'} fullWidth size="large">
+                <Button color="primary" variant={'contained'} fullWidth size="large">
                   Get Started
                 </Button>
               </Link>,
@@ -58,7 +58,7 @@ const Support = props => {
               subtitleColor="textPrimary"
               ctaGroup={[
                 <a href={'mailto:hello@creatorpod.app'}>
-                  <Button color="primary" variant={'outlined'} fullWidth size="large">
+                  <Button color="primary" variant={'contained'} fullWidth size="large">
                     Contact Us
                   </Button>
                 </a>,

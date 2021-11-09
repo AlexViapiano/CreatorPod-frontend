@@ -18,9 +18,6 @@ const useStyles = makeStyles(theme => ({
       paddingBottom: theme.spacing(1),
     },
   },
-  sectionContainer: {
-    backgroundColor: theme.palette.primary.main,
-  },
   textWhite: {
     color: 'white',
   },
@@ -51,6 +48,21 @@ const useStyles = makeStyles(theme => ({
   },
   pricingContainer: {
     position: 'relative',
+    '& h3, h6': {
+      color: '#FFF',
+    },
+    '& .MuiTypography-root': {
+      color: '#FFF',
+    },
+    '& button': {
+      background: '#FFF',
+    },
+    '& li': {
+      padding: 0,
+    },
+    '& hr': {
+      display: 'none',
+    },
   },
   shapeContainer: {
     position: 'absolute',
@@ -69,11 +81,13 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: 0,
   },
   cardPricing: {
+    background: theme.palette.primary.main,
     '& .countup-number__count-wrapper': {
       textAlign: 'left',
       marginBottom: 0,
       fontWeight: 'bold',
     },
+    borderRadius: '20px',
   },
   priceContainer: {
     display: 'flex',
@@ -98,77 +112,18 @@ const Main = props => {
 
   return (
     <div className={clsx(classes.root, className)} {...rest}>
-      <div className={classes.sectionContainer}>
-        <Section narrow className={classes.pagePaddingTop}>
-          <SectionHeader
-            title="Find the Right Creator for you"
-            subtitle="Sign up now to browse all of our creators"
-            titleProps={{
-              className: clsx(classes.textWhite, classes.fontWeightBold),
-              variant: 'h3',
-            }}
-            subtitleProps={{
-              className: classes.textWhite,
-            }}
-            data-aos="fade-up"
-          />
-          {/* <div className={classes.toggleContainer} data-aos="fade-up">
-            <ToggleButtonGroup
-              value={pricingOption}
-              exclusive
-              onChange={handleClick}
-              className={classes.toggleButtonGroup}
-            >
-              <ToggleButton
-                value="annual"
-                className={clsx(
-                  classes.toggleButton,
-                  pricingOption === 'annual' ? classes.toggleButtonActive : {}
-                )}
-              >
-                <Typography
-                  variant="subtitle1"
-                  className={clsx(
-                    classes.fontWeightBold,
-                    classes.textWhite,
-                    classes.toggleTitle,
-                    pricingOption === 'annual' ? classes.toggleTitleActive : {}
-                  )}
-                >
-                  Annual
-                </Typography>
-              </ToggleButton>
-              <ToggleButton
-                value="monthly"
-                className={clsx(
-                  classes.toggleButton,
-                  pricingOption === 'monthly' ? classes.toggleButtonActive : {}
-                )}
-              >
-                <Typography
-                  variant="subtitle1"
-                  className={clsx(
-                    classes.fontWeightBold,
-                    classes.textWhite,
-                    classes.toggleTitle,
-                    pricingOption === 'monthly' ? classes.toggleTitleActive : {}
-                  )}
-                >
-                  Monthly
-                </Typography>
-              </ToggleButton>
-            </ToggleButtonGroup> 
-          </div> */}
-        </Section>
-      </div>
+      <Section narrow className={classes.pagePaddingTop}>
+        <SectionHeader
+          title="Find the Right Creator for you"
+          subtitle="Sign up now to browse all of our creators"
+          titleProps={{
+            className: clsx(classes.fontWeightBold),
+            variant: 'h3',
+          }}
+          data-aos="fade-up"
+        />
+      </Section>
       <div className={classes.pricingContainer}>
-        <div className={classes.shapeContainer}>
-          {/* <Image
-            src="/images/shapes/triangle-shape.svg"
-            className={classes.shapeImage}
-            lazy={false}
-          /> */}
-        </div>
         <div className={classes.pricingWrapper}>
           <Section className={classes.sectionNoPadding}>
             <Grid container justify="center" spacing={isMd ? 4 : 2}>
@@ -200,12 +155,12 @@ const Main = props => {
                     cta={
                       <Link href={'/signup'}>
                         <Button
-                          color="primary"
+                          // color="primary"
                           variant={item.isHighlighted ? 'contained' : 'outlined'}
                           fullWidth
                           size="large"
                         >
-                          Get Started
+                          Start Now
                         </Button>
                       </Link>
                     }
