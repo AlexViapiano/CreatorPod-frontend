@@ -16,9 +16,16 @@ const useStyles = makeStyles(theme => ({
   typed: {
     fontWeight: 600,
   },
-  image: {
+  videoContainer: {
     boxShadow: `rgb(0 0 0 / 35%) 0px 5px 15px`,
     borderRadius: 30,
+    width: '300px',
+    height: '533px',
+    '& video': {
+      height: '100%',
+      width: '100%',
+      borderRadius: 30,
+    },
   },
   cta: {
     width: 250,
@@ -93,9 +100,10 @@ const About = props => {
         </Grid>
         <Grid item container justify="center" xs={12} sm={6} data-aos={'fade-up'}>
           <div
+            className={classes.videoContainer}
             dangerouslySetInnerHTML={{
               __html: `
-              <video className="app__backgroundVideo" autoplay loop muted playsinline style={{ width: '300px', height: '533px' }}>
+              <video className="app__backgroundVideo" autoplay loop muted playsinline>
                 <source src="/images/video/home.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>`,
