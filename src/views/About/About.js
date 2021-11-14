@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
     paddingTop: 0,
   },
   sectionPartners: {
-    boxShadow: '0 5px 20px 0 rgba(90, 202, 157, 0.05)',
+    boxShadow: '0 5px 20px 0 rgba(90, 202, 155, 0.05)',
     backgroundColor: theme.palette.text.primary,
     '& .section-alternate__content': {
       paddingTop: theme.spacing(5),
