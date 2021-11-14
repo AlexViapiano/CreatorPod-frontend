@@ -8,7 +8,7 @@ const SignupPage = props => {
   return (
     <div className="container">
       <Head>
-        <title>Signup</title>
+        <title>Business Signup</title>
         <meta
           name="description"
           content="The easiest way to find creators ready to work with your brand!"
