@@ -6,7 +6,7 @@ const PricingPage = () => {
   return (
     <div className="container">
       <Head>
-        <title>About Us</title>
+        <title>Pricing</title>
       </Head>
       <Main>
         <Pricing />
