@@ -14,6 +14,7 @@ const initialState = {
   utm_source: null,
   utm_medium: null,
   utm_campaign: null,
+  leadsTriggered: false,
 }
 
 export default function reducer(state = initialState, action) {
@@ -112,6 +113,11 @@ export default function reducer(state = initialState, action) {
         utm_source: action.data.utm_source,
         utm_medium: action.data.utm_medium,
         utm_campaign: action.data.utm_campaign,
+      }
+    case actionTypes.RECEIVE_GENERATE_LEAD:
+      return {
+        ...state,
+        leadsTriggered: true,
       }
     default:
       return state

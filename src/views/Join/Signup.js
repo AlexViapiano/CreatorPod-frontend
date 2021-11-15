@@ -85,9 +85,9 @@ const Signup = props => {
       pixels.viewContent({
         content_id: 1,
         content_name: 'BusinessWaitlist',
-        // content_type: 'product',
+        content_type: 'product_group',
       })
-      props.generateLead('Business Waitlist')
+      if (!props.leadsTriggered) props.generateLead('Business Waitlist')
       setEventTriggered(true)
     }
   })
@@ -147,10 +147,14 @@ const Signup = props => {
   )
 }
 
+const mapStateToProps = state => ({
+  leadsTriggered: state.session?.leadsTriggered,
+})
+
 const mapDispatchToProps = dispatch => ({
   generateLead: page => {
     return dispatch(generateLead(page))
   },
 })
 
-export default connect(null, mapDispatchToProps)(Signup)
+export default connect(mapStateToProps, mapDispatchToProps)(Signup)
