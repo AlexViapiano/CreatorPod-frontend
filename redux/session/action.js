@@ -43,7 +43,12 @@ export const actionTypes = {
   RECEIVE_GENERATE_LEAD: 'RECEIVE_GENERATE_LEAD',
   REQUEST_POST_JOB: 'REQUEST_POST_JOB',
   RECEIVE_POST_JOB: 'RECEIVE_POST_JOB',
-  RECIEVE_GET_USER_JOBS: 'RECIEVE_GET_USER_JOBS',
+  REQUEST_GET_USER_JOBS: 'REQUEST_GET_USER_JOBS',
+  RECEIVE_GET_USER_JOBS: 'RECEIVE_GET_USER_JOBS',
+  REQUEST_DELETE_JOB: 'REQUEST_DELETE_JOB',
+  RECEIVE_DELETE_JOB: 'RECEIVE_DELETE_JOB',
+  REQUEST_USER_BUSINESS: 'REQUEST_USER_BUSINESS',
+  RECEIVE_USER_BUSINESS: 'RECEIVE_USER_BUSINESS',
 }
 
 export const changeLocale = newLocale => async (dispatch, getState) => {
@@ -86,7 +91,8 @@ export const getUser = () => {
             payload: { res },
           })
         }
-        dispatch(getStripeCustomer(res.user.id))
+        // dispatch(getStripeCustomer(res.user.id))
+        dispatch(getUserBusiness(res.user.business_user))
         return res
       })
       .catch(err => {
@@ -220,7 +226,7 @@ export const signup = creds => {
       last_name: creds.last_name,
       email: creds.email,
       password: creds.password,
-      phone_number: creds.phone_number,
+      phoneNumber: creds.phone_number,
     }
     return fetch(`${API_URL}/auth/local/register`, {
       method: 'POST',
@@ -638,8 +644,8 @@ export const joinWaitlist = (endpoint, creds, video) => {
       firstname: creds.first_name,
       lastname: creds.last_name,
       email: creds.email,
-      phone_number: creds.phone_number,
-      company: creds.company,
+      phoneNumber: creds.phone_number,
+      name: creds.company,
       website: creds.website,
       city: creds.city,
       handles: creds.handles,
@@ -729,13 +735,14 @@ export const generateLead = page => {
   }
 }
 
-export const postJob = (name, category, description) => {
+export const postJob = (name, category, description, businessUserId) => {
   return dispatch => {
     dispatch({ type: actionTypes.REQUEST_POST_JOB })
     var data = {
       name: name,
       category: category,
       description: description,
+      business: businessUserId,
     }
 
     var jwt = JSON.parse(localStorage.getItem('jwt'))
@@ -766,12 +773,12 @@ export const postJob = (name, category, description) => {
   }
 }
 
-export const getUserJobs = userId => {
+export const getUserJobs = businessUserId => {
   return dispatch => {
     dispatch({ type: actionTypes.REQUEST_GET_USER_JOBS })
     var jwt = JSON.parse(localStorage.getItem('jwt'))
     var bearerToken = 'Bearer ' + jwt
-    return fetch(`${API_URL}/jobs?user=` + userId, {
+    return fetch(`${API_URL}/jobs?business=` + businessUserId, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -782,7 +789,65 @@ export const getUserJobs = userId => {
       .then(res => {
         if (!res.error) {
           dispatch({
-            type: actionTypes.RECIEVE_GET_USER_JOBS,
+            type: actionTypes.RECEIVE_GET_USER_JOBS,
+            payload: { res },
+          })
+        }
+        return res
+      })
+      .catch(err => {
+        console.error('err', err)
+        return err
+      })
+  }
+}
+
+export const deleteJob = jobId => {
+  return dispatch => {
+    dispatch({ type: actionTypes.REQUEST_DELETE_JOB })
+    var jwt = JSON.parse(localStorage.getItem('jwt'))
+    var bearerToken = 'Bearer ' + jwt
+    return fetch(`${API_URL}/jobs/` + jobId, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: bearerToken,
+      },
+    })
+      .then(response => response.json())
+      .then(res => {
+        if (!res.error) {
+          dispatch({
+            type: actionTypes.RECEIVE_DELETE_JOB,
+            payload: { res },
+          })
+        }
+        return res
+      })
+      .catch(err => {
+        console.error('err', err)
+        return err
+      })
+  }
+}
+
+export const getUserBusiness = userBusinessId => {
+  return dispatch => {
+    dispatch({ type: actionTypes.REQUEST_USER_BUSINESS })
+    var jwt = JSON.parse(localStorage.getItem('jwt'))
+    var token = 'Bearer ' + jwt
+    return fetch(`${API_URL}/businesses/${userBusinessId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: token,
+      },
+    })
+      .then(response => response.json())
+      .then(res => {
+        if (!res.error) {
+          dispatch({
+            type: actionTypes.RECEIVE_USER_BUSINESS,
             payload: { res },
           })
         }

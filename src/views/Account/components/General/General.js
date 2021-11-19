@@ -90,6 +90,7 @@ const General = props => {
     updateStripeCustomer,
     updateUser,
     uploadPicture,
+    business,
     ...rest
   } = props
   const classes = useStyles()
@@ -278,18 +279,6 @@ const General = props => {
             Basic Info
           </Typography>
         </Grid>
-        {/* <Grid item xs={12} sm={6}>
-          <TextField
-            disabled
-            value={user?.username ? user.username : ''}
-            label={'Username'}
-            variant="outlined"
-            size="medium"
-            name="username"
-            fullWidth
-            type="text"
-          />
-        </Grid> */}
 
         <Grid item xs={12} sm={6}>
           <TextField
@@ -318,7 +307,7 @@ const General = props => {
         <Grid item xs={12} sm={6}>
           <TextField
             disabled
-            value={user?.email ? user.email : ''}
+            value={user?.email}
             label={'Email'}
             variant="outlined"
             size="medium"
@@ -329,14 +318,69 @@ const General = props => {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            value={phoneNumber}
+            disabled
+            value={user?.username}
+            label={'Username'}
+            variant="outlined"
+            size="medium"
+            name="username"
+            fullWidth
+            type="username"
+          />
+        </Grid>
+
+        <Grid item xs={12}>
+          <Typography variant="h6" color="textPrimary">
+            Business Info
+          </Typography>
+        </Grid>
+
+        <Grid item xs={12} sm={6}>
+          <TextField
+            value={business?.name}
+            onChange={() => setCompanyName(event.target.value)}
+            label={'Company Name'}
+            variant="outlined"
+            size="medium"
+            name="companyName"
+            fullWidth
+            type="companyName"
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            value={business?.phoneNumber}
             onChange={() => setPhoneNumber(event.target.value)}
             label={'Phone Number'}
             variant="outlined"
             size="medium"
-            name="phone_number"
+            name="phoneNumber"
             fullWidth
-            type="phone_number"
+            type="phoneNumber"
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            onChange={() => setCompanyEmail(event.target.value)}
+            value={business?.email}
+            label={'Company Email'}
+            variant="outlined"
+            size="medium"
+            name="companyEmail"
+            fullWidth
+            type="companyEmail"
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            value={business?.website}
+            onChange={() => setWebsite(event.target.value)}
+            label={'Website'}
+            variant="outlined"
+            size="medium"
+            name="website"
+            fullWidth
+            type="website"
           />
         </Grid>
 
@@ -364,6 +408,7 @@ const General = props => {
 
 const mapStateToProps = state => ({
   user: state.session.user,
+  business: state.session.business,
   stripeCustomer: state.session.stripeCustomer,
   country: state.session.country,
 })
@@ -377,6 +422,9 @@ const mapDispatchToProps = dispatch => ({
   },
   uploadPicture: image => {
     return dispatch(uploadPicture(image))
+  },
+  updateBusiness: (userId, data) => {
+    return dispatch(updateBusiness(userId, data))
   },
 })
 

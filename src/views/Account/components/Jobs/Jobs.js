@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import clsx from 'clsx'
 import { connect } from 'react-redux'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
-import { postJob, getUserJobs } from '../../../../../redux/session/action'
+import { postJob, deleteJob, getUserJobs } from '../../../../../redux/session/action'
+import JobRow from './JobRow'
 import {
   useMediaQuery,
   Grid,
@@ -17,10 +18,21 @@ const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
   },
+  divider: {
+    marginTop: 25,
+    marginBottom: 25,
+  },
+  jobContainer: {
+    marginTop: 5,
+    marginBottom: 5,
+    paddingTop: 0,
+    paddingBottom: 10,
+    borderBottom: '1px solid #eee',
+  },
 }))
 
 const Jobs = props => {
-  const { className, postJob, getUserJobs, user, userJobs, ...rest } = props
+  const { className, postJob, getUserJobs, deleteJob, user, userJobs, ...rest } = props
   const classes = useStyles()
 
   const theme = useTheme()
@@ -28,6 +40,7 @@ const Jobs = props => {
     defaultMatches: true,
   })
   const [loading, setLoading] = useState(false)
+  const [expanded, setExpanded] = React.useState(false)
   const [name, setName] = useState('')
   const [category, setCategory] = useState('')
   const [description, setDescription] = useState('')
@@ -35,7 +48,7 @@ const Jobs = props => {
   useEffect(() => {
     if (user?.id && userJobs.length == 0) {
       setLoading(true)
-      getUserJobs(user.id).then(() => {
+      getUserJobs(user.business_user).then(() => {
         setLoading(false)
       })
     }
@@ -43,9 +56,12 @@ const Jobs = props => {
 
   const onClickPost = async event => {
     setLoading(true)
-    postJob(name, category, description).then(() => {
-      getUserJobs()
+    postJob(name, category, description, user.business_user).then(() => {
+      getUserJobs(user.business_user)
       setLoading(false)
+      setName('')
+      setCategory('')
+      setDescription('')
     })
   }
 
@@ -116,7 +132,7 @@ const Jobs = props => {
         </Grid>
 
         <Grid item xs={12}>
-          <Divider />
+          <Divider className={classes.divider} />
         </Grid>
 
         <Grid item xs={12}>
@@ -126,23 +142,8 @@ const Jobs = props => {
         </Grid>
         <Grid container item xs={12}>
           {userJobs?.length > 0 ? (
-            userJobs.map(review => {
-              return (
-                <Grid item xs={12}>
-                  <Typography variant="h5" color="textPrimary">
-                    Jobs
-                  </Typography>
-                  <Button
-                    onClick={() => removeReview(review)}
-                    className={classes.ratingDeleteBtn}
-                    variant="contained"
-                    type="submit"
-                    size="large"
-                  >
-                    Delete
-                  </Button>
-                </Grid>
-              )
+            userJobs.map(job => {
+              return <JobRow job={job} />
             })
           ) : (
             <Typography variant="subtitle1" color="textPrimary">
@@ -161,11 +162,14 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  postJob: (name, category, description) => {
-    return dispatch(postJob(name, category, description))
+  postJob: (name, category, description, businessUserId) => {
+    return dispatch(postJob(name, category, description, businessUserId))
   },
-  getUserJobs: userId => {
-    return dispatch(getUserJobs(userId))
+  deleteJob: jobId => {
+    return dispatch(deleteJob(jobId))
+  },
+  getUserJobs: business_user => {
+    return dispatch(getUserJobs(business_user))
   },
 })
 

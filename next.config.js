@@ -23,13 +23,13 @@ module.exports = phase => {
 
   const env = {
     API_URL: (() => {
-      if (isDev) return 'https://www.master-7rqtwti-uakq3f6fmyqti.ca-1.platformsh.site'
+      if (isDev) return 'http://localhost:1337'
       if (isStaging) return 'https://www.master-7rqtwti-uakq3f6fmyqti.ca-1.platformsh.site'
       if (isProd) return 'https://www.master-7rqtwti-uakq3f6fmyqti.ca-1.platformsh.site'
       return 'API_URL:not (isDev,isProd && !isStaging,isProd && isStaging)'
     })(),
     APP_URL: (() => {
-      if (isDev) return 'https://www.creatorpod.app/'
+      if (isDev) return 'http://localhost:3000'
       if (isStaging) return 'https://www.creatorpod.app/'
       if (isProd) return 'https://www.creatorpod.app/'
       return 'APP_URL:not (isDev,isProd && !isStaging,isProd && isStaging)'

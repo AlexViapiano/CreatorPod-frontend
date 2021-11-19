@@ -21,13 +21,13 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Hero = props => {
-  const { className, ...rest } = props
+  const { company, className, ...rest } = props
   const classes = useStyles()
   return (
     <div className={clsx(classes.root, className)} {...rest}>
       <Section className={classes.section}>
         <SectionHeader
-          title={'Account Settings'}
+          title={company}
           subtitle={''}
           align="left"
           disableGutter

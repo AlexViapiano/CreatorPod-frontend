@@ -67,12 +67,12 @@ const useStyles = makeStyles(theme => ({
 
 const subPages = [
   {
-    id: 'general',
-    title: 'General',
-  },
-  {
     id: 'jobs',
     title: 'Jobs',
+  },
+  {
+    id: 'general',
+    title: 'Settings',
   },
 ]
 
@@ -99,10 +99,11 @@ const Account = props => {
   } = props
   const classes = useStyles()
   const router = useRouter()
+  user
 
   return (
     <div className={classes.root}>
-      <Hero />
+      <Hero company={'Way Too Good'} />
       <SectionAlternate className={classes.section}>
         <Grid container spacing={4}>
           <Grid item xs={12} md={3}>
@@ -165,11 +166,11 @@ const Account = props => {
               </CardBase>
             ) : (
               <CardBase className="cardBase" withShadow align="left">
-                <TabPanel value={selectedView} index={'general'}>
-                  <General />
-                </TabPanel>
                 <TabPanel value={selectedView} index={'jobs'}>
                   <Jobs />
+                </TabPanel>
+                <TabPanel value={selectedView} index={'general'}>
+                  <General />
                 </TabPanel>
               </CardBase>
             )}
