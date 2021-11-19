@@ -68,6 +68,8 @@ const JobRow = props => {
     setExpanded(!expanded)
   }
 
+  const creatorsString = job.creators.map(creator => `${creator.firstname} ${creator.lastname}`)
+
   return (
     <div className={clsx(classes.root, className)} {...rest}>
       <Grid
@@ -115,9 +117,10 @@ const JobRow = props => {
             Category: {job.category}
           </Typography>
           <Typography variant="h5" color="textPrimary">
-            Description:
-            <br />
-            {job.description}
+            Description: {job.description}
+          </Typography>
+          <Typography variant="h5" color="textPrimary">
+            Interested Creators: {creatorsString}
           </Typography>
         </Grid>
       )}

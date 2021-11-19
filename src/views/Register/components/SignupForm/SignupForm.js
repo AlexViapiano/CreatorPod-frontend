@@ -291,9 +291,7 @@ const SignupForm = ({ joinWaitlist, setSuccess }) => {
           {error && (
             <Grid align="center" item xs={12}>
               <Typography variant="subtitle2" className={classes.error}>
-                {error?.message[0]?.messages[0].message
-                  ? error?.message[0]?.messages[0].message
-                  : 'An error occured'}
+                {error?.message[0]?.message ? error?.message[0]?.message : 'An error occured'}
               </Typography>
             </Grid>
           )}
