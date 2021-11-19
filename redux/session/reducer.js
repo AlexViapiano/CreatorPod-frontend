@@ -15,6 +15,7 @@ const initialState = {
   utm_medium: null,
   utm_campaign: null,
   leadsTriggered: false,
+  userJobs: [],
 }
 
 export default function reducer(state = initialState, action) {
@@ -118,6 +119,11 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         leadsTriggered: true,
+      }
+    case actionTypes.RECIEVE_GET_USER_JOBS:
+      return {
+        ...state,
+        userReviews: action.payload.res,
       }
     default:
       return state

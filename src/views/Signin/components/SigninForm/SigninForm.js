@@ -160,7 +160,7 @@ const SigninForm = ({ login }) => {
               Login
             </Button>
           </Grid>
-          <Grid item xs={12}>
+          {/* <Grid item xs={12}>
             <Typography variant="subtitle1" color="textSecondary" align="center">
               or
             </Typography>
@@ -178,7 +178,7 @@ const SigninForm = ({ login }) => {
                 Google Login
               </Button>
             </a>
-          </Grid>
+          </Grid> */}
           <Grid item xs={12}>
             <Typography variant="subtitle1" color="textSecondary" align="center">
               Forgot Password?{' '}

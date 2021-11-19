@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
 import { Box, List, ListItem, Grid, Typography, Button, CircularProgress } from '@material-ui/core'
 import { SectionAlternate, CardBase } from 'components/organisms'
-import { Hero, General } from './components'
+import { Hero, General, Jobs } from './components'
 import { connect } from 'react-redux'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
@@ -168,18 +168,9 @@ const Account = props => {
                 <TabPanel value={selectedView} index={'general'}>
                   <General />
                 </TabPanel>
-                {/* <TabPanel value={selectedView} index={'orders'}>
-                  <Orders />
+                <TabPanel value={selectedView} index={'jobs'}>
+                  <Jobs />
                 </TabPanel>
-                <TabPanel value={selectedView} index={'subscriptions'}>
-                  <UserSubscriptions />
-                </TabPanel>
-                <TabPanel value={selectedView} index={'productReviews'}>
-                  <ProductReviews className={classes.root} />
-                </TabPanel>
-                <TabPanel value={selectedView} index={'favorites'}>
-                  <Favorites />
-                </TabPanel> */}
               </CardBase>
             )}
           </Grid>

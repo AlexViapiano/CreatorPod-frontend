@@ -41,6 +41,9 @@ export const actionTypes = {
   SET_UTM: 'SET_UTM',
   REQUEST_GENERATE_LEAD: 'REQUEST_GENERATE_LEAD',
   RECEIVE_GENERATE_LEAD: 'RECEIVE_GENERATE_LEAD',
+  REQUEST_POST_JOB: 'REQUEST_POST_JOB',
+  RECEIVE_POST_JOB: 'RECEIVE_POST_JOB',
+  RECIEVE_GET_USER_JOBS: 'RECIEVE_GET_USER_JOBS',
 }
 
 export const changeLocale = newLocale => async (dispatch, getState) => {
@@ -714,6 +717,72 @@ export const generateLead = page => {
         if (!res.error) {
           dispatch({
             type: actionTypes.RECEIVE_GENERATE_LEAD,
+            payload: { res },
+          })
+        }
+        return res
+      })
+      .catch(err => {
+        console.error('err', err)
+        return err
+      })
+  }
+}
+
+export const postJob = (name, category, description) => {
+  return dispatch => {
+    dispatch({ type: actionTypes.REQUEST_POST_JOB })
+    var data = {
+      name: name,
+      category: category,
+      description: description,
+    }
+
+    var jwt = JSON.parse(localStorage.getItem('jwt'))
+    var token = 'Bearer ' + jwt
+
+    return fetch(`${API_URL}/jobs`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: token,
+      },
+      body: JSON.stringify(data),
+    })
+      .then(response => response.json())
+      .then(res => {
+        if (!res.error) {
+          dispatch({
+            type: actionTypes.RECEIVE_POST_JOB,
+            payload: { res },
+          })
+        }
+        return res
+      })
+      .catch(err => {
+        console.error('err', err)
+        return err
+      })
+  }
+}
+
+export const getUserJobs = userId => {
+  return dispatch => {
+    dispatch({ type: actionTypes.REQUEST_GET_USER_JOBS })
+    var jwt = JSON.parse(localStorage.getItem('jwt'))
+    var bearerToken = 'Bearer ' + jwt
+    return fetch(`${API_URL}/jobs?user=` + userId, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: bearerToken,
+      },
+    })
+      .then(response => response.json())
+      .then(res => {
+        if (!res.error) {
+          dispatch({
+            type: actionTypes.RECIEVE_GET_USER_JOBS,
             payload: { res },
           })
         }
