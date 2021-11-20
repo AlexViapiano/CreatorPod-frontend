@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import clsx from 'clsx'
 import { connect } from 'react-redux'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
-import { deleteJob, getUserJobs } from '../../../../../redux/session/action'
+import { deleteJob, getJobs } from '../../../../../redux/business/action'
 import {
   useMediaQuery,
   Grid,
@@ -18,6 +18,10 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
+    cursor: 'pointer',
+    '&:hover': {
+      background: '#f9f9f9',
+    },
   },
   expand: {
     padding: 0,
@@ -32,11 +36,15 @@ const useStyles = makeStyles(theme => ({
   },
   titleIconContainer: {
     display: 'flex',
+    '& h5': {
+      marginLeft: 10,
+    },
   },
   jobContainer: {
     marginTop: 5,
-    marginBottom: 5,
-    paddingTop: 0,
+    paddingTop: 2,
+    paddingRight: 5,
+    paddingLeft: 5,
     paddingBottom: 10,
     borderBottom: '1px solid #eee',
   },
@@ -44,10 +52,14 @@ const useStyles = makeStyles(theme => ({
     margin: 5,
     padding: 5,
   },
+  deleteBtn: {
+    background: '#e5534b',
+    color: '#FFF',
+  },
 }))
 
 const JobRow = props => {
-  const { className, deleteJob, user, job, ...rest } = props
+  const { className, deleteJob, getJobs, user, job, ...rest } = props
   const classes = useStyles()
 
   const theme = useTheme()
@@ -57,9 +69,11 @@ const JobRow = props => {
   const [expanded, setExpanded] = React.useState(false)
   const [loading, setLoading] = useState(false)
 
-  const onClickDeleteJob = async jobId => {
+  const onClickDeleteJob = async (e, jobId) => {
+    e.stopPropagation()
     setLoading(true)
     deleteJob(jobId).then(() => {
+      getJobs(user.business_user)
       setLoading(false)
     })
   }
@@ -74,6 +88,7 @@ const JobRow = props => {
     <div className={clsx(classes.root, className)} {...rest}>
       <Grid
         className={classes.jobContainer}
+        onClick={handleExpandClick}
         container
         justify="space-between"
         alignItems="center"
@@ -94,12 +109,12 @@ const JobRow = props => {
             {job.name}
           </Typography>
         </div>
-
         <Button
-          onClick={() => onClickDeleteJob(job.id)}
+          onClick={e => onClickDeleteJob(e, job.id)}
           variant="contained"
           type="submit"
-          size="large"
+          size="small"
+          className={classes.deleteBtn}
         >
           Delete
         </Button>
@@ -113,14 +128,16 @@ const JobRow = props => {
           direction="column"
           xs={12}
         >
-          <Typography variant="h5" color="textPrimary">
+          {creatorsString.length > 0 && (
+            <Typography variant="h6" color="textPrimary">
+              Interested Creators: {creatorsString}
+            </Typography>
+          )}
+          <Typography variant="h6" color="textPrimary">
             Category: {job.category}
           </Typography>
-          <Typography variant="h5" color="textPrimary">
+          <Typography variant="h6" color="textPrimary">
             Description: {job.description}
-          </Typography>
-          <Typography variant="h5" color="textPrimary">
-            Interested Creators: {creatorsString}
           </Typography>
         </Grid>
       )}
@@ -130,13 +147,14 @@ const JobRow = props => {
 
 const mapStateToProps = state => ({
   user: state.session.user,
+  jobs: state.business.jobs,
 })
 const mapDispatchToProps = dispatch => ({
   deleteJob: jobId => {
     return dispatch(deleteJob(jobId))
   },
-  getUserJobs: business_user => {
-    return dispatch(getUserJobs(business_user))
+  getJobs: business_user => {
+    return dispatch(getJobs(business_user))
   },
 })
 

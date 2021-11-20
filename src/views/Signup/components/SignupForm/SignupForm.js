@@ -68,7 +68,7 @@ const schema = {
   },
 }
 
-const SignupForm = ({ signup, user, setView }) => {
+const SignupForm = ({ signup }) => {
   const router = useRouter()
   const classes = useStyles()
   const [isVerified, setIsVerified] = useState(false)
@@ -116,9 +116,21 @@ const SignupForm = ({ signup, user, setView }) => {
         alert('Please verify that you are a human!')
         return
       }
-      signup(formState.values).then(res => {
+      var creds = {
+        email: formState.values.email,
+        password: formState.values.password,
+        username: formState.values.email,
+      }
+      var business = {
+        email: formState.values.email,
+        firstname: formState.values.first_name,
+        lastname: formState.values.last_name,
+        phoneNumber: formState.values.phone_number,
+        name: formState.values.username,
+      }
+      signup(creds, business).then(res => {
         if (!res.error) {
-          router.push('/')
+          router.push('/account/jobs')
         } else {
           setError(res)
         }
@@ -278,8 +290,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  signup: creds => {
-    return dispatch(signup(creds))
+  signup: (creds, business) => {
+    return dispatch(signup(creds, business))
   },
 })
 

@@ -3,7 +3,6 @@ import { actionTypes } from './action'
 const initialState = {
   locale: 'en',
   user: {},
-  business: {},
   userLoading: false,
   jwt: '',
   stripeCustomer: {},
@@ -16,7 +15,6 @@ const initialState = {
   utm_medium: null,
   utm_campaign: null,
   leadsTriggered: false,
-  userJobs: [],
 }
 
 export default function reducer(state = initialState, action) {
@@ -120,26 +118,6 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         leadsTriggered: true,
-      }
-    case actionTypes.RECEIVE_GET_USER_JOBS:
-      return {
-        ...state,
-        userJobs: action.payload.res,
-      }
-    // case actionTypes.RECEIVE_POST_JOB:
-    //   return {
-    //     ...state,
-    //     userJobs: action.payload.res,
-    //   }
-    case actionTypes.RECEIVE_DELETE_JOB:
-      return {
-        ...state,
-        userJobs: action.payload.res,
-      }
-    case actionTypes.RECEIVE_USER_BUSINESS:
-      return {
-        ...state,
-        business: action.payload.res,
       }
     default:
       return state

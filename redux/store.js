@@ -2,6 +2,8 @@ import { createStore, applyMiddleware, combineReducers } from 'redux'
 import { HYDRATE, createWrapper } from 'next-redux-wrapper'
 import thunkMiddleware from 'redux-thunk'
 import session from './session/reducer'
+import business from './business/reducer'
+import creator from './creator/reducer'
 import _ from 'lodash'
 
 const bindMiddleware = middleware => {
@@ -14,6 +16,8 @@ const bindMiddleware = middleware => {
 
 const combinedReducer = combineReducers({
   session,
+  business,
+  creator,
 })
 
 const reducer = (state, action) => {

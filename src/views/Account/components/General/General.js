@@ -8,31 +8,14 @@ import {
   Typography,
   TextField,
   Button,
-  Divider,
   CircularProgress,
-  MenuItem,
-  Select,
-  InputLabel,
-  FormControl,
   Avatar,
 } from '@material-ui/core'
-import {
-  updateStripeCustomer,
-  updateUser,
-  uploadPicture,
-} from '../../../../../redux/session/action'
-import usePlacesAutocomplete, { getDetails } from 'use-places-autocomplete'
+import { updateBusiness } from '../../../../../redux/business/action'
 
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
-  },
-  inputTitle: {
-    fontWeight: 700,
-    marginBottom: theme.spacing(1),
-  },
-  divider: {
-    margin: '32px 0px',
   },
   avatarContainer: {
     display: 'flex',
@@ -59,105 +42,37 @@ const useStyles = makeStyles(theme => ({
       height: 100,
     },
   },
-  errorContainer: {
-    color: '#fff',
-    background: theme.palette.error.main,
-    margin: 10,
-    padding: 10,
-    display: 'flex',
-    justifyContent: 'center',
-    alignContent: 'center',
-    borderRadius: 5,
-    fontWeight: 900,
-    fontSize: 16,
-  },
-  select: {
-    '& li': {
-      minHeight: 30,
-    },
-  },
   button: {
     marginRight: 5,
   },
 }))
 
 const General = props => {
-  const {
-    className,
-    user,
-    stripeCustomer,
-    country,
-    updateStripeCustomer,
-    updateUser,
-    uploadPicture,
-    business,
-    ...rest
-  } = props
+  const { className, user, business, updateUser, updateBusiness, uploadPicture, ...rest } = props
   const classes = useStyles()
-
-  const {
-    ready,
-    value,
-    suggestions: { status, data },
-    setValue,
-    clearSuggestions,
-  } = usePlacesAutocomplete({
-    requestOptions: {
-      /* Define search scope here */
-      componentRestrictions: { country: 'ca' },
-    },
-    debounce: 300,
-  })
 
   const theme = useTheme()
   const isMd = useMediaQuery(theme.breakpoints.up('md'), {
     defaultMatches: true,
   })
+
   const [loading, setLoading] = useState(false)
   const [image, setImage] = useState({ preview: '', raw: '' })
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
+  const [companyName, setCompanyName] = useState('')
+  const [companyEmail, setCompanyEmail] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
-  const [formState, setFormState] = useState({ diets: [] })
-  const [shipping_address_line1, setShipping_address_line1] = useState('')
-  const [shipping_address_line2, setShipping_address_line2] = useState('')
-  const [shipping_city, setShipping_city] = useState('')
-  const [shipping_country, setShipping_country] = useState('')
-  const [shipping_state, setShipping_state] = useState('')
-  const [shipping_zip, setShipping_zip] = useState('')
-  const [error, setError] = useState(null)
-  const [confirm, setConfirm] = useState(null)
+  const [website, setWebsite] = useState('')
 
   useEffect(() => {
-    if (user != null) {
-      var diets = user?.diets
-        ? user.diets.map(diet => {
-            return diet.id.toString()
-          })
-        : []
-      setFormState({ diets: diets })
-    }
-    setFirstName(user?.first_name)
-    setLastName(user?.last_name)
-    setPhoneNumber(user?.phone_number)
-    if (stripeCustomer != null) {
-      setShipping_address_line1(stripeCustomer?.shipping?.address?.line1)
-      setShipping_address_line2(stripeCustomer?.shipping?.address?.line2)
-      setShipping_city(stripeCustomer?.shipping?.address?.city)
-      setShipping_country(country)
-      setShipping_state(stripeCustomer?.shipping?.address?.state)
-      setShipping_zip(stripeCustomer?.shipping?.address?.postal_code)
-    }
-  }, [user, stripeCustomer])
-
-  const handleFieldChange = event => {
-    event.persist()
-    setFormState(formState => ({
-      ...formState,
-      [event.target.name]:
-        event.target.type === 'checkbox' ? event.target.checked : event.target.value,
-    }))
-  }
+    setFirstName(business?.firstname)
+    setLastName(business?.lastname)
+    setCompanyName(business?.name)
+    setPhoneNumber(business?.phoneNumber)
+    setCompanyEmail(business?.email)
+    setWebsite(business?.website)
+  }, [user])
 
   const handleChange = e => {
     if (e.target.files.length) {
@@ -168,89 +83,35 @@ const General = props => {
     }
   }
 
-  const handleSubmitUser = async event => {
+  const handleSubmit = async event => {
     setLoading(true)
 
-    if (image?.raw) {
-      var res = await uploadPicture(image.raw)
-    }
+    // if (image?.raw) {
+    //   var res = await uploadPicture(image.raw)
+    // }
+    // const uploadedPicture = res?.data[0]
+    // if (uploadedPicture?.id) data.profile_pic = uploadedPicture.id
 
-    const uploadedPicture = res?.data[0]
+    if (business && business.id && user.id) {
+      var data = {
+        first_name: firstName,
+        last_name: lastName,
+        name: companyName,
+        phoneNumber: phoneNumber,
+        email: companyEmail,
+        website: website,
+      }
 
-    var data = {
-      first_name: firstName,
-      last_name: lastName,
-      phone_number: phoneNumber,
-      diets: formState.diets,
-    }
-
-    if (uploadedPicture?.id) data.profile_pic = uploadedPicture.id
-
-    if (user?.id) {
-      updateUser(user.id, data).then(res => {
+      updateBusiness(business.id, data, user.id).then(res => {
         setLoading(false)
       })
     }
   }
-  if (confirm)
-    return (
-      <div>
-        <Typography variant="h5">Verify your address </Typography>
-        <Typography variant="subtitle1">
-          {confirm.verified_shipping_address_line1 +
-            ', ' +
-            (confirm.shipping_address_line2 && confirm.shipping_address_line2 + ', ') +
-            confirm.verified_shipping_city +
-            ', ' +
-            confirm.verified_shipping_country +
-            ', ' +
-            confirm.verified_shipping_state +
-            ', ' +
-            confirm.verified_shipping_zip}
-        </Typography>
-        <br />
-        <Button
-          onClick={handleConfirm}
-          variant="contained"
-          type="submit"
-          color="primary"
-          size="large"
-        >
-          Confirm
-        </Button>
-        <br /> <br />
-        <Button
-          variant="outlined"
-          size="small"
-          onClick={() => setConfirm(false)}
-          className={classes.button}
-        >
-          Back
-        </Button>
-        <Button variant="outlined" size="small" onClick={handleSkip} className={classes.button}>
-          Save unverified address
-        </Button>
-        <br /> <br />
-        <Typography variant="subtitle1">Unverified Address</Typography>
-        <Typography variant="subtitle2">
-          {shipping_address_line1 +
-            ', ' +
-            (shipping_address_line2 && shipping_address_line2 + ', ') +
-            shipping_city +
-            ', ' +
-            shipping_country +
-            ', ' +
-            shipping_state +
-            ', ' +
-            shipping_zip}
-        </Typography>
-      </div>
-    )
 
   return (
     <div className={clsx(classes.root, className)} {...rest}>
       <Grid container spacing={isMd ? 4 : 2}>
-        <Grid item xs={12}>
+        {/* <Grid item xs={12}>
           <label htmlFor="upload-button">
             <div className={classes.avatarContainer}>
               <Avatar
@@ -273,35 +134,22 @@ const General = props => {
             style={{ display: 'none' }}
             onChange={handleChange}
           />
-        </Grid>
+        </Grid> */}
         <Grid item xs={12}>
-          <Typography variant="h6" color="textPrimary">
+          <Typography variant="h5" color="textPrimary">
             Basic Info
           </Typography>
         </Grid>
-
         <Grid item xs={12} sm={6}>
           <TextField
-            value={firstName}
-            onChange={() => setFirstName(event.target.value)}
-            label={'First Name'}
+            disabled
+            value={user?.username}
+            label={'Username'}
             variant="outlined"
             size="medium"
-            name="first_name"
+            name="username"
             fullWidth
-            type="first_name"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            value={lastName}
-            onChange={() => setLastName(event.target.value)}
-            label={'Last Name'}
-            variant="outlined"
-            size="medium"
-            name="last_name"
-            fullWidth
-            type="last_name"
+            type="username"
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -318,26 +166,31 @@ const General = props => {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            disabled
-            value={user?.username}
-            label={'Username'}
+            value={firstName}
+            onChange={event => setFirstName(event.target.value)}
+            label={'First Name'}
             variant="outlined"
             size="medium"
-            name="username"
+            name="first_name"
             fullWidth
-            type="username"
+            type="first_name"
           />
         </Grid>
-
-        <Grid item xs={12}>
-          <Typography variant="h6" color="textPrimary">
-            Business Info
-          </Typography>
-        </Grid>
-
         <Grid item xs={12} sm={6}>
           <TextField
-            value={business?.name}
+            value={lastName}
+            onChange={event => setLastName(event.target.value)}
+            label={'Last Name'}
+            variant="outlined"
+            size="medium"
+            name="last_name"
+            fullWidth
+            type="last_name"
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            value={companyName}
             onChange={() => setCompanyName(event.target.value)}
             label={'Company Name'}
             variant="outlined"
@@ -349,7 +202,7 @@ const General = props => {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            value={business?.phoneNumber}
+            value={phoneNumber}
             onChange={() => setPhoneNumber(event.target.value)}
             label={'Phone Number'}
             variant="outlined"
@@ -362,7 +215,7 @@ const General = props => {
         <Grid item xs={12} sm={6}>
           <TextField
             onChange={() => setCompanyEmail(event.target.value)}
-            value={business?.email}
+            value={companyEmail}
             label={'Company Email'}
             variant="outlined"
             size="medium"
@@ -373,7 +226,7 @@ const General = props => {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            value={business?.website}
+            value={website}
             onChange={() => setWebsite(event.target.value)}
             label={'Website'}
             variant="outlined"
@@ -391,7 +244,7 @@ const General = props => {
             </center>
           ) : (
             <Button
-              onClick={() => handleSubmitUser()}
+              onClick={() => handleSubmit()}
               variant="contained"
               type="submit"
               color="primary"
@@ -408,23 +261,15 @@ const General = props => {
 
 const mapStateToProps = state => ({
   user: state.session.user,
-  business: state.session.business,
-  stripeCustomer: state.session.stripeCustomer,
-  country: state.session.country,
+  business: state.business.business,
 })
 
 const mapDispatchToProps = dispatch => ({
-  updateStripeCustomer: (userId, data) => {
-    return dispatch(updateStripeCustomer(userId, data))
-  },
-  updateUser: (userId, data) => {
-    return dispatch(updateUser(userId, data))
+  updateBusiness: (businessId, data, userId) => {
+    return dispatch(updateBusiness(businessId, data, userId))
   },
   uploadPicture: image => {
     return dispatch(uploadPicture(image))
-  },
-  updateBusiness: (userId, data) => {
-    return dispatch(updateBusiness(userId, data))
   },
 })
 

@@ -89,7 +89,7 @@ const SigninForm = ({ login }) => {
     if (formState.isValid) {
       login(formState.values).then(res => {
         if (!res.error) {
-          router.back() //.push('/')
+          router.push('/account/jobs')
         } else {
           console.error(res.error)
           var errors = {

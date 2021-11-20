@@ -11,6 +11,7 @@ const useStyles = makeStyles(theme => ({
     position: 'relative',
     overflow: 'hidden',
     background: theme.palette.primary.main,
+    background: `linear-gradient(90deg, rgba(113,104,255,1) 0%, rgba(184,180,255,1) 100%)`,
   },
   textWhite: {
     color: 'white',

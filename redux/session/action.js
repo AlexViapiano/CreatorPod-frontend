@@ -1,5 +1,6 @@
 import { API_URL, APP_URL } from '../api'
 import axios from 'axios'
+import { getBusiness, createBusiness } from '../business/action'
 
 export const actionTypes = {
   CHANGE_LOCALE: 'CHANGE_LOCALE',
@@ -41,14 +42,6 @@ export const actionTypes = {
   SET_UTM: 'SET_UTM',
   REQUEST_GENERATE_LEAD: 'REQUEST_GENERATE_LEAD',
   RECEIVE_GENERATE_LEAD: 'RECEIVE_GENERATE_LEAD',
-  REQUEST_POST_JOB: 'REQUEST_POST_JOB',
-  RECEIVE_POST_JOB: 'RECEIVE_POST_JOB',
-  REQUEST_GET_USER_JOBS: 'REQUEST_GET_USER_JOBS',
-  RECEIVE_GET_USER_JOBS: 'RECEIVE_GET_USER_JOBS',
-  REQUEST_DELETE_JOB: 'REQUEST_DELETE_JOB',
-  RECEIVE_DELETE_JOB: 'RECEIVE_DELETE_JOB',
-  REQUEST_USER_BUSINESS: 'REQUEST_USER_BUSINESS',
-  RECEIVE_USER_BUSINESS: 'RECEIVE_USER_BUSINESS',
 }
 
 export const changeLocale = newLocale => async (dispatch, getState) => {
@@ -92,7 +85,7 @@ export const getUser = () => {
           })
         }
         // dispatch(getStripeCustomer(res.user.id))
-        dispatch(getUserBusiness(res.user.business_user))
+        dispatch(getBusiness(res.user.business_user, res.user.id))
         return res
       })
       .catch(err => {
@@ -119,7 +112,7 @@ export const getGoogleUser = access_token => {
             type: actionTypes.RECIEVE_LOGIN,
             payload: { res },
           })
-          dispatch(getStripeCustomer(res.user.id))
+          // dispatch(getStripeCustomer(res.user.id))
         }
         return res
       })
@@ -206,7 +199,8 @@ export const login = creds => {
             type: actionTypes.RECIEVE_LOGIN,
             payload: { res },
           })
-          dispatch(getStripeCustomer(res.user.id))
+          dispatch(getBusiness(res.user.business_user, res.user.id))
+          // dispatch(getStripeCustomer(res.user.id))
         }
         return res
       })
@@ -217,21 +211,13 @@ export const login = creds => {
   }
 }
 
-export const signup = creds => {
+export const signup = (creds, business) => {
   return dispatch => {
     dispatch({ type: actionTypes.REQUEST_SIGNUP })
-    var loginInfo = {
-      username: creds.username,
-      first_name: creds.first_name,
-      last_name: creds.last_name,
-      email: creds.email,
-      password: creds.password,
-      phoneNumber: creds.phone_number,
-    }
     return fetch(`${API_URL}/auth/local/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(loginInfo),
+      body: JSON.stringify(creds),
     })
       .then(response => response.json())
       .then(res => {
@@ -241,7 +227,9 @@ export const signup = creds => {
             type: actionTypes.RECIEVE_SIGNUP,
             payload: { res },
           })
-          dispatch(createStripeCustomer(res.user.id))
+          business.user = res.user.id
+          dispatch(createBusiness(res.user.id, business))
+          // dispatch(createStripeCustomer(res.user.id))
         }
         return res
       })
@@ -761,93 +749,6 @@ export const postJob = (name, category, description, businessUserId) => {
         if (!res.error) {
           dispatch({
             type: actionTypes.RECEIVE_POST_JOB,
-            payload: { res },
-          })
-        }
-        return res
-      })
-      .catch(err => {
-        console.error('err', err)
-        return err
-      })
-  }
-}
-
-export const getUserJobs = businessUserId => {
-  return dispatch => {
-    dispatch({ type: actionTypes.REQUEST_GET_USER_JOBS })
-    var jwt = JSON.parse(localStorage.getItem('jwt'))
-    var bearerToken = 'Bearer ' + jwt
-    return fetch(`${API_URL}/jobs?business=` + businessUserId, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: bearerToken,
-      },
-    })
-      .then(response => response.json())
-      .then(res => {
-        if (!res.error) {
-          dispatch({
-            type: actionTypes.RECEIVE_GET_USER_JOBS,
-            payload: { res },
-          })
-        }
-        return res
-      })
-      .catch(err => {
-        console.error('err', err)
-        return err
-      })
-  }
-}
-
-export const deleteJob = jobId => {
-  return dispatch => {
-    dispatch({ type: actionTypes.REQUEST_DELETE_JOB })
-    var jwt = JSON.parse(localStorage.getItem('jwt'))
-    var bearerToken = 'Bearer ' + jwt
-    return fetch(`${API_URL}/jobs/` + jobId, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: bearerToken,
-      },
-    })
-      .then(response => response.json())
-      .then(res => {
-        if (!res.error) {
-          dispatch({
-            type: actionTypes.RECEIVE_DELETE_JOB,
-            payload: { res },
-          })
-        }
-        return res
-      })
-      .catch(err => {
-        console.error('err', err)
-        return err
-      })
-  }
-}
-
-export const getUserBusiness = userBusinessId => {
-  return dispatch => {
-    dispatch({ type: actionTypes.REQUEST_USER_BUSINESS })
-    var jwt = JSON.parse(localStorage.getItem('jwt'))
-    var token = 'Bearer ' + jwt
-    return fetch(`${API_URL}/businesses/${userBusinessId}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: token,
-      },
-    })
-      .then(response => response.json())
-      .then(res => {
-        if (!res.error) {
-          dispatch({
-            type: actionTypes.RECEIVE_USER_BUSINESS,
             payload: { res },
           })
         }
