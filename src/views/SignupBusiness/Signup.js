@@ -56,7 +56,7 @@ const Signup = props => {
           <div className={classes.formContainer}>
             <SectionHeader
               title="Sign up"
-              // subtitle="Create beautiful marketing websites in hours instead of weeks."
+              subtitle="The easiest way to find creators ready to work with your brand!"
               titleProps={{
                 variant: 'h3',
               }}

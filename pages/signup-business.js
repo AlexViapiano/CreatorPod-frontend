@@ -1,5 +1,5 @@
 import React from 'react'
-import Signup from 'views/Signup'
+import Signup from 'views/SignupBusiness'
 import Main from 'layouts/Main'
 import Head from 'next/head'
 

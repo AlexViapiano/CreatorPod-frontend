@@ -279,6 +279,15 @@ const SignupForm = ({ signup }) => {
               </Link>
             </Typography>
           </Grid>
+          <Grid item xs={12}>
+            <br />
+            <Typography variant="subtitle1" color="textSecondary" align="center">
+              Are you a creator?
+              <Link href="/register">
+                <a className={classes.a}>Get started here</a>
+              </Link>
+            </Typography>
+          </Grid>
         </Grid>
       </form>
     </div>
