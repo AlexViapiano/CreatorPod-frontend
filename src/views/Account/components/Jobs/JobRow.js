@@ -73,7 +73,7 @@ const JobRow = props => {
     e.stopPropagation()
     setLoading(true)
     deleteJob(jobId).then(() => {
-      getJobs(user.business_user)
+      getJobs(user.business_user.id)
       setLoading(false)
     })
   }
@@ -153,8 +153,8 @@ const mapDispatchToProps = dispatch => ({
   deleteJob: jobId => {
     return dispatch(deleteJob(jobId))
   },
-  getJobs: business_user => {
-    return dispatch(getJobs(business_user))
+  getJobs: businessId => {
+    return dispatch(getJobs(businessId))
   },
 })
 

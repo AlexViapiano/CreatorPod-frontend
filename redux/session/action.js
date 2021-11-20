@@ -199,7 +199,7 @@ export const login = creds => {
             type: actionTypes.RECIEVE_LOGIN,
             payload: { res },
           })
-          dispatch(getBusiness(res.user.business_user, res.user.id))
+          dispatch(getBusiness(res.user.business_user.id, res.user.id))
           // dispatch(getStripeCustomer(res.user.id))
         }
         return res

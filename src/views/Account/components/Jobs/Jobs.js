@@ -46,7 +46,7 @@ const Jobs = props => {
   const [description, setDescription] = useState('')
 
   useEffect(() => {
-    if (user?.id && jobs && jobs.length == 0) {
+    if (user?.business_user && jobs.length == 0) {
       setLoading(true)
       getJobs(user.business_user).then(() => {
         setLoading(false)

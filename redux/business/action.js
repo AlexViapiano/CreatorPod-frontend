@@ -4,8 +4,8 @@ import axios from 'axios'
 export const actionTypes = {
   REQUEST_BUSINESS: 'REQUEST_BUSINESS',
   RECEIVE_BUSINESS: 'RECEIVE_BUSINESS',
-  REQUEST_CREATE_BUSINESS: 'REQUEST_BUSINESS',
-  RECEIVE_CREATE_BUSINESS: 'RECEIVE_BUSINESS',
+  REQUEST_CREATE_BUSINESS: 'REQUEST_CREATE_BUSINESS',
+  RECEIVE_CREATE_BUSINESS: 'RECEIVE_CREATE_BUSINESS',
   REQUEST_UPDATE_BUSINESS: 'REQUEST_UPDATE_BUSINESS',
   RECEIVE_UPDATE_BUSINESS: 'RECEIVE_UPDATE_BUSINESS',
   REQUEST_JOBS: 'REQUEST_JOBS',
@@ -16,12 +16,12 @@ export const actionTypes = {
   RECEIVE_DELETE_JOB: 'RECEIVE_DELETE_JOB',
 }
 
-export const getBusiness = (userBusinessId, userId) => {
+export const getBusiness = (businessId, userId) => {
   return dispatch => {
     dispatch({ type: actionTypes.REQUEST_BUSINESS })
     var jwt = JSON.parse(localStorage.getItem('jwt'))
     var token = 'Bearer ' + jwt
-    return fetch(`${API_URL}/businesses/${userBusinessId}?user=${userId}`, {
+    return fetch(`${API_URL}/businesses/${businessId}?user=${userId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -105,12 +105,14 @@ export const updateBusiness = (businessId, data, userId) => {
   }
 }
 
-export const getJobs = businessUserId => {
+export const getJobs = business_user => {
+  var businessId = business_user
+  if (business_user?.id) businessId = business_user.id
   return dispatch => {
     dispatch({ type: actionTypes.REQUEST_JOBS })
     var jwt = JSON.parse(localStorage.getItem('jwt'))
     var bearerToken = 'Bearer ' + jwt
-    return fetch(`${API_URL}/jobs?business=` + businessUserId, {
+    return fetch(`${API_URL}/jobs?business=` + businessId, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

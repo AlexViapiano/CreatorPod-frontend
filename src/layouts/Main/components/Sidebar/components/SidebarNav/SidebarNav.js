@@ -18,7 +18,18 @@ import { connect } from 'react-redux'
 import Link from 'next/link'
 // import { store } from 'react-notifications-component'
 import Image from 'next/image'
-import { Home, Check, EmojiPeople, LocalOffer } from '@material-ui/icons'
+import {
+  Home,
+  Check,
+  EmojiPeople,
+  LocalOffer,
+  Settings,
+  ExpandMore,
+  ExpandLess,
+  PersonOutline,
+  ExitToApp,
+  Work,
+} from '@material-ui/icons'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -130,50 +141,14 @@ const SidebarNav = props => {
   return (
     <>
       <div className={classes.topSection}>
-        {user && Object.keys(user).length === 0 ? (
-          <div>
-            <Image
-              className={classes.image}
-              src="/images/photos/logo.png"
-              alt="Symbol"
-              loading="lazy"
-              width={200}
-              height={35}
-            />
-          </div>
-        ) : (
-          <>
-            <Avatar
-              alt={user?.username ? user.username : 'profile-pic'}
-              src={
-                user?.profile_pic?.formats?.thumbnail?.url
-                  ? user?.profile_pic?.formats?.thumbnail?.url
-                  : null
-              }
-              className={classes.avatar}
-            />
-            {user.username && (
-              <Typography
-                onClick={onClose}
-                color="secondary"
-                variant="h6"
-                className={classes.username}
-              >
-                {user.username}
-              </Typography>
-            )}
-            {user.email && (
-              <Typography
-                onClick={onClose}
-                color="secondary"
-                variant="body2"
-                className={classes.email}
-              >
-                {user.email}
-              </Typography>
-            )}
-          </>
-        )}
+        <Image
+          className={classes.image}
+          src="/images/photos/logo.png"
+          alt="Symbol"
+          loading="lazy"
+          width={200}
+          height={32}
+        />
       </div>
       <List {...rest} className={clsx(classes.root, className)}>
         <Link href={'/'}>
@@ -237,9 +212,9 @@ const SidebarNav = props => {
           </a>
         </Link> 
         */}
-        {/* {user && Object.keys(user).length === 0 ? (
+        {user && Object.keys(user).length === 0 ? (
           <>
-            <Link href="/signup">
+            {/* <Link href="/signup">
               <a>
                 <ListItem button>
                   <ListItemIcon>
@@ -259,15 +234,15 @@ const SidebarNav = props => {
                   <ListItemText primary={'Login'} />
                 </ListItem>
               </a>
-            </Link>
+            </Link> */}
           </>
         ) : (
           <>
             <ListItem button onClick={() => setAccountOpen(!accountOpen)}>
               <ListItemIcon>
-                <Settings />
+                <PersonOutline />
               </ListItemIcon>
-              <ListItemText primary={'Settings'} />
+              <ListItemText primary={'Account'} />
               {accountOpen ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
 
@@ -281,9 +256,19 @@ const SidebarNav = props => {
                   <a>
                     <ListItem button>
                       <ListItemIcon>
-                        <PersonOutline />
+                        <Work />
                       </ListItemIcon>
-                      <ListItemText primary={'Account'} />
+                      <ListItemText primary={'Jobs'} />
+                    </ListItem>
+                  </a>
+                </Link>
+                <Link href="/account/general">
+                  <a>
+                    <ListItem button>
+                      <ListItemIcon>
+                        <Settings />
+                      </ListItemIcon>
+                      <ListItemText primary={'Settings'} />
                     </ListItem>
                   </a>
                 </Link>
@@ -297,7 +282,7 @@ const SidebarNav = props => {
               </List>
             </Collapse>
           </>
-        )} */}
+        )}
       </List>
     </>
   )
